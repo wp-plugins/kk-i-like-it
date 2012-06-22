@@ -442,6 +442,99 @@ label.error{
     vertical-align: middle;
 }
 
+
+/* ============== KKAdmin2 ============== */
+
+.kkadmin-box{
+	width: 1086px;
+	margin: 15px auto;
+	box-shadow: 0 0 5px #ccc;
+	border: 1px solid #e5e5e5;
+}
+
+.kkadmin-top{
+	position: relative;
+	background: url('../images/admin/top-img-bg.jpg') no-repeat top right;
+	height: 112px;
+}
+
+.kkadmin-head-plugin{
+	position: absolute;
+	left: 15px;
+	bottom: 5px;
+}
+
+.kkadmin-head-plugin a{
+	text-decoration: none;
+	color: #000000;
+}
+
+.kkadmin-head-plugin a:hover{
+	color: #888888;
+}
+
+.kkadmin-content{
+	background: url('../images/admin/content-bg.jpg') repeat-y;
+	border-top: 1px solid #e5e5e5;
+}
+
+.kkadmin-text{
+	float: left;
+	width: 830px;
+}
+
+.kkadmin-text-wew{
+	margin: 15px;
+}
+
+.kkadmin-text h2{
+	margin: 0;
+	padding: 10px 15px;
+	background: #3E3E3E;
+	color: #FFFFFF;
+	font-weight: normal;
+	font-style: italic;
+}
+
+.kkadmin-sidebar{
+	float: left;
+	width: 256px;
+	padding-top: 15px;
+}
+
+.kkadmin-sidebar-box{
+	margin: 10px 15px; 
+	color: #333;
+}
+
+.kkadmin-sidebar-box a{
+	color: #c31216;
+	text-decoration: none;
+}
+
+.kkadmin-sidebar-box a:hover{
+	color: #3E3E3E;
+}
+
+.kkadmin-menu-ul li{
+	margin: 0;
+}
+
+.kkadmin-menu-ul li a{
+	display: block;
+	padding: 10px 20px;
+	background: #F1F1F1;
+	margin: 0 0 1px 0;
+	text-decoration: none;
+	color: #000000;
+	text-transform: uppercase;
+}
+
+.kkadmin-menu-ul li a:hover{
+	background: #3e3e3e;
+	color: #FFFFFF;
+}
+
 .kkclear{
 	display: block;
 	clear: both;
@@ -451,8 +544,7 @@ label.error{
 	top: -1px;
 }
 
-/* ============== /KKAdmin ============== */
-
+/* ============== /KKAdmin2 ============== */
 
 .kkadmin-radio-prev-box .top-left{
 	background: url('../images/top-left.jpg') no-repeat;
@@ -480,8 +572,7 @@ label.error{
 }
 
 .kklike-list-box-element{
-	padding: 15px;
-	font-size: 14px;
+	padding: 9px 15px 8px;
 	border-top: 1px solid #EEEEEE;
 }
 
@@ -491,4 +582,23 @@ label.error{
 
 .kklike-list-box-element strong{
 	font-style: italic;
+}
+
+.kklike-list-ico{
+	background: url('../images/admin/serce-ciemne.png') no-repeat;
+	width: 25px;
+	height: 20px;
+	float: left;
+	margin-right: 15px;
+	margin-top: 3px;
+}
+
+.kklike-list-text{
+	float: left;
+	width: 720px;
+}
+
+.kklike-ip{
+	font-size: 10px;
+    line-height: 100%;
 }

@@ -133,17 +133,38 @@ class kkDataBase{
 	}
 	
 	public function getInformation($limit = 0){
+		$result = array();
+		
 		if($limit > 0){
 			$limit = " LIMIT ".$limit;
 		}else{
 			$limit = "";
 		}
+		
 		$sql = "SELECT * FROM ". $this->tableLikeUser ." 
-				LEFT JOIN (". $this->tableLike .", ". $this->tableWPUsers .", ". $this->tableWPPosts .") 
-				ON (". $this->tableLikeUser .".idlike = ". $this->tableLike .".id AND ". $this->tableLikeUser .".idwpuser = ". $this->tableWPUsers .".ID AND ". $this->tableLike .".idwp = ". $this->tableWPPosts .".ID) 
+				LEFT JOIN (". $this->tableLike .") 
+				ON (". $this->tableLikeUser .".idlike = ". $this->tableLike .".id) 
 				ORDER BY ". $this->tableLikeUser .".date".$limit;
 		$dane = $this->wpdb->get_results($sql);
 		
-		return $dane;
+		$i = 0;
+		foreach($dane as $row){
+			
+			if($row->idwpuser == '0'){
+				$user = __('Guest', 'lang-kkilikeit');
+			}else{
+				$user = $this->wpdb->get_var("SELECT display_name FROM $this->tableWPUsers WHERE ID = $row->idwpuser");
+			}
+			
+			$result[$i] = array(
+				'ip' 		=> 	$row->ip,
+				'date'		=>	$row->date,
+				'user'		=>	$user,
+				'post_name'	=>	$this->wpdb->get_var("SELECT post_title FROM $this->tableWPPosts WHERE ID = $row->idwp")
+			);
+			$i++;
+		}
+		
+		return $result;
 	}
 }

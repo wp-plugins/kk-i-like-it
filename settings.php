@@ -5,37 +5,43 @@ global $wpdb;
 $wp_options = get_option('kklikesettings');
 
 ?>
-<div class="wrap" id="kkadmin-interface">
 
-	<?php include 'head.php'; ?>
-	
-	<div id="kkadmin-menu">
-		<?php include 'menu.inc.php'; ?>
-		<?php include 'sidebar.php'; ?>
+<div class="kkadmin-box">
+	<div class="kkadmin-top">
+		<?php include 'head.php'; ?>
 	</div>
-	<div id="kkadmin-tresc">
-		<div id="kkadmin-tresc-wew">
-			<form method="post" id="kkpb-settings-form">
-			<input type="hidden" name="action" value="save" />
-			
-			<div id="kkadmin-tresc-" class="kkadmin-tresc">
-				<table class="kkadmin-option-content">
-				<?php 
-				foreach($options as $option) { ?>
-					<?php
-						foreach($option['content'] as $key => $value) { 
-							kklike_admin_generate_option($wp_options, $value['type'], $key, $value);
-						} 
-					?>
-				<?php }?>
-				</table>
-				<?php
+	<div class="kkadmin-content">
+		<div class="kkadmin-text">
+			<div class="kkadmin-text-wew">
 				
-				?>
-				<input class="button-primary kk-button" style="float: right;" type="submit" name="save" value="<?php _e('Save changes','lang-kkilikeit'); ?>" />
+				<form method="post" id="kkpb-settings-form">
+					<input type="hidden" name="action" value="save" />
+					
+					<div id="kkadmin-tresc-" class="kkadmin-tresc">
+						<table class="kkadmin-option-content">
+						<?php 
+						foreach($options as $option) { ?>
+							<?php
+								foreach($option['content'] as $key => $value) { 
+									kklike_admin_generate_option($wp_options, $value['type'], $key, $value);
+								} 
+							?>
+						<?php }?>
+						</table>
+						<?php
+						
+						?>
+						<input class="button-primary kk-button" style="float: right; margin: 15px 0;" type="submit" name="save" value="<?php _e('Save changes','lang-kkilikeit'); ?>" />
+					</div>
+				</form>
+				
 			</div>
-			</form>
 		</div>
+		<div class="kkadmin-sidebar">
+			<?php include 'menu.inc.php'; ?>
+			<?php include 'sidebar.php'; ?>
+		</div>
+		<div class="kkclear"></div>
 	</div>
 </div>
 

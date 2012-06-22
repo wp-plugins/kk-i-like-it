@@ -8,17 +8,14 @@ require_once 'db.php';
 function kklike_admin_content(){
 	global $wpdb, $options;
 ?>
-<div class="wrap" id="kkadmin-interface">
 
-	<?php include 'head.php'; ?>
-	
-	<div id="kkadmin-menu">
-		<?php include 'menu.inc.php'; ?>
-		<?php include 'sidebar.php'; ?>
+<div class="kkadmin-box">
+	<div class="kkadmin-top">
+		<?php include 'head.php'; ?>
 	</div>
-	<div id="kkadmin-tresc">
-		<div id="kkadmin-tresc-wew">
-			<div class="kkadmin-tresc">
+	<div class="kkadmin-content">
+		<div class="kkadmin-text">
+			<div class="kkadmin-text-wew">
 				<?php 
 				$wp_options = get_option('kklikesettings');
 				if(empty($wp_options['like_text']) || $wp_options['like_text'] == null){
@@ -33,9 +30,15 @@ function kklike_admin_content(){
 						$db = new kkDataBase;
 						$dane = $db->getInformation('10');
 						foreach($dane as $row):
+						
 					?>
 						<div class="kklike-list-box-element">
-							At <strong><?php echo date('H:i', strtotime($row->date)); ?></strong> on <strong><?php echo date('d-m-Y', strtotime($row->date)); ?></strong>, user <strong><?php echo $row->user_login; ?></strong> liked article "<strong><?php echo $row->post_title; ?></strong>".
+							<div class="kklike-list-ico"></div>
+							<div class="kklike-list-text">
+								At <strong><?php echo date('H:i', strtotime($row['date'])); ?></strong> on <strong><?php echo date('d-m-Y', strtotime($row['date'])); ?></strong>, user <strong><?php echo $row['user']; ?></strong> liked article "<strong><?php echo $row['post_name']; ?></strong>".
+								<div class="kklike-ip">IP: <?php echo $row['ip']; ?></div>
+							</div>
+							<div class="kkclear"></div>
 						</div>
 					<?php
 						endforeach;
@@ -46,22 +49,15 @@ function kklike_admin_content(){
 				
 				<h2> COMMING SOON </h2>
 				-->
-			    <div id="kkpb-info-box">
-	                <div class="kkpb-info-widget">
-	                     <div style="margin: 0px 0px;">
-	                     	<!--
-	                        <a href="http://support.krzysztof-furtak.pl/" target="_blank">
-	                        	<img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/support-button.png" alt="Support Site" style="vertical-align:middle;" />
-	                        </a>
-	                       -->
-	                     </div>
-	                </div>
-	                <div class="clear"></div>
-                </div>
 			</div>
 		</div>
+		<div class="kkadmin-sidebar">
+			<?php include 'menu.inc.php'; ?>
+			<?php include 'sidebar.php'; ?>
+		</div>
+		<div class="kkclear"></div>
 	</div>
- </div>
+</div>
 
 <?php
 }

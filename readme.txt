@@ -2,11 +2,11 @@
 Contributors: Krzy-siek
 Donate link: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
 License: GNU GPL
-Version: 1.0
+Version: 1.1
 Tags: like, like it, social, rating, blog, post, page, premium, free
 Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 1.0
+Stable tag: 1.1
 
 Plugin gives users or guest an option to like an article or a page.
 
@@ -52,6 +52,10 @@ More information about the plugin can be found [HERE](http://krzysztof-furtak.pl
 Yes.
 
 == Changelog ==
+
+= 1.1 =
+* NEW: New, fresh admin design
+* FIX: Incorrect display a list of recent liked information
 
 = 1.0 =
 * NEW: Beta release
