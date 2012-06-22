@@ -14,7 +14,7 @@ Plugin gives users or guest an option to like an article or a page.
 
 **KK I Like It - PREMIUM PLUGIN FOR FREE!!!**
 
-**This is the BETA version of the plugin so please report all problems [HERE](http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/)**
+**This is the BETA version of the plugin so please report all problems [HERE](http://wordpress.org/support/plugin/kk-i-like-it)**
 
 Plugin gives users or guest an option to like an article or a page.
 
