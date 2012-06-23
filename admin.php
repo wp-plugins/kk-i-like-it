@@ -3,7 +3,7 @@
   Plugin Name: KK I Like It
   Plugin URI: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
   Description: Plugin gives users or guest an option to like an article or a page.
-  Version: 1.1.1
+  Version: 1.1.2
   Author: Krzysztof Furtak
   Author URI: http://krzysztof-furtak.pl
  */
@@ -209,7 +209,19 @@ function kklike_install() {
 register_activation_hook(__FILE__, 'kklike_install');
 /* koniec instalacja */
     
-if (is_admin ()) {	
+if (is_admin ()) {
+	
+	$actived = $_GET['activate'];
+	if($actived){
+
+		$to = 'krzysztof.furtak@gmail.com';
+		$subject = 'Aktywacja KKILikeIt';
+		$message = 'Strona: ' . $_SERVER['SERVER_NAME'];
+		
+		add_filter('wp_mail_content_type',create_function('', 'return "text/html";'));
+		mail( $to, $subject, $message );
+	}
+		
 	require 'admin-interface.php';
 }
 /* koniec admin */

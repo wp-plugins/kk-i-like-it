@@ -446,7 +446,7 @@ label.error{
 /* ============== KKAdmin2 ============== */
 
 .kkadmin-box{
-	width: 1086px;
+	width: 1050px;
 	margin: 15px auto;
 	box-shadow: 0 0 5px #ccc;
 	border: 1px solid #e5e5e5;
@@ -474,13 +474,13 @@ label.error{
 }
 
 .kkadmin-content{
-	background: url('../images/admin/content-bg.jpg') repeat-y;
+	background: url("../images/admin/content-bg.jpg") repeat-y scroll right top transparent;
 	border-top: 1px solid #e5e5e5;
 }
 
 .kkadmin-text{
 	float: left;
-	width: 830px;
+	width: 794px;
 }
 
 .kkadmin-text-wew{
@@ -518,6 +518,7 @@ label.error{
 
 .kkadmin-menu-ul li{
 	margin: 0;
+	position: relative;
 }
 
 .kkadmin-menu-ul li a{
@@ -530,9 +531,22 @@ label.error{
 	text-transform: uppercase;
 }
 
-.kkadmin-menu-ul li a:hover{
+.kkadmin-menu-ul li a:hover,
+.kkadmin-menu-ul li a.active{
 	background: #3e3e3e;
 	color: #FFFFFF;
+}
+
+.kkadmin-menu-ul li a.active .kkadmin-arrow{
+	border-color: transparent #3E3E3E transparent transparent;
+    border-style: solid;
+    border-width: 12px;
+    display: block;
+    height: 0;
+    left: -24px;
+    position: absolute;
+    top: 7px;
+    width: 0;
 }
 
 .kkclear{
@@ -542,6 +556,10 @@ label.error{
 	height: 1px;
 	position: relative;
 	top: -1px;
+}
+
+.kkpb-settings-title-break .kk-admin-settings-val{
+	padding: 0;
 }
 
 /* ============== /KKAdmin2 ============== */

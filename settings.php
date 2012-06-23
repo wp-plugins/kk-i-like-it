@@ -55,7 +55,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 <tr class="<?php echo $value['class']; ?>">
 	<td class="kk-admin-info">
 		<div class="kkadmin-info kk-tooltip" title="<?php echo $value['tooltip']; ?>">
-		<img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
+		<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
 	</div>
 	</td>
 	<td class="kk-admin-label" colspan="2">
@@ -80,7 +80,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 <tr class="<?php echo $value['class']; ?>">
 	<td class="kk-admin-info">
 		<div class="kkadmin-info kk-tooltip" title="<?php echo $value['tooltip']; ?>">
-		<img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
+		<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
 	</div>
 	</td>
 	<td class="kk-admin-label">
@@ -120,7 +120,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 <tr class="<?php echo $value['class']; ?>">
 	<td class="kk-admin-info">
 		<div class="kkadmin-info kk-tooltip" title="<?php echo $value['tooltip']; ?>">
-		<img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
+		<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
 	</div>
 	</td>
 	<td class="kk-admin-label">
@@ -141,7 +141,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 			<tr class="<?php echo $value['class']; ?>">
 				<td class="kk-admin-info">
 					<div class="kkadmin-info kk-tooltip" title="<?php echo $value['tooltip']; ?>">
-					<img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
+					<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
 				</div>
 				</td>
 				<td class="kk-admin-label">
@@ -161,7 +161,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 <tr class="<?php echo $value['class']; ?>">
 	<td class="kk-admin-info">
 		<div class="kkadmin-info kk-tooltip" title="<?php echo $value['tooltip']; ?>">
-		<img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
+		<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
 	</div>
 	</td>
 	<td class="kk-admin-label">
@@ -198,7 +198,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 <tr class="<?php echo $value['class']; ?>">
 	<td class="kk-admin-info">
 		<div class="kkadmin-info kk-tooltip" title="<?php echo $value['tooltip']; ?>">
-		<img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
+		<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
 	</div>
 	</td>
 	<td class="kk-admin-label">
@@ -219,7 +219,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 			<tr class="<?php echo $value['class']; ?>">
 				<td class="kk-admin-info">
 					<div class="kkadmin-info kk-tooltip" title="<?php echo $value['tooltip']; ?>">
-					<img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
+					<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
 				</div>
 				</td>
 				<td class="kk-admin-label">
@@ -258,7 +258,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 			<tr class="<?php echo $value['class']; ?>">
 				<td class="kk-admin-info">
 					<div class="kkadmin-info kk-tooltip" title="<?php echo $value['tooltip']; ?>">
-					<img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
+					<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
 				</div>
 				</td>
 				<td class="kk-admin-label">
@@ -297,7 +297,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 			<tr class="<?php echo $value['class']; ?>">
 				<td class="kk-admin-info">
 					<div class="kkadmin-info kk-tooltip" title="<?php echo $value['tooltip']; ?>">
-					<img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
+					<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
 				</div>
 				</td>
 				<td class="kk-admin-label">
@@ -345,7 +345,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 		<tr>
 			<td class="kk-admin-info">
 				<div class="kkadmin-info kk-tooltip" title="<?php echo $value['tooltip']; ?>">
-				<img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
+				<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
 			</div>
 			<td class="kk-admin-label">
 				<label for="<?php echo $key; ?>"><?php echo $value['title']; ?> : </label>
@@ -384,7 +384,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 			<tr class="<?php echo $value['class']; ?>">
 				<td class="kk-admin-info">
 					<div class="kkadmin-info kk-tooltip" title="<?php echo $value['tooltip']; ?>">
-					<img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
+					<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
 				</div>
 				</td>
 				<td class="kk-admin-label">

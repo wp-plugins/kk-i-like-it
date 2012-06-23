@@ -29,6 +29,7 @@ function kklike_admin_content(){
 					<?php
 						$db = new kkDataBase;
 						$dane = $db->getInformation('10');
+						if(!empty($dane)){
 						foreach($dane as $row):
 						
 					?>
@@ -42,6 +43,16 @@ function kklike_admin_content(){
 						</div>
 					<?php
 						endforeach;
+						}else{
+					?>
+						<div class="kklike-list-box-element">
+							<div class="kklike-list-text">
+								<?php echo __('I\'m sorry, at this moment there are no data to display','lang-kkilikeit'); ?>
+							</div>
+							<div class="kkclear"></div>
+						</div>
+					<?php
+						}
 					?>
 				</div>
 				<!--
@@ -198,7 +209,7 @@ function kklike_menu() {
 		$settings_rank = 'administrator';
 	}
 	
-	add_menu_page(PLUGIN_NAME, PLUGIN_NAME, $plugin_rank, 'kklike-menu', 'kklike_admin_content', WP_PLUGIN_URL.'/kkilikeit/images/kkpb-ico.jpg');
+	add_menu_page(PLUGIN_NAME, PLUGIN_NAME, $plugin_rank, 'kklike-menu', 'kklike_admin_content', WP_PLUGIN_URL.'/kk-i-like-it/images/kkpb-ico.jpg');
 	add_submenu_page('kklike-menu', PLUGIN_NAME, 'Settings', $settings_rank, 'kklike-settings', 'kklike_settings');
 	
 }
