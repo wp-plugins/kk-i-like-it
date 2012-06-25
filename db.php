@@ -144,7 +144,7 @@ class kkDataBase{
 		$sql = "SELECT * FROM ". $this->tableLikeUser ." 
 				LEFT JOIN (". $this->tableLike .") 
 				ON (". $this->tableLikeUser .".idlike = ". $this->tableLike .".id) 
-				ORDER BY ". $this->tableLikeUser .".date".$limit;
+				ORDER BY ". $this->tableLikeUser .".date DESC ".$limit;
 		$dane = $this->wpdb->get_results($sql);
 		
 		$i = 0;
@@ -155,16 +155,35 @@ class kkDataBase{
 			}else{
 				$user = $this->wpdb->get_var("SELECT display_name FROM $this->tableWPUsers WHERE ID = $row->idwpuser");
 			}
+		
 			
 			$result[$i] = array(
+				'ID'		=>	$row->idwp,
 				'ip' 		=> 	$row->ip,
 				'date'		=>	$row->date,
 				'user'		=>	$user,
+				'liked'		=>	$row->rating,
 				'post_name'	=>	$this->wpdb->get_var("SELECT post_title FROM $this->tableWPPosts WHERE ID = $row->idwp")
 			);
 			$i++;
 		}
-		
 		return $result;
 	}
+	
+	public function getTopPosts($limit = 0){
+		if($limit > 0){
+			$limit = " LIMIT ".$limit;
+		}else{
+			$limit = "";
+		}
+		
+		$sql = "SELECT * FROM " . $this->tableLike . "
+				LEFT JOIN (" . $this->tableWPPosts . ")
+				ON (". $this->tableLike .".idwp = ". $this->tableWPPosts .".ID)
+				ORDER BY ". $this->tableLike .".rating DESC ".$limit;
+		$dane = $this->wpdb->get_results($sql);
+		
+		return $dane;
+	}
+	
 }

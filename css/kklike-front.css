@@ -130,3 +130,46 @@
 .kklike-button-dark .kklike-ico{
 	background: url("../images/ico-sprite.png") no-repeat scroll 6px -10px transparent;
 }
+
+/* ============================================= */
+/* ===============   WIDGETY   ================= */
+/* ============================================= */
+
+ul.kklike-most-liked{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.kklike-most-liked li{
+	clear: both;
+	margin: 0 0 5px 0;
+}
+
+.kklike-big-heart{
+	background: url("../images/admin/serce-ciemne.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 20px;
+    margin-right: 10px;
+    width: 25px;
+    margin-top: 8px;
+}
+
+.kklike-wg-text{
+	float: left;
+	width: 80%;
+}
+
+.kklike-wg-title{
+	display: block;
+}
+
+.kklike-wg-rating{
+	float: left;
+	font-size: 10px;
+}
+
+.kklike-wg-date{
+	float: right;
+	font-size: 10px;
+}
