@@ -499,7 +499,7 @@ label.error{
 .kkadmin-sidebar{
 	float: left;
 	width: 256px;
-	padding-top: 15px;
+	padding-top: 2px;
 }
 
 .kkadmin-sidebar-box{
@@ -613,7 +613,7 @@ label.error{
 
 .kklike-list-text{
 	float: left;
-	width: 720px;
+	width: 690px;
 }
 
 .kklike-ip{

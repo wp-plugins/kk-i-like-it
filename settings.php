@@ -408,7 +408,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 									$selected = '';
 								}
 							?>
-								<input type="radio" style="float: left; vertical-align: middle; margin-right: 5px;" name="<?php echo $key; ?>" id="<?php echo $class; ?>" value="<?php echo $class; ?>" <?php echo $selected; ?>> 
+								<input type="radio" style="float: left; vertical-align: middle; margin-right: 5px; margin-top: 9px;" name="<?php echo $key; ?>" id="<?php echo $class; ?>" value="<?php echo $class; ?>" <?php echo $selected; ?>> 
 								<div class="kklike-content <?php echo $class; ?> kk-left">
 							  		<a href="#" class="kklike-box">
 										<span class="kklike-ico"></span> 
