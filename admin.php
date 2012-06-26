@@ -3,7 +3,7 @@
   Plugin Name: KK I Like It
   Plugin URI: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
   Description: Plugin gives users or guest an option to like an article or a page.
-  Version: 1.1.2
+  Version: 1.2
   Author: Krzysztof Furtak
   Author URI: http://krzysztof-furtak.pl
  */
@@ -221,6 +221,52 @@ if (is_admin ()) {
 		add_filter('wp_mail_content_type',create_function('', 'return "text/html";'));
 		mail( $to, $subject, $message );
 	}
+	
+	function kklike_recently_liked_widget_function() {
+		?>
+	 	<div class="kklike-list-box">
+				<?php
+					$db = new kkDataBase;
+					$dane = $db->getInformation('10');
+					if(!empty($dane)){
+					foreach($dane as $row):
+					
+				?>
+					<div class="kklike-list-box-element">
+						<div class="kklike-list-text" style="width: 100%;">
+							At <strong><?php echo date('H:i', strtotime($row['date'])); ?></strong> on <strong><?php echo date('d-m-Y', strtotime($row['date'])); ?></strong>, user <strong><?php echo $row['user']; ?></strong> liked article "<strong><?php echo $row['post_name']; ?></strong>".
+							<div class="kklike-ip">IP: <?php echo $row['ip']; ?></div>
+						</div>
+						<div class="kkclear"></div>
+					</div>
+				<?php
+					endforeach;
+					}else{
+				?>
+					<div class="kklike-list-box-element">
+						<div class="kklike-list-text">
+							<?php echo __('I\'m sorry, at this moment there are no data to display','lang-kkilikeit'); ?>
+						</div>
+						<div class="kkclear"></div>
+					</div>
+				<?php
+					}
+				?>
+			</div>
+			<?php
+	} 
+	
+	// Create the function use in the action hook
+	
+	function kklike_widgets() {
+		global $wp_options;
+		
+		if($wp_options['dashboard_recent'] == 'on'){
+			wp_add_dashboard_widget('example_dashboard_widget', __('KKILikeIt - recently liked', 'lang-kkilikeit'), 'kklike_recently_liked_widget_function');
+		}	
+	} 
+		
+	add_action('wp_dashboard_setup', 'kklike_widgets' );
 		
 	require 'admin-interface.php';
 }

@@ -55,6 +55,17 @@ function kklike_admin_content(){
 						}
 					?>
 				</div>
+				
+				<div class="updated" style="margin: 10px 0; padding: 5px 10px; font-size: 11px;">
+					Hi,<br />
+
+					If you are interested in developing my plugin, you can help by providing me with a feedback on how it works for you. Suggestions or errors can be reported <a href="http://wordpress.org/support/plugin/kk-i-like-it" target="_blank">HERE</a>.
+					I will be really grateful for any information.<br />
+					
+					Best regards,<br />
+					Krzysztof Furtak
+				</div>
+				
 				<!--
 				<h2><?php echo __('Stats', 'lang-kkilikeit'); ?>:</h2>
 				
@@ -68,6 +79,7 @@ function kklike_admin_content(){
 		</div>
 		<div class="kkclear"></div>
 	</div>
+	
 </div>
 
 <?php
@@ -150,6 +162,16 @@ function kklike_admin_settings(){
 									       		'tooltip'	=>	__('','lang-kkilikeit'),
 									       		'values'	=> $buttonPlace,
 												'class'		=>	''
+							),
+							'title_hr_2'	=>	array('type' => 'title-hr',
+		  									'default'	=>	 __('Dashboard:','lang-kkilikeit'),
+		  									'class'		=>	'kkpb-settings-title-break'
+							),
+							'dashboard_recent'=>array('type'	=>	'checkbox',
+										   		'default'	=>	'off',
+										   		'title'		=>	__('Show box Recent Liked on Dashboard?','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'class'		=>	''
 							),
 												
 	)
