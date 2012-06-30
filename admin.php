@@ -15,6 +15,7 @@ require_once('config.inc.php');
 
 require_once ('db.php');
 require_once ('ajax.php');
+require_once ('meta.php');
 
 function kklike_load_translation() {
     $lang = get_locale();
@@ -91,6 +92,12 @@ function kklike_enqueue_scripts(){
 add_action('init', 'kklike_enqueue_scripts');
 add_action('admin_enqueue_scripts', 'kklike_admin_enqueue_scripts');
 
+// remove_filter('the_content', 'wpautop');
+// function wpautopnobr($content) {
+	// return wpautop($content, false);
+// }
+// add_filter('the_content', 'wpautopnobr');
+
 function addKKLikeButton($content) {
 	global $post;
 	global $wp_options;
@@ -111,13 +118,30 @@ function addKKLikeButton($content) {
 			$warunek = FALSE;
 		}
 	}
+
+	$disableButton = get_post_meta($post->ID, 'post_display_likes_button_value', true);
 	
-	if(!$warunek){
+	if(!$warunek || $disableButton == 'on'){
 		return $content;
 	}
 	
+	
 	$db = new kkDataBase;
-	$rating = $db->getPostRating($post->ID, 'post');
+	
+	if(empty($wp_options['show_rating']) || $wp_options['show_rating'] == 'always'){
+		$rating = $db->getPostRating($post->ID, 'post');
+		$classRating = '';
+		$boxRating = '';
+	}else if($wp_options['show_rating'] == 'hover'){
+		$rating = $db->getPostRating($post->ID, 'post');
+		$classRating = 'kklike-rating-none';
+		$boxRating = 'kklike-rating-hover';		
+	}else{
+		$rating = '';
+		$classRating = 'kklike-rating-none';
+		$boxRating = '';		
+	}
+	
 	$isLike = $db->checkIsLike($post->ID, 'post');
 	$userRate = $db->checkUserRating($isLike, get_current_user_id(), $_SERVER['REMOTE_ADDR']);
 	$act = '';
@@ -144,13 +168,13 @@ function addKKLikeButton($content) {
 		
   	$kklike = '
 		<div class="kklike-content '.$wp_options['button_type'].'">
-	  		<a href="#" class="kklike-box '.$class.'">
+	  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'">
 	  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
 	  			<input type="hidden" class="kklike-type" value="post" />
 	  			<input type="hidden" class="kklike-action" value="' . $act . '" />
 	  			<input type="hidden" class="kklike-ou" value="'. $onlyUser .'" />
 				<span class="kklike-ico"></span> 
-				<span class="kklike-value">' . $rating . '</span>
+				<span class="kklike-value '. $classRating .'">' . $rating . '</span>
 				<span class="kklike-text">' . $text . '</span>
 			</a>
 			<div class="kkclear"></div>
@@ -166,7 +190,7 @@ function addKKLikeButton($content) {
 	}
 }
 
-add_action( 'the_content', 'addKKLikeButton', 11 );
+add_action( 'the_content', 'addKKLikeButton', 20);
 
 /* instalacja */
 
@@ -202,14 +226,7 @@ function kklike_install() {
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql);
         
-    }    
-    
-}
-
-register_activation_hook(__FILE__, 'kklike_install');
-/* koniec instalacja */
-    
-if (is_admin ()) {
+    }
 	
 	$actived = $_GET['activate'];
 	if($actived){
@@ -220,7 +237,14 @@ if (is_admin ()) {
 		
 		add_filter('wp_mail_content_type',create_function('', 'return "text/html";'));
 		mail( $to, $subject, $message );
-	}
+	}    
+    
+}
+
+register_activation_hook(__FILE__, 'kklike_install');
+/* koniec instalacja */
+    
+if (is_admin ()) {
 	
 	function kklike_recently_liked_widget_function() {
 		?>
@@ -255,6 +279,45 @@ if (is_admin ()) {
 			</div>
 			<?php
 	} 
+
+	function kklike_most_liked_widget_function() {
+		?>
+	 	<div class="kklike-list-box">
+				<?php
+					$db = new kkDataBase;
+					$dane = $db->getTopPosts('5');
+					$numberLikes = $db->getLikesNumber();
+
+					if(!empty($dane)){
+						$i = 1;
+					foreach($dane as $row):
+						$perc = floor(($row->rating / $numberLikes) * 100);
+				?>
+					<div class="kklike-list-box-element kklike-stat">
+						<div class="kklike-list-text" style="width: 100%;">
+							<strong><span class=""><?php echo $i; ?>.</span> <a href="<?php echo get_permalink($row->ID); ?>" target="_blank"><?php echo $row->post_title; ?></a></strong>.
+						</div>
+						<div class="kklike-likes"><?php echo $row->rating . ' ' . __('likes','lang-kkilikeit'); ?></div>
+						<div class="kklike-stat-bg" style="width: <?php echo $perc; ?>%;"></div>
+						<div class="kkclear"></div>
+					</div>
+				<?php
+						$i++;
+					endforeach;
+					}else{
+				?>
+					<div class="kklike-list-box-element">
+						<div class="kklike-list-text">
+							<?php echo __('I\'m sorry, at this moment there are no data to display','lang-kkilikeit'); ?>
+						</div>
+						<div class="kkclear"></div>
+					</div>
+				<?php
+					}
+				?>
+			</div>
+			<?php
+	}
 	
 	// Create the function use in the action hook
 	
@@ -262,8 +325,11 @@ if (is_admin ()) {
 		global $wp_options;
 		
 		if($wp_options['dashboard_recent'] == 'on'){
-			wp_add_dashboard_widget('example_dashboard_widget', __('KKILikeIt - recently liked', 'lang-kkilikeit'), 'kklike_recently_liked_widget_function');
+			wp_add_dashboard_widget('recently_liked_dashboard_widget', __('KKILikeIt - recently liked', 'lang-kkilikeit'), 'kklike_recently_liked_widget_function');
 		}	
+		if($wp_options['dashboard_top'] == 'on'){
+			wp_add_dashboard_widget('most_liked_dashboard_widget', __('KKILikeIt - most liked - TOP 5', 'lang-kkilikeit'), 'kklike_most_liked_widget_function');
+		}
 	} 
 		
 	add_action('wp_dashboard_setup', 'kklike_widgets' );

@@ -28,9 +28,14 @@ Features:
 * [Settings] Can only users vote?
 * [Settings] Choice of content that should have the button (articles only, pages only, articles and pages)
 * [Settings] Should the button display on the list of articles?
+* [Settings] Show numer of likes (always/after hovering cursore over the button/never show)
+* [Settings] Disable likes for single pages or posts
 * [Widget] Recently liked
 * [Widget] The most liked
+* [Widget] Your liked (only for registered users)
 * [Dashboard] Recently liked
+* [Dashboard] Most liked
+
 
 More information about the plugin can be found [HERE](http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/) – feel free to check it out!
 
@@ -57,6 +62,12 @@ More information about the plugin can be found [HERE](http://krzysztof-furtak.pl
 Yes.
 
 == Changelog ==
+= 1.3 =
+* NEW: [Settings] Show numer of likes (always/after hovering cursore over the button/never show)
+* NEW: [Widget] Your liked (only for registered users)
+* NEW: [Dashboard] Most liked
+* NEW: [Settings] Disable likes for single pages or posts
+
 = 1.2 =
 * NEW: [Widget] Recently liked
 * NEW: [Widget] The most liked

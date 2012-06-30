@@ -132,7 +132,7 @@ class kkDataBase{
 		return $val;
 	}
 	
-	public function getInformation($limit = 0){
+	public function getInformation($limit = 0, $userID = 0){
 		$result = array();
 		
 		if($limit > 0){
@@ -141,9 +141,16 @@ class kkDataBase{
 			$limit = "";
 		}
 		
+		if($userID){
+			$userWhere = ' WHERE '. $this->tableLikeUser .'.idwpuser = '. $userID .' ';
+		}else{
+			$userWhere = '';
+		}
+		
 		$sql = "SELECT * FROM ". $this->tableLikeUser ." 
 				LEFT JOIN (". $this->tableLike .") 
 				ON (". $this->tableLikeUser .".idlike = ". $this->tableLike .".id) 
+				".$userWhere."
 				ORDER BY ". $this->tableLikeUser .".date DESC ".$limit;
 		$dane = $this->wpdb->get_results($sql);
 		
@@ -184,6 +191,13 @@ class kkDataBase{
 		$dane = $this->wpdb->get_results($sql);
 		
 		return $dane;
+	}
+	
+	public function getLikesNumber(){
+		$query = "SELECT COUNT(id) ilosc FROM ". $this->tableLikeUser ." ";
+		$dane = $this->wpdb->get_var($query);
+		
+		return $dane; 
 	}
 	
 }

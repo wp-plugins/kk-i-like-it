@@ -3,6 +3,7 @@ function kkLike() {};
 kkLike.prototype.init = function(){
 	jQuery(document).ready(function(){
 		jQuery('.kklike-box').live('click', function(){
+			var _this = this;
 			var obj = jQuery(this);
 			var idPost = obj.find('.kklike-id').val();
 			var idUser = obj.find('.kklike-user').val();
@@ -59,8 +60,16 @@ kkLike.prototype.init = function(){
 	        });
 			return false;
 		});
+		
+		jQuery('.kklike-rating-hover').mouseenter(function(){
+			var obj = jQuery(this).find('.kklike-value');
+			obj.animate({width: "show", paddingLeft: "show", paddingRight: "show", marginLeft: "show", marginRight: "show"}, 200);
+		}).mouseleave(function(){
+			var obj = jQuery(this).find('.kklike-value');
+			obj.animate({ width: "hide", paddingLeft: "hide", paddingRight: "hide", marginLeft: "hide", marginRight: "hide" }, 200);
+		});
 	});
-}
+};
 
 
 /* ========================================= */

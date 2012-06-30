@@ -18,7 +18,7 @@ function kklike_admin_content(){
 			<div class="kkadmin-text-wew">
 				<?php 
 				$wp_options = get_option('kklikesettings');
-				if(empty($wp_options['like_text']) || $wp_options['like_text'] == null){
+				if(empty($wp_options['dashboard_top']) || $wp_options['dashboard_top'] == null){
 				?>	
 					<div class="kkpb-alert kkpb-alert-error"><?php echo __('<strong>Plugin is not configured. It may not work correctly.</strong> Go to settings, make your selection and save settings.','lang-kkilikeit'); ?></div>
 				<?php } ?>
@@ -108,6 +108,12 @@ function kklike_admin_settings(){
 		__('Post&Page','lang-kkilikeit')		=>	'both'
 	);
 	
+	$showRating = array(
+		__('Always','lang-kkilikeit')								=>	'always',
+		__('Never show','lang-kkilikeit')							=>	'never',
+		__('Hovering cursore over the button','lang-kkilikeit')		=>	'hover'
+	);
+	
 	$options = array(
 	// ==== GENERAL SETTINGS ====
 	array(	'title'		=>	__('General Settings','lang-kkilikeit'),
@@ -163,6 +169,13 @@ function kklike_admin_settings(){
 									       		'values'	=> $buttonPlace,
 												'class'		=>	''
 							),
+							'show_rating'=>array('type'	=>	'radio-ui',
+										   		'default'	=>	'always',
+										   		'title'		=>	__('Show numer of likes','lang-kkprogressbar'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'values'	=> $showRating,
+												'class'		=>	''
+							),
 							'title_hr_2'	=>	array('type' => 'title-hr',
 		  									'default'	=>	 __('Dashboard:','lang-kkilikeit'),
 		  									'class'		=>	'kkpb-settings-title-break'
@@ -170,6 +183,12 @@ function kklike_admin_settings(){
 							'dashboard_recent'=>array('type'	=>	'checkbox',
 										   		'default'	=>	'off',
 										   		'title'		=>	__('Show box Recent Liked on Dashboard?','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'class'		=>	''
+							),
+							'dashboard_top'=>array('type'	=>	'checkbox',
+										   		'default'	=>	'off',
+										   		'title'		=>	__('Show box Top Liked on Dashboard?','lang-kkilikeit'),
 									       		'tooltip'	=>	__('','lang-kkilikeit'),
 									       		'class'		=>	''
 							),
