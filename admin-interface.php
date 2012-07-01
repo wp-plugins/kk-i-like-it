@@ -99,7 +99,9 @@ function kklike_admin_settings(){
 	
 	$buttonType = array(
 		__('Light','lang-kkilikeit')	=>	'kklike-button-light',
-		__('Dark','lang-kkilikeit')		=>	'kklike-button-dark'
+		__('Dark','lang-kkilikeit')		=>	'kklike-button-dark',
+		__('Big Dark','lang-kkilikeit')		=>	'kklike-button-big-dark',
+		__('Big Light','lang-kkilikeit')		=>	'kklike-button-big-light'
 	);
 	
 	$buttonPlace = array(

@@ -652,3 +652,21 @@ label.error{
 	height: 34px;
 	background: #eee;
 }
+
+.kklike-sidebar-link{
+	display: block;
+	font-size: 18px;
+	font-weight: bold;
+	font-style: italic;
+	text-shadow: 1px 1px #fff;
+	color: #b5b5b5;
+	text-decoration: none;
+	background: url('../images/admin/link.png') no-repeat 185px 0 transparent;
+	padding: 6px 70px 6px 6px;
+	margin: 10px 0;
+}
+
+.kklike-sidebar-link:hover{
+	background: url('../images/admin/link.png') no-repeat 185px -54px transparent;
+	color: #333;
+}

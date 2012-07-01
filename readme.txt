@@ -62,6 +62,11 @@ More information about the plugin can be found [HERE](http://krzysztof-furtak.pl
 Yes.
 
 == Changelog ==
+= 1.3.1 =
+* NEW: [Settings] New button display option - big light
+* NEW: [Settings] New button display option - big dark
+* CHANGE: Some admin design changes
+
 = 1.3 =
 * NEW: [Settings] Show numer of likes (always/after hovering cursore over the button/never show)
 * NEW: [Widget] Your liked (only for registered users)

@@ -5,7 +5,5 @@
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
 
-<div class="kkadmin-sidebar-box">
-    <div style="margin: 10px 0px;"><a href="http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/" target="_blank" ><?php echo __('Plugin web site.', 'lang-kkilikeit'); ?></a></div>
-    <div style="margin: 10px 0px;"><span class="kkpb-small-text"><strong><?php echo __('Author', 'lang-kkilikeit'); ?>:</strong></span> <a href="http://krzysztof-furtak.pl" target="_blank" >Krzysztof Furtak</a></div>
-</div>
+
+<a href="http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/" target="_blank" class="kklike-sidebar-link" ><?php echo __('Plugin web site.', 'lang-kkilikeit'); ?></a>
