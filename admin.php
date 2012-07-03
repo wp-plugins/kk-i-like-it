@@ -98,7 +98,7 @@ add_action('admin_enqueue_scripts', 'kklike_admin_enqueue_scripts');
 // }
 // add_filter('the_content', 'wpautopnobr');
 
-function addKKLikeButton($content) {
+function kkLikeButton($ret = false) {
 	global $post;
 	global $wp_options;
 	clean_post_cache( $post->ID );
@@ -122,6 +122,101 @@ function addKKLikeButton($content) {
 	$disableButton = get_post_meta($post->ID, 'post_display_likes_button_value', true);
 	
 	if(!$warunek || $disableButton == 'on'){
+		return $content;
+	}
+	
+	if(!is_user_logged_in() && $wp_options['show_guest'] != 'on'){
+		return FALSE;
+	}
+	
+	
+	$db = new kkDataBase;
+	
+	if(empty($wp_options['show_rating']) || $wp_options['show_rating'] == 'always'){
+		$rating = $db->getPostRating($post->ID, 'post');
+		$classRating = '';
+		$boxRating = '';
+	}else if($wp_options['show_rating'] == 'hover'){
+		$rating = $db->getPostRating($post->ID, 'post');
+		$classRating = 'kklike-rating-none';
+		$boxRating = 'kklike-rating-hover';		
+	}else{
+		$rating = '';
+		$classRating = 'kklike-rating-none';
+		$boxRating = '';		
+	}
+	
+	$isLike = $db->checkIsLike($post->ID, 'post');
+	$userRate = $db->checkUserRating($isLike, get_current_user_id(), $_SERVER['REMOTE_ADDR']);
+	$act = '';
+	
+	if($userRate == '0'){
+		$act = 'like';
+		$text = $wp_options['like_text'];
+	}else{
+		$act = 'unlike';
+		$text = $wp_options['unlike_text'];
+	}
+	
+	$class = 'kk-left';
+	
+	if($wp_options['only_users'] == 'on'){
+		$onlyUser = '1';
+	}else{
+		$onlyUser = '0';
+	}
+		
+  	$kklike = '
+		<div class="kklike-content '.$wp_options['button_type'].'">
+	  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" rel="kklike-'. $post->ID .'">
+	  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
+	  			<input type="hidden" class="kklike-type" value="post" />
+	  			<input type="hidden" class="kklike-action" value="' . $act . '" />
+	  			<input type="hidden" class="kklike-ou" value="'. $onlyUser .'" />
+				<span class="kklike-ico"></span> 
+				<span class="kklike-value '. $classRating .'">' . $rating . '</span>
+				<span class="kklike-text">' . $text . '</span>
+			</a>
+			<div class="kkclear"></div>
+		</div>
+ 	';
+	
+  	if($ret){
+  		return $kklike;
+  	}else{
+  		echo $kklike;
+	}
+	
+}
+
+function addKKLikeButton($content) {
+	global $post;
+	global $wp_options;
+	clean_post_cache( $post->ID );
+	
+	if($wp_options['button_place'] == 'page'){
+		$warunek = is_page();
+	}elseif($wp_options['button_place'] == 'post'){
+		$warunek = is_single();
+	}else{
+		$warunek = TRUE;
+	}
+	
+	if(is_home()){
+		if($wp_options['button_in_home'] == 'on' && ($wp_options['button_place'] == 'post' || $wp_options['button_place'] == 'both')){
+			$warunek = TRUE;
+		}else{
+			$warunek = FALSE;
+		}
+	}
+
+	$disableButton = get_post_meta($post->ID, 'post_display_likes_button_value', true);
+	
+	if(!$warunek || $disableButton == 'on' || $wp_options['button_position'] == 'none'){
+		return $content;
+	}
+	
+	if(!is_user_logged_in() && $wp_options['show_guest'] != 'on'){
 		return $content;
 	}
 	
@@ -168,7 +263,7 @@ function addKKLikeButton($content) {
 		
   	$kklike = '
 		<div class="kklike-content '.$wp_options['button_type'].'">
-	  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'">
+	  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" rel="kklike-'. $post->ID .'">
 	  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
 	  			<input type="hidden" class="kklike-type" value="post" />
 	  			<input type="hidden" class="kklike-action" value="' . $act . '" />

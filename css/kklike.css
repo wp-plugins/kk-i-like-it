@@ -341,8 +341,12 @@
 .kkadmin-radio-prev-box{
 	float: left;
     height: 82px;
-    margin: 0 10px 10px 0;
+    margin: 0 0 10px 10px;
     width: 77px;
+}
+
+.kkadmin-radio-prev-box:first-child{
+	margin-left: 0;
 }
 
 .kkadmin-radio-prev-class label{

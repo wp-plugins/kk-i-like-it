@@ -94,7 +94,7 @@ function kklike_admin_settings(){
 		__('Top Right','lang-kkilikeit')	=>	'top-right',
 		__('Bottom Left','lang-kkilikeit')	=>	'bottom-left',
 		__('Bottom Right','lang-kkilikeit')	=>	'bottom-right',
-		//__('My own position','lang-kkilikeit')	=>	'none'
+		__('Own position','lang-kkilikeit')	=>	'none'
 	);
 	
 	$buttonType = array(
@@ -141,6 +141,12 @@ function kklike_admin_settings(){
 							'only_users'=>array('type'		=>	'checkbox',
 										   		'default'	=>	'off',
 										   		'title'		=>	__('Only users can vote?','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'class'		=>	''
+							),
+							'show_guest'=>array('type'		=>	'checkbox',
+										   		'default'	=>	'off',
+										   		'title'		=>	__('Should a button be shown to guests?','lang-kkilikeit'),
 									       		'tooltip'	=>	__('','lang-kkilikeit'),
 									       		'class'		=>	''
 							),

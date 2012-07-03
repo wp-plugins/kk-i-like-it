@@ -6,10 +6,15 @@ kkLike.prototype.init = function(){
 			var _this = this;
 			var obj = jQuery(this);
 			var idPost = obj.find('.kklike-id').val();
+			
+			obj = jQuery('a[rel="kklike-'+idPost+'"]');
+			
+			var idPost = obj.find('.kklike-id').val();
 			var idUser = obj.find('.kklike-user').val();
 			var type = obj.find('.kklike-type').val();
 			var action = obj.find('.kklike-action').val();
 			var onlyUs = obj.find('.kklike-ou').val();
+			
 			
 			if(onlyUs == '1' && idUser == '0'){
 				obj.after(jQuery('<div />').css({'clear':'both'}).addClass('kklike-msg').text('Only registered users can vote.'));

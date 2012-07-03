@@ -283,4 +283,20 @@ class kklikeUserLiked extends WP_Widget {
 
 }
 
+/* ================================ */
+/* ========   SHORTCODE   ========= */
+/* ================================ */
+
+function kklike_button_shortcode($atts) {
+    extract(shortcode_atts(array(
+                'id' 	=> false
+                    ), $atts));
+
+	$html = kkLikeButton(TRUE);
+    
+	return $html;
+}
+
+add_shortcode('kklike_button', 'kklike_button_shortcode');
+
 ?>
