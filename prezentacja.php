@@ -19,7 +19,24 @@ class kklikeMostLiked extends WP_Widget {
 
 		$title = esc_attr($instance['title']);
 		$items = esc_attr($instance['items']);
+		$type = esc_attr($instance['type']);
 		
+		$args=array();
+		$output = 'objects'; // names or objects
+		$post_types=get_post_types($args,$output); 
+		
+		$selekt = '<select name="'. $this->get_field_name('type') .'"><option value="all_post_types">-- ALL --</option>';
+		  foreach ($post_types  as $post_type ) {
+		  	if($post_type->name != 'attachment' && $post_type->name != 'revision' && $post_type->name != 'nav_menu_item'){
+		  		if($type == $post_type->name){
+		  			$selected = 'selected="selected"';
+		  		}else{
+		  			$selected = '';		  			
+		  		}
+		    	$selekt .= '<option '. $selected .' value="'. $post_type->name .'">' . $post_type->labels->name . '</option>';
+			}
+		  }
+		$selekt .= '<select>';
 		?>
         <div>
         	<label for="<?php echo $this->get_field_id('title'); ?>">
@@ -31,6 +48,12 @@ class kklikeMostLiked extends WP_Widget {
         	<div class="kkwidget-option-title"><?php echo __('How many items should be displayed','lang-kkilikeit'); ?>?</div>
         	<input type="text" id="<?php  echo $this->get_field_id('items') ?>" name="<?php echo  $this->get_field_name('items'); ?>" value="<?php echo $items; ?>" /><label class="kkwidget-option-label" for="<?php  echo $this->get_field_id('items') ?>"><?php echo __(' items.','lang-kkilikeit'); ?></label>
         </div>
+        <div>
+        	<div class="kkwidget-option-title"><?php echo __('What post type should be displayed','lang-kkilikeit'); ?>?</div>
+        	<?php
+        		echo $selekt; 
+        	?>
+        </div>
 
 <?php
     }
@@ -40,6 +63,7 @@ class kklikeMostLiked extends WP_Widget {
         $instance = $old_instance;
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['items'] = $new_instance['items'];
+		$instance['type'] = $new_instance['type'];
 
 		return $instance;
     }
@@ -53,9 +77,14 @@ class kklikeMostLiked extends WP_Widget {
 		
         $title = apply_filters('widget_title', $instance['title']);
 		$items = esc_attr($instance['items']);
-        
+        $type = esc_attr($instance['type']);
+		
+		if($type == 'all_post_types'){
+			$type = FALSE;
+		}
+		
         $like = new kkDataBase;
-		$posts = $like->getTopPosts($items);
+		$posts = $like->getTopPosts($items, $type);
         
         echo $before_widget;
         echo $before_title;
@@ -108,6 +137,24 @@ class kklikeLastLiked extends WP_Widget {
 
 		$title = esc_attr($instance['title']);
 		$items = esc_attr($instance['items']);
+		$type = esc_attr($instance['type']);
+		
+		$args=array();
+		$output = 'objects'; // names or objects
+		$post_types=get_post_types($args,$output); 
+		
+		$selekt = '<select name="'. $this->get_field_name('type') .'"><option value="all_post_types">-- ALL --</option>';
+		  foreach ($post_types  as $post_type ) {
+		  	if($post_type->name != 'attachment' && $post_type->name != 'revision' && $post_type->name != 'nav_menu_item'){
+		  		if($type == $post_type->name){
+		  			$selected = 'selected="selected"';
+		  		}else{
+		  			$selected = '';		  			
+		  		}
+		    	$selekt .= '<option '. $selected .' value="'. $post_type->name .'">' . $post_type->labels->name . '</option>';
+			}
+		  }
+		$selekt .= '<select>';
 		
 		?>
         <div>
@@ -120,6 +167,12 @@ class kklikeLastLiked extends WP_Widget {
         	<div class="kkwidget-option-title"><?php echo __('How many items should be displayed','lang-kkilikeit'); ?>?</div>
         	<input type="text" id="<?php  echo $this->get_field_id('items') ?>" name="<?php echo  $this->get_field_name('items'); ?>" value="<?php echo $items; ?>" /><label class="kkwidget-option-label" for="<?php  echo $this->get_field_id('items') ?>"><?php echo __(' items.','lang-kkilikeit'); ?></label>
         </div>
+        <div>
+        	<div class="kkwidget-option-title"><?php echo __('What post type should be displayed','lang-kkilikeit'); ?>?</div>
+        	<?php
+        		echo $selekt; 
+        	?>
+        </div>
 
 <?php
     }
@@ -129,6 +182,7 @@ class kklikeLastLiked extends WP_Widget {
         $instance = $old_instance;
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['items'] = $new_instance['items'];
+		$instance['type'] = $new_instance['type'];
 
 		return $instance;
     }
@@ -142,9 +196,14 @@ class kklikeLastLiked extends WP_Widget {
 		
         $title = apply_filters('widget_title', $instance['title']);
 		$items = esc_attr($instance['items']);
+		$type = esc_attr($instance['type']);
+		
+		if($type == 'all_post_types'){
+			$type = FALSE;
+		}
         
         $like = new kkDataBase;
-		$posts = $like->getInformation($items);
+		$posts = $like->getInformation($items, 0, $type);
         
         echo $before_widget;
         echo $before_title;
@@ -298,5 +357,17 @@ function kklike_button_shortcode($atts) {
 }
 
 add_shortcode('kklike_button', 'kklike_button_shortcode');
+
+function kklike_rating_shortcode($atts) {
+    extract(shortcode_atts(array(
+                'id' 	=> false
+                    ), $atts));
+
+	$html = kkLikeRating(TRUE);
+    
+	return $html;
+}
+
+add_shortcode('kklike_rating', 'kklike_rating_shortcode');
 
 ?>

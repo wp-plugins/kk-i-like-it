@@ -177,16 +177,23 @@ class kkDataBase{
 		return $result;
 	}
 	
-	public function getTopPosts($limit = 0){
+	public function getTopPosts($limit = 0, $type = FALSE){
 		if($limit > 0){
 			$limit = " LIMIT ".$limit;
 		}else{
 			$limit = "";
 		}
 		
+		if($type){
+			$typ = ' WHERE '. $this->tableWPPosts .'.post_type = "'. $type .'" ';
+		}else{
+			$typ = '';
+		}
+		
 		$sql = "SELECT * FROM " . $this->tableLike . "
 				LEFT JOIN (" . $this->tableWPPosts . ")
 				ON (". $this->tableLike .".idwp = ". $this->tableWPPosts .".ID)
+				". $typ ."
 				ORDER BY ". $this->tableLike .".rating DESC ".$limit;
 		$dane = $this->wpdb->get_results($sql);
 		
