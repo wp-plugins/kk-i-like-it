@@ -16,14 +16,14 @@ global $kkplugin, $wersja_plugin, $wpdb;
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
 				
-				<h2>1. Jak dodać przycisk w dowolne miejsce wewnątrz pętli WP LOOP?</h2>
-				<p>Otwieramy plik, w którym chcemy dodać przycisk (np. index.php). Wewnątrz pętli WP LOOP, w miejscu, gdzie powinien się wyświetlić przycisk dodajemy fragment kodu:</p>
+				<h2>1. How to add a button inside a loop WP LOOP in a random place ?</h2>
+				<p>In addition to that you can display the number of likes in a random place of a loop. You can do it by adding code listed below:</p>
 				<code>
 				if(function_exists(kkLikeButton())){<br />
 				kkLikeButton();<br />
 				}
 				</code>
-				<p>Dodatkowo możesz wyświetlić w dowolnym miescu pętli informacje o liczbie polubień danej treści. Możesz to uczynić dodając fragment kodu:</p>
+				<p>You can display anywhere in the loop, the number likes of a certain content. You can do this by adding code:</p>
 				<code>
 				if(function_exists(kkLikeRating())){<br />
 				kkLikeRating();<br />
@@ -31,12 +31,12 @@ global $kkplugin, $wersja_plugin, $wpdb;
 				</code>
 				<p></p>
 				
-				<h2>2. Jak dodać shortcode?</h2>
-				<p>W edytorze tekstu WYSIWYG (podczas edycji treści) wklej tag:</p>
+				<h2>2. How to add a shortcode?</h2>
+				<p>In a text editor WYSIWYG (while editing a text) paste below listed tag:</p>
 				
-				<code>[kklike_button]</code> - jeśli chcesz wyświetlić przycisk<br />
-				lub<br />
-				<code>[kklike_rating]</code> - jeśli chcesz wyświetkić informację o ilości polubień danej treści<br />
+				<code>[kklike_button]</code> -  if you'd like to display a button<br />
+				or<br />
+				<code>[kklike_rating]</code> -  if you'd like to display a number of likes of a certain content<br />
 				<p></p>
 			</div>
 		</div>

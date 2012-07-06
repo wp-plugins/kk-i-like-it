@@ -16,6 +16,17 @@ global $kkplugin, $wersja_plugin, $wpdb;
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
 				
+				<h2>= 1.4 =</h2>
+				<ul>
+				    <li>NEW: [Settings] Own rating position</li>
+				    <li>NEW: [Settings] KKLike only for user, button hide option</li>
+				    <li>NEW: [Shortcode] Display rate button</li>
+				    <li>NEW: [Shortcode] Display rating score</li>
+				    <li>NEW: [Widgets] Option to choose post type</li>
+				    <li>NEW: New page in the admin - documentation</li>
+				    <li>NEW: New page in the admin - changelog</li>
+				</ul>
+				
 				<h2>= 1.3.1 =</h2>
 				<ul>
 				    <li>NEW: [Settings] New button display option - big light</li>

@@ -2,11 +2,11 @@
 Contributors: Krzy-siek
 Donate link: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
 License: GNU GPL
-Version: 1.3.1
+Version: 1.4
 Tags: like, like it, social, rating, blog, post, page, premium, free
 Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 1.3.1
+Stable tag: 1.4
 
 Plugin gives users or guest an option to like an article or a page.
 
@@ -62,6 +62,15 @@ More information about the plugin can be found [HERE](http://krzysztof-furtak.pl
 Yes.
 
 == Changelog ==
+= 1.4 =
+* NEW: [Settings] Own rating position
+* NEW: [Settings] KKLike only for user, button hide option
+* NEW: [Shortcode] Display rate button
+* NEW: [Shortcode] Display rating score
+* NEW: [Widgets] Option to choose post type
+* NEW: New page in the admin - documentation
+* NEW: New page in the admin - changelog
+
 = 1.3.1 =
 * NEW: [Settings] New button display option - big light
 * NEW: [Settings] New button display option - big dark
