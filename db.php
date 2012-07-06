@@ -200,6 +200,31 @@ class kkDataBase{
 		return $dane;
 	}
 	
+	public function getRandomLikes($limit = 0, $type = FALSE){
+		if($limit > 0){
+			$limit = " LIMIT ".$limit;
+		}else{
+			$limit = "";
+		}
+		
+		if($type){
+			$typ = ' WHERE '. $this->tableWPPosts .'.post_type = "'. $type .'" ';
+		}else{
+			$typ = '';
+		}
+		
+		$sql = "SELECT * FROM " . $this->tableLikeUser . "
+				LEFT JOIN (" . $this->tableLike . ")
+				ON (". $this->tableLikeUser .".idlike = ". $this->tableLike .".id)
+				LEFT JOIN (" . $this->tableWPPosts . ")
+				ON (". $this->tableLike .".idwp = ". $this->tableWPPosts .".ID)
+				". $typ ."
+				ORDER BY ". $this->tableLikeUser .".date DESC ".$limit;
+		$dane = $this->wpdb->get_results($sql);
+		
+		return $dane;
+	}
+	
 	public function getLikesNumber(){
 		$query = "SELECT COUNT(id) ilosc FROM ". $this->tableLikeUser ." ";
 		$dane = $this->wpdb->get_var($query);

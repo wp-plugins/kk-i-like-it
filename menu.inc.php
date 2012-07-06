@@ -19,8 +19,18 @@
 			</a>
 		</li>
 	<?php endif; ?>
+	<li>
+		<a class="<?php echo ($page == 'kklike-documentation')? 'active':''; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-documentation">
+			<span class="kkadmin-arrow"></span> 
+			<?php echo __('Documentation','lang-kkilikeit'); ?>
+		</a>
+	</li>
+	<li>
+		<a class="<?php echo ($page == 'kklike-changelog')? 'active':''; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-changelog">
+			<span class="kkadmin-arrow"></span>
+			Changelog
+		</a>
+	</li>
 	<?php if(false && current_user_can('administrator')): ?>
-		<li><a href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-documentation"><img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/blog.png" alt="" style="vertical-align: middle; margin-right: 15px;" /> <?php echo __('Documentation','lang-kkilikeit'); ?></a></li>
-		<li><a href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-changelog"><img src="<?php echo WP_PLUGIN_URL; ?>/kkilikeit/images/blog.png" alt="" style="vertical-align: middle; margin-right: 15px;" /> Changelog</a></li>
 	<?php endif; ?>
 </ul>
