@@ -56,21 +56,7 @@ function kklike_admin_content(){
 					?>
 				</div>
 				
-				<div class="updated" style="margin: 10px 0; padding: 5px 10px; font-size: 11px;">
-					Hi,<br />
-
-					If you are interested in developing my plugin, you can help by providing me with a feedback on how it works for you. Suggestions or errors can be reported <a href="http://wordpress.org/support/plugin/kk-i-like-it" target="_blank">HERE</a>.
-					I will be really grateful for any information.<br />
-					
-					Best regards,<br />
-					Krzysztof Furtak
-				</div>
 				
-				<!--
-				<h2><?php echo __('Stats', 'lang-kkilikeit'); ?>:</h2>
-				
-				<h2> COMMING SOON </h2>
-				-->
 			</div>
 		</div>
 		<div class="kkadmin-sidebar">
@@ -78,6 +64,12 @@ function kklike_admin_content(){
 			<?php include 'sidebar.php'; ?>
 		</div>
 		<div class="kkclear"></div>
+		<div class="kklike-msg">
+			Hi, If you are interested in developing my plugin, you can help by providing me with a feedback on how it works for you. Suggestions or errors can be reported <a href="http://wordpress.org/support/plugin/kk-i-like-it" target="_blank">HERE</a>.
+			I will be really grateful for any information.<br />
+			
+			Best regards
+		</div>
 	</div>
 	
 </div>

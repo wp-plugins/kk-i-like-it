@@ -3,7 +3,7 @@
   Plugin Name: KK I Like It
   Plugin URI: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
   Description: Plugin gives users or guest an option to like an article or a page.
-  Version: 1.4
+  Version: 1.4.1
   Author: Krzysztof Furtak
   Author URI: http://krzysztof-furtak.pl
  */
@@ -274,7 +274,8 @@ function addKKLikeButton($content) {
 	}
 		
   	$kklike = '
-		<div class="kklike-content '.$wp_options['button_type'].'">
+	<div class="kklike-content '.$wp_options['button_type'].'">
+		<span style="display: none;">|||||</span>
 	  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" rel="kklike-'. $post->ID .'">
 	  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
 	  			<input type="hidden" class="kklike-type" value="post" />
@@ -284,10 +285,13 @@ function addKKLikeButton($content) {
 				<span class="kklike-value '. $classRating .'">' . $rating . '</span>
 				<span class="kklike-text">' . $text . '</span>
 			</a>
-			<div class="kkclear"></div>
-		</div>
+		<span style="display: none;">|||||</span>
+		<div class="kkclear"></div>
+	</div>
  	';
-	
+
+	$content = preg_replace("/\|\|\|\|\|(.*?)\|\|\|\|\|/i", "", $content);
+
   	if($wp_options['button_position'] == 'top-left' || $wp_options['button_position'] == 'top-right'){
   		return $kklike . $content;
 	}else if($wp_options['button_position'] == 'bottom-left' || $wp_options['button_position'] == 'bottom-right'){
@@ -297,7 +301,15 @@ function addKKLikeButton($content) {
 	}
 }
 
-add_action( 'the_content', 'addKKLikeButton', 20);
+function content_init(){
+
+	add_action( 'the_excerpt', 'addKKLikeButton');
+	add_action( 'the_content', 'addKKLikeButton');
+
+}
+
+add_action('init', 'content_init');
+
 
 /* instalacja */
 

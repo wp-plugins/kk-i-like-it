@@ -15,6 +15,11 @@ global $kkplugin, $wersja_plugin, $wpdb;
 	<div class="kkadmin-content">
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
+				<h2>= 1.4.1 =</h2>
+				<ul>
+					<li>CHANGE: Some admin design changes</li>
+					<li>FIX: Custom posts list - incorrect button display</li>
+				</ul>
 				
 				<h2>= 1.4 =</h2>
 				<ul>

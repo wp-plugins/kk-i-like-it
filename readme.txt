@@ -2,11 +2,11 @@
 Contributors: Krzy-siek
 Donate link: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
 License: GNU GPL
-Version: 1.4
+Version: 1.4.1
 Tags: like, like it, social, rating, blog, post, page, premium, free
 Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 1.4
+Stable tag: 1.4.1
 
 Plugin gives users or guest an option to like an article or a page.
 
@@ -30,11 +30,14 @@ Features:
 * [Settings] Should the button display on the list of articles?
 * [Settings] Show numer of likes (always/after hovering cursore over the button/never show)
 * [Settings] Disable likes for single pages or posts
+* [Settings] Own rating position
 * [Widget] Recently liked
 * [Widget] The most liked
 * [Widget] Your liked (only for registered users)
 * [Dashboard] Recently liked
 * [Dashboard] Most liked
+* [Shortcode] Display rate button
+* [Shortcode] Display rating score
 
 
 More information about the plugin can be found [HERE](http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/) – feel free to check it out!
@@ -57,11 +60,35 @@ More information about the plugin can be found [HERE](http://krzysztof-furtak.pl
 
 == Frequently Asked Questions ==
 
-= This is BETA version? =
+= 1. How to add a button inside a loop WP LOOP in a random place ? =
 
-Yes.
+In addition to that you can display the number of likes in a random place of a loop. You can do it by adding code listed below:
+`
+if(function_exists(kkLikeButton())){
+kkLikeButton();
+}
+`
+You can display anywhere in the loop, the number likes of a certain content. You can do this by adding code:
+`
+if(function_exists(kkLikeRating())){
+kkLikeRating();
+} 
+`
+
+= 2. How to add a shortcode? =
+
+In a text editor WYSIWYG (while editing a text) paste below listed tag:
+
+`[kklike_button]` - if you'd like to display a button
+or
+`[kklike_rating]` - if you'd like to display a number of likes of a certain content
+
 
 == Changelog ==
+= 1.4.1 =
+* CHANGE: Some admin design changes
+* FIX: Custom posts list - incorrect button display
+
 = 1.4 =
 * NEW: [Settings] Own rating position
 * NEW: [Settings] KKLike only for user, button hide option

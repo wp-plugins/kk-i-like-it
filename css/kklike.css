@@ -674,3 +674,11 @@ label.error{
 	background: url('../images/admin/link.png') no-repeat 185px -54px transparent;
 	color: #333;
 }
+
+.kklike-msg{
+	background: url("../images/admin/kklike-msg-ico.png") no-repeat scroll 15px center #E5E5E5;
+    font-size: 11px;
+    margin: 10px 0 0;
+    padding: 10px 10px 10px 60px;
+    color: #666666;
+}
