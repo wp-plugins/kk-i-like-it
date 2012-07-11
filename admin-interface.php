@@ -149,13 +149,6 @@ function kklike_admin_settings(){
 									       		'values'	=> $position,
 												'class'		=>	''
 							),
-							'button_type'=>array('type'		=>	'radio-demo',
-										   		'default'	=>	'kklike-button-light',
-										   		'title'		=>	__('Button type:','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
-									       		'values'	=> $buttonType,
-												'class'		=>	''
-							),
 							'button_in_home'=>array('type'	=>	'checkbox',
 										   		'default'	=>	'off',
 										   		'title'		=>	__('Show button on post list?','lang-kkilikeit'),
@@ -176,6 +169,53 @@ function kklike_admin_settings(){
 									       		'values'	=> $showRating,
 												'class'		=>	''
 							),
+							
+							'own_button_type'=>array('type'		=>	'checkbox',
+										   		'default'	=>	'',
+										   		'title'		=>	__('Own button style?','lang-kkprogressbar'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+												'class'		=>	''
+							),
+							
+							'button_type'=>array('type'		=>	'radio-demo',
+										   		'default'	=>	'kklike-button-light',
+										   		'title'		=>	__('Button type','lang-kkprogressbar'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'values'	=> $buttonType,
+												'class'		=>	'button-template'
+							),
+							
+							'button_color'=>array('type'		=>	'color-pick',
+										   		'default'	=>	'000000',
+										   		'title'		=>	__('Button Color','lang-kkprogressbar'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+												'class'		=>	'button-own'
+							),
+							'button_text_color'=>array('type'		=>	'color-pick',
+										   		'default'	=>	'ffffff',
+										   		'title'		=>	__('Button Text Color','lang-kkprogressbar'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+												'class'		=>	'button-own'
+							),
+							'button_border_size'=>array('type'		=>	'text',
+										   		'default'	=>	'1',
+										   		'title'		=>	__('Button Border Size','lang-kkprogressbar'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+												'class'		=>	'button-own'
+							),
+							'button_border_color'=>array('type'		=>	'color-pick',
+										   		'default'	=>	'cccccc',
+										   		'title'		=>	__('Button Border Color','lang-kkprogressbar'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+												'class'		=>	'button-own'
+							),
+							'button_font_size'=>array('type'		=>	'text',
+										   		'default'	=>	'10',
+										   		'title'		=>	__('Button Font Size','lang-kkprogressbar'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+												'class'		=>	'button-own'
+							),
+							
 							'title_hr_2'	=>	array('type' => 'title-hr',
 		  									'default'	=>	 __('Dashboard:','lang-kkilikeit'),
 		  									'class'		=>	'kkpb-settings-title-break'

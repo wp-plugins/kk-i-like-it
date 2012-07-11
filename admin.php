@@ -46,43 +46,43 @@ function kklike_admin_enqueue_scripts(){
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui-core');
   	
-  	wp_register_script('kklike-ui-widget-js', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery-ui.custom.js', array('jquery-ui-core'), '1.4');
+  	wp_register_script('kklike-ui-widget-js', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery-ui.custom.js', array('jquery-ui-core'), '1.5');
 	wp_enqueue_script('kklike-ui-widget-js');
 	
-	wp_enqueue_style('kklike-css', WP_PLUGIN_URL .'/kk-i-like-it/css/kklike.css?v=1.4');
-	wp_enqueue_style('kklike-afront-css', WP_PLUGIN_URL .'/kk-i-like-it/css/kklike-front.css?v=1.4');
+	wp_enqueue_style('kklike-css', WP_PLUGIN_URL .'/kk-i-like-it/css/kklike.css?v=1.5');
+	wp_enqueue_style('kklike-afront-css', WP_PLUGIN_URL .'/kk-i-like-it/css/kklike-front.css?v=1.5');
 	
-	wp_register_script('kklike-js', WP_PLUGIN_URL .'/kk-i-like-it/js/admin.js', array('jquery'), '1.4');
+	wp_register_script('kklike-js', WP_PLUGIN_URL .'/kk-i-like-it/js/admin.js', array('jquery'), '1.5');
 	wp_enqueue_script('kklike-js');
-    
+	    
     /* ============= CHECKBOX PLUGIN ============= */
-    wp_register_script('kklike-checkbox', WP_PLUGIN_URL .'/kk-i-like-it/js/iphone-style-checkboxes.js', array('jquery'), '1.4');
+    wp_register_script('kklike-checkbox', WP_PLUGIN_URL .'/kk-i-like-it/js/iphone-style-checkboxes.js', array('jquery'), '1.5');
     wp_enqueue_script('kklike-checkbox');
     wp_enqueue_style('kklike-checkbox-css', WP_PLUGIN_URL .'/kk-i-like-it/css/iphone-style-checkboxes-css.css');
     
     /* ============= ColorPicker PLUGIN ============= */
     wp_enqueue_style('kklike-admin-css-color', WP_PLUGIN_URL .'/kk-i-like-it/css/colorpicker.css');
-    wp_register_script('kklike-admin-color', WP_PLUGIN_URL .'/kk-i-like-it/js/colorpicker.js', array('jquery'), '1.4');
+    wp_register_script('kklike-admin-color', WP_PLUGIN_URL .'/kk-i-like-it/js/colorpicker.js', array('jquery'), '1.5');
     wp_enqueue_script('kklike-admin-color');
     
 	/* ============= JS COOKIE PLUGIN ============= */
-	wp_register_script('kklike-admin-cookie', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery.cookie.js', array('jquery'), '1.4');
+	wp_register_script('kklike-admin-cookie', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery.cookie.js', array('jquery'), '1.5');
     wp_enqueue_script('kklike-admin-cookie');
     
-    wp_enqueue_style('kklike-jquery-ui-css', WP_PLUGIN_URL .'/kk-i-like-it/css/black-tie/jquery-ui.custom.css?v=1.4');
+    wp_enqueue_style('kklike-jquery-ui-css', WP_PLUGIN_URL .'/kk-i-like-it/css/black-tie/jquery-ui.custom.css?v=1.5');
 	
 	/* ============= Tooltip PLUGIN ============= */
 	wp_enqueue_style('kklike-css-tip', WP_PLUGIN_URL .'/kk-i-like-it/css/jquery.qtip.css');
-	wp_register_script('kklike-tip', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery.qtip.min.js', array('jquery'), '1.4');
+	wp_register_script('kklike-tip', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery.qtip.min.js', array('jquery'), '1.5');
 	wp_enqueue_script('kklike-tip');
 }
 
 function kklike_enqueue_scripts(){
    	wp_enqueue_script('jquery');
    	
-	wp_enqueue_style('kklike-front-css', WP_PLUGIN_URL .'/kk-i-like-it/css/kklike-front.css?v=1.4');
+	wp_enqueue_style('kklike-front-css', WP_PLUGIN_URL .'/kk-i-like-it/css/kklike-front.css?v=1.5');
 	
-	wp_register_script('kklike-front-js', WP_PLUGIN_URL .'/kk-i-like-it/js/kklike-front.js', array('jquery'), '1.4');
+	wp_register_script('kklike-front-js', WP_PLUGIN_URL .'/kk-i-like-it/js/kklike-front.js', array('jquery'), '1.5');
 	wp_enqueue_script('kklike-front-js');
 	
 	// declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)

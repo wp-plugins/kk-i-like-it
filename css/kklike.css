@@ -450,6 +450,7 @@ label.error{
 /* ============== KKAdmin2 ============== */
 
 .kkadmin-box{
+    position: relative;
 	width: 1050px;
 	margin: 15px auto;
 	box-shadow: 0 0 5px #ccc;
@@ -681,4 +682,20 @@ label.error{
     margin: 10px 0 0;
     padding: 10px 10px 10px 60px;
     color: #666666;
+}
+
+#kklike-button-prev-box{
+    display: none;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    padding: 15px;
+    position: absolute;
+    right: 1px;
+    top: 416px;
+    width: 221px;
+    opacity: 0;
+}
+
+#kklike-button-prev-box h4{
+    margin-top: 0;
 }

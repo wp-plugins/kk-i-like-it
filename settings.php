@@ -6,6 +6,15 @@ $wp_options = get_option('kklikesettings');
 
 ?>
 
+<script type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/button-preview.js"></script>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	button = new kkLikeButtonPrevConstr;
+	button.kkLikeButtonPrev.initialize();
+});
+</script>
+
 <div class="kkadmin-box">
 	<div class="kkadmin-top">
 		<?php include 'head.php'; ?>
@@ -42,6 +51,17 @@ $wp_options = get_option('kklikesettings');
 			<?php include 'sidebar.php'; ?>
 		</div>
 		<div class="kkclear"></div>
+	</div>
+	<div id="kklike-button-prev-box">
+		<h4><?php _e('Button preview:','kkadmin'); ?></h4>
+		<div class="kklike-content ">
+	  		<a href="#" class="kklike-box " rel="kklike-">
+				<span class="kklike-ico"></span> 
+				<span class="kklike-value ">123</span>
+				<span class="kklike-text">I Like It!</span>
+			</a>
+			<div class="kkclear"></div>
+		</div>
 	</div>
 </div>
 
