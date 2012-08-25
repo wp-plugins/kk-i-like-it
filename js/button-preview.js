@@ -9,6 +9,7 @@ var kkLikeButtonPrev  = {
 		this.setBorderSize();
 		this.setBorderColor();
 		this.setFontSize();
+		this.setRoundCorner();
 		
 		jQuery('#own_button_type').live('change',function(){
 			_this.updateForm();
@@ -32,6 +33,10 @@ var kkLikeButtonPrev  = {
 		
 		jQuery('#button_font_size').live('change',function(){
 			_this.setFontSize();
+		});
+
+		jQuery('#button_round_corners').live('change',function(){
+			_this.setRoundCorner();
 		});
 	},
 	
@@ -90,6 +95,12 @@ var kkLikeButtonPrev  = {
 	setFontSize : function(){
 		jQuery('#kklike-button-prev-box').find('.kklike-box').css({
 			'font-size'	:	jQuery('#button_font_size').val() + 'px'
+		});
+	},
+
+	setRoundCorner : function(){
+		jQuery('#kklike-button-prev-box').find('.kklike-box').css({
+			'border-radius'	:	jQuery('#button_round_corners').val() + 'px'
 		});
 	}
 	

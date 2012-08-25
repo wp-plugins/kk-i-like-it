@@ -107,6 +107,13 @@ function kklike_admin_settings(){
 		__('Never show','lang-kkilikeit')							=>	'never',
 		__('Hovering cursore over the button','lang-kkilikeit')		=>	'hover'
 	);
+
+	$heartImages = array(
+		__('Small Dark','lang-kkilikeit')		=>	'home-1',
+		__('Small Light','lang-kkilikeit')		=>	'home-2',
+		__('Big Light','lang-kkilikeit')			=>	'home-3',
+		__('Big Dark','lang-kkilikeit')		=>	'home-4'
+	);
 	
 	$options = array(
 	// ==== GENERAL SETTINGS ====
@@ -212,6 +219,12 @@ function kklike_admin_settings(){
 							'button_font_size'=>array('type'		=>	'text',
 										   		'default'	=>	'10',
 										   		'title'		=>	__('Button Font Size','lang-kkprogressbar'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+												'class'		=>	'button-own'
+							),
+							'button_round_corners'=>array('type'		=>	'text',
+										   		'default'	=>	'4',
+										   		'title'		=>	__('Button Round Corners','lang-kkprogressbar'),
 									       		'tooltip'	=>	__('','lang-kkilikeit'),
 												'class'		=>	'button-own'
 							),
