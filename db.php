@@ -131,6 +131,25 @@ class kkDataBase{
 		
 		return $val;
 	}
+
+	public function getPostVoters($id){
+
+		$sql = "SELECT * FROM ". $this->tableLikeUser ." 
+				LEFT JOIN (". $this->tableLike .") 
+				ON (". $this->tableLikeUser .".idlike = ". $this->tableLike .".id)
+				LEFT JOIN (". $this->tableWPUsers .") 
+				ON (". $this->tableWPUsers .".ID = ". $this->tableLikeUser .".idwpuser) 
+				WHERE ". $this->tableLike .".idwp = ". $id ." 
+				ORDER BY ". $this->tableLikeUser .".date DESC";
+
+		$dane = $this->wpdb->get_results($sql);
+
+		if($dane === NULL){
+			$dane = 0;
+		}
+		
+		return $dane;
+	}
 	
 	public function getInformation($limit = 0, $userID = 0){
 		$result = array();

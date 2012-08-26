@@ -252,7 +252,22 @@ function kklike_admin_settings(){
 									       		'tooltip'	=>	__('','lang-kkilikeit'),
 									       		'class'		=>	''
 							),
-												
+							
+							'title_hr_3'	=>	array('type' => 'title-hr',
+		  									'default'	=>	 __('Post/Page Settings:','lang-kkilikeit'),
+		  									'class'		=>	'kkpb-settings-title-break'
+							),
+							'voters_header'=>array('type'	=>	'text',
+										   		'default'	=>	'',
+										   		'title'		=>	__('Voters Text Header:','lang-kkprogressbar'),
+									       		'tooltip'	=>	__('','lang-kkilikeit')
+							),
+							'show_voters'=>array('type'	=>	'checkbox',
+										   		'default'	=>	'off',
+										   		'title'		=>	__('Show voters after post/page content?','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'class'		=>	''
+							),					
 	)
 	));
 }

@@ -351,10 +351,32 @@ function addKKLikeButton($content) {
 	}
 }
 
+function addKKLikeVoters($content){
+	global $post, $wp_options;
+	$db = new kkDataBase;
+
+	$dane = $db->getPostVoters($post->ID);
+	$users = '';
+
+
+	if(count($dane) > 0 && is_single()){
+		if($wp_options['voters_header'] != ''){
+			$users .= '<h3 class="kklike-voters-header">' . $wp_options['voters_header'] . '</h3>';
+		}
+		
+		foreach($dane as $user){
+			$users .= '<span style="margin: 0 5px 5px 0;">' . get_avatar( $user->ID, $size = '50' ) . '</span>';
+		}
+	}
+
+	return $content . $users;
+}
+
 function content_init(){
 
 	add_action( 'the_excerpt', 'addKKLikeButton');
 	add_action( 'the_content', 'addKKLikeButton');
+	add_action( 'the_content', 'addKKLikeVoters');
 
 }
 
