@@ -177,21 +177,46 @@ function kkLikeButton($ret = false) {
 	}else{
 		$onlyUser = '0';
 	}
+
+	if($wp_options['own_button_type'] != 'on'){
 		
-  	$kklike = '
-		<div class="kklike-content '.$wp_options['button_type'].'">
-	  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" rel="kklike-'. $post->ID .'">
-	  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
-	  			<input type="hidden" class="kklike-type" value="post" />
-	  			<input type="hidden" class="kklike-action" value="' . $act . '" />
-	  			<input type="hidden" class="kklike-ou" value="'. $onlyUser .'" />
-				<span class="kklike-ico"></span> 
-				<span class="kklike-value '. $classRating .'">' . $rating . '</span>
-				<span class="kklike-text">' . $text . '</span>
-			</a>
+	  	$kklike = '
+			<div class="kklike-content '.$wp_options['button_type'].'">
+		  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" rel="kklike-'. $post->ID .'">
+		  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
+		  			<input type="hidden" class="kklike-type" value="post" />
+		  			<input type="hidden" class="kklike-action" value="' . $act . '" />
+		  			<input type="hidden" class="kklike-ou" value="'. $onlyUser .'" />
+					<span class="kklike-ico"></span> 
+					<span class="kklike-value '. $classRating .'">' . $rating . '</span>
+					<span class="kklike-text">' . $text . '</span>
+				</a>
+				<div class="kkclear"></div>
+			</div>
+	 	';
+
+ 	}else{
+
+ 		$kklike = '
+		<div class="kklike-content">
+			<span style="display: none;">|||||</span>
+		  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" style="border-radius: '.$wp_options['button_round_corners'].'px; font-size: '.$wp_options['button_font_size'].'px;color: #'.$wp_options['button_text_color'].'; background: #'.$wp_options['button_color'].'; border: '.$wp_options['button_border_size'].'px solid #'.$wp_options['button_border_color'].';" rel="kklike-'. $post->ID .'">
+		  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
+		  			<input type="hidden" class="kklike-type" value="post" />
+		  			<input type="hidden" class="kklike-action" value="' . $act . '" />
+		  			<input type="hidden" class="kklike-ou" value="'. $onlyUser .'" />
+					<span class="kklike-ico" style="background: transparent; width: auto; height: auto;">
+						<img src="' . WP_PLUGIN_URL . '/kk-i-like-it/images/' . $wp_options['button_heart_img'] . '.png" alt="Like It" />
+					</span> 
+					<span class="kklike-value '. $classRating .'" style="border-right: '.$wp_options['button_border_size'].'px solid #'.$wp_options['button_border_color'].'; border-left: '.$wp_options['button_border_size'].'px solid #'.$wp_options['button_border_color'].';">' . $rating . '</span>
+					<span class="kklike-text">' . $text . '</span>
+				</a>
+			<span style="display: none;">|||||</span>
 			<div class="kkclear"></div>
 		</div>
- 	';
+	 	';
+
+ 	}
 	
   	if($ret){
   		return $kklike;
@@ -272,23 +297,48 @@ function addKKLikeButton($content) {
 	}else{
 		$onlyUser = '0';
 	}
-		
-  	$kklike = '
-	<div class="kklike-content '.$wp_options['button_type'].'">
-		<span style="display: none;">|||||</span>
-	  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" rel="kklike-'. $post->ID .'">
-	  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
-	  			<input type="hidden" class="kklike-type" value="post" />
-	  			<input type="hidden" class="kklike-action" value="' . $act . '" />
-	  			<input type="hidden" class="kklike-ou" value="'. $onlyUser .'" />
-				<span class="kklike-ico"></span> 
-				<span class="kklike-value '. $classRating .'">' . $rating . '</span>
-				<span class="kklike-text">' . $text . '</span>
-			</a>
-		<span style="display: none;">|||||</span>
-		<div class="kkclear"></div>
-	</div>
- 	';
+
+	if($wp_options['own_button_type'] != 'on'){
+			
+	  	$kklike = '
+		<div class="kklike-content '.$wp_options['button_type'].'">
+			<span style="display: none;">|||||</span>
+		  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" rel="kklike-'. $post->ID .'">
+		  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
+		  			<input type="hidden" class="kklike-type" value="post" />
+		  			<input type="hidden" class="kklike-action" value="' . $act . '" />
+		  			<input type="hidden" class="kklike-ou" value="'. $onlyUser .'" />
+					<span class="kklike-ico"></span> 
+					<span class="kklike-value '. $classRating .'">' . $rating . '</span>
+					<span class="kklike-text">' . $text . '</span>
+				</a>
+			<span style="display: none;">|||||</span>
+			<div class="kkclear"></div>
+		</div>
+	 	';
+
+ 	}else{
+
+ 		$kklike = '
+		<div class="kklike-content">
+			<span style="display: none;">|||||</span>
+		  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" style="border-radius: '.$wp_options['button_round_corners'].'px; font-size: '.$wp_options['button_font_size'].'px;color: #'.$wp_options['button_text_color'].'; background: #'.$wp_options['button_color'].'; border: '.$wp_options['button_border_size'].'px solid #'.$wp_options['button_border_color'].';" rel="kklike-'. $post->ID .'">
+		  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
+		  			<input type="hidden" class="kklike-type" value="post" />
+		  			<input type="hidden" class="kklike-action" value="' . $act . '" />
+		  			<input type="hidden" class="kklike-ou" value="'. $onlyUser .'" />
+					<span class="kklike-ico" style="background: transparent; width: auto; height: auto;">
+						<img src="' . WP_PLUGIN_URL . '/kk-i-like-it/images/' . $wp_options['button_heart_img'] . '.png" alt="Like It" />
+					</span> 
+					<span class="kklike-value '. $classRating .'" style="border-right: '.$wp_options['button_border_size'].'px solid #'.$wp_options['button_border_color'].'; border-left: '.$wp_options['button_border_size'].'px solid #'.$wp_options['button_border_color'].';">' . $rating . '</span>
+					<span class="kklike-text">' . $text . '</span>
+				</a>
+			<span style="display: none;">|||||</span>
+			<div class="kkclear"></div>
+		</div>
+	 	';
+
+ 	}
 
 	$content = preg_replace("/\|\|\|\|\|(.*?)\|\|\|\|\|/i", "", $content);
 

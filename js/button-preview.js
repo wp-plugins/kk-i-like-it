@@ -10,6 +10,7 @@ var kkLikeButtonPrev  = {
 		this.setBorderColor();
 		this.setFontSize();
 		this.setRoundCorner();
+		this.setHeartImg();
 		
 		jQuery('#own_button_type').live('change',function(){
 			_this.updateForm();
@@ -37,6 +38,10 @@ var kkLikeButtonPrev  = {
 
 		jQuery('#button_round_corners').live('change',function(){
 			_this.setRoundCorner();
+		});
+
+		jQuery('input[name="button_heart_img"]').live('click',function(){
+			_this.setHeartImg();
 		});
 	},
 	
@@ -102,8 +107,18 @@ var kkLikeButtonPrev  = {
 		jQuery('#kklike-button-prev-box').find('.kklike-box').css({
 			'border-radius'	:	jQuery('#button_round_corners').val() + 'px'
 		});
-	}
+	},
 	
+	setHeartImg : function(){
+		var obj = jQuery('#kklike-button-prev-box').find('.kklike-ico');
+		obj.css({'background' : 'transparent', 'width' : 'auto', 'height' : 'auto'});
+
+		var img = obj.find('img').attr('alt');
+		console.log(jQuery('input[name="button_heart_img"]:checked').val());
+		obj.find('img')
+			.attr({'src' : img + jQuery('input[name="button_heart_img"]:checked').val() + '.png'})
+			.css({'float' : 'left'});
+	}
 };
 
 function kkLikeButtonPrevConstr(){

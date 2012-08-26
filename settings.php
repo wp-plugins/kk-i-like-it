@@ -56,7 +56,7 @@ jQuery(document).ready(function(){
 		<h4><?php _e('Button preview:','kkadmin'); ?></h4>
 		<div class="kklike-content ">
 	  		<a href="#" class="kklike-box " rel="kklike-">
-				<span class="kklike-ico"></span> 
+				<span class="kklike-ico"><img src="" alt="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/" /></span> 
 				<span class="kklike-value ">123</span>
 				<span class="kklike-text">I Like It!</span>
 			</a>
@@ -438,6 +438,49 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 									<div class="kkclear"></div>
 								</div>
 								<div class="kkclear" style="margin-bottom: 10px;"></div>
+							<?php endforeach; ?>
+						
+					</div>
+				</td>
+			</tr>
+			
+			<?php 
+			break;
+
+		case 'hearts-img':
+				?>
+			
+			<tr class="<?php echo $value['class']; ?>">
+				<td class="kk-admin-info">
+					<div class="kkadmin-info kk-tooltip" title="<?php echo $value['tooltip']; ?>">
+					<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/ico_info.png" alt="Info" style="vertical-align: middle;" />
+				</div>
+				</td>
+				<td class="kk-admin-label">
+					<label for="<?php echo $key; ?>"><?php echo $value['title']; ?></label>
+				</td>
+				<td class="kk-admin-settings-val">
+					<div class="kkadmin-selectbox">
+						
+							<?php 
+								$default = (isset($wp_options[$key]) ? stripslashes($wp_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
+								if($default == 0){
+									$selected = 'checked="checked"';
+								}else{
+									$selected = '';
+								} 
+							?>
+							<?php foreach ($value['values'] as $nazwa => $class) : 
+								if($default == $class){
+									$selected = 'checked="checked"';
+								}else{
+									$selected = '';
+								}
+							?>
+								<label style="float: left; margin-right: 10px;">
+									<input type="radio" style="float: left; vertical-align: middle; margin-right: 5px; margin-top: 9px;" name="<?php echo $key; ?>" id="<?php echo $class; ?>" value="<?php echo $class; ?>" <?php echo $selected; ?>> 
+									<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/<?php echo $class; ?>.png" alt="" />
+								</label>
 							<?php endforeach; ?>
 						
 					</div>

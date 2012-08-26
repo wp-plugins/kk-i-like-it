@@ -109,10 +109,10 @@ function kklike_admin_settings(){
 	);
 
 	$heartImages = array(
-		__('Small Dark','lang-kkilikeit')		=>	'home-1',
-		__('Small Light','lang-kkilikeit')		=>	'home-2',
-		__('Big Light','lang-kkilikeit')			=>	'home-3',
-		__('Big Dark','lang-kkilikeit')		=>	'home-4'
+		__('Small Dark','lang-kkilikeit')		=>	'heart-1',
+		__('Small Light','lang-kkilikeit')		=>	'heart-2',
+		__('Big Light','lang-kkilikeit')		=>	'heart-3',
+		__('Big Dark','lang-kkilikeit')			=>	'heart-4'
 	);
 	
 	$options = array(
@@ -226,6 +226,13 @@ function kklike_admin_settings(){
 										   		'default'	=>	'4',
 										   		'title'		=>	__('Button Round Corners','lang-kkprogressbar'),
 									       		'tooltip'	=>	__('','lang-kkilikeit'),
+												'class'		=>	'button-own'
+							),
+							'button_heart_img'=>array('type'		=>	'hearts-img',
+										   		'default'	=>	'heart-1',
+										   		'title'		=>	__('Button type','lang-kkprogressbar'),
+									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'values'	=> $heartImages,
 												'class'		=>	'button-own'
 							),
 							
