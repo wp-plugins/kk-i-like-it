@@ -3,7 +3,7 @@
   Plugin Name: KK I Like It
   Plugin URI: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
   Description: Plugin gives users or guest an option to like an article or a page.
-  Version: 1.4.1
+  Version: 1.5
   Author: Krzysztof Furtak
   Author URI: http://krzysztof-furtak.pl
  */
@@ -358,6 +358,9 @@ function addKKLikeVoters($content){
 	$dane = $db->getPostVoters($post->ID);
 	$users = '';
 
+	//echo '<pre>';
+	//var_dump($dane);
+	//echo '</pre>';
 
 	if(count($dane) > 0 && is_single()){
 		if($wp_options['voters_header'] != ''){
@@ -365,7 +368,15 @@ function addKKLikeVoters($content){
 		}
 		
 		foreach($dane as $user){
-			$users .= '<span style="margin: 0 5px 5px 0;">' . get_avatar( $user->ID, $size = '50' ) . '</span>';
+			if(!empty($user->display_name)){
+				$nick = $user->display_name;
+			}else{
+				$nick = __('Guest');
+			}
+			$users .= '<span class="kklike-ava-box">' 
+						. get_avatar( $user->ID, $size = '50' )
+						. '<span class="kklike-ava-nick">'. $nick .'</span>' 
+						. '</span>';
 		}
 	}
 
@@ -479,7 +490,7 @@ if (is_admin ()) {
 					$dane = $db->getTopPosts('5');
 					$numberLikes = $db->getLikesNumber();
 
-					if(!empty($dane)){
+					if(!empty($dane) && $numberLikes > 0){
 						$i = 1;
 					foreach($dane as $row):
 						$perc = floor(($row->rating / $numberLikes) * 100);

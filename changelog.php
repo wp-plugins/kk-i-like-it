@@ -15,6 +15,12 @@ global $kkplugin, $wersja_plugin, $wpdb;
 	<div class="kkadmin-content">
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
+				<h2>= 1.5 =</h2>
+				<ul>
+					<li>NEW: Button display generator</li>
+					<li>NEW: Add gravatar of persons who liked the post</li>
+				</ul>
+
 				<h2>= 1.4.1 =</h2>
 				<ul>
 					<li>CHANGE: Some admin design changes</li>

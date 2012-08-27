@@ -23,7 +23,7 @@ function kklike_admin_content(){
 					<div class="kkpb-alert kkpb-alert-error"><?php echo __('<strong>Plugin is not configured. It may not work correctly.</strong> Go to settings, make your selection and save settings.','lang-kkilikeit'); ?></div>
 				<?php } ?>
 				
-				<h2><?php echo __('The last ten activity', 'lang-kkilikeit'); ?>:</h2>
+				<h2><?php echo __('The last ten activities', 'lang-kkilikeit'); ?>:</h2>
 				
 				<div class="kklike-list-box">
 					<?php

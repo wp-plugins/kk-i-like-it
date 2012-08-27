@@ -270,3 +270,16 @@ ul.kklike-most-liked li{
 	float: right;
 	font-size: 10px;
 }
+
+.kklike-ava-box{
+    display: inline-block;
+    margin: 0 5px 5px 0;
+    width: 50px;
+    text-align: center;
+}
+
+.kklike-ava-nick{
+    line-height: 100%;
+    font-size: 10px;
+    display: block;
+}

@@ -2,11 +2,11 @@
 Contributors: Krzy-siek
 Donate link: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
 License: GNU GPL
-Version: 1.4.1
+Version: 1.5
 Tags: like, like it, social, rating, blog, post, page, premium, free
 Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 1.4.1
+Stable tag: 1.5
 
 Plugin gives users or guest an option to like an article or a page.
 
@@ -21,6 +21,7 @@ Plugin gives users or guest an option to like an article or a page.
 Features:
 
 * [Front] Option to like article/page
+[NEW] * [Front] Add gravatar of persons who liked the post
 * [Settings] Choice of display position
 * [Settings] Theme selection (2 options: dark and light)
 * [Settings] Text „I like it!”
@@ -31,6 +32,7 @@ Features:
 * [Settings] Show numer of likes (always/after hovering cursore over the button/never show)
 * [Settings] Disable likes for single pages or posts
 * [Settings] Own rating position
+[NEW] * [Settings] Button display generator
 * [Widget] Recently liked
 * [Widget] The most liked
 * [Widget] Your liked (only for registered users)
@@ -85,6 +87,10 @@ or
 
 
 == Changelog ==
+= 1.5 =
+* NEW: Button display generator
+* NEW: Add gravatar of persons who liked the post
+
 = 1.4.1 =
 * CHANGE: Some admin design changes
 * FIX: Custom posts list - incorrect button display
