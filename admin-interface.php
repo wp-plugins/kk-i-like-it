@@ -55,6 +55,47 @@ function kklike_admin_content(){
 						}
 					?>
 				</div>
+
+				<?php
+					$data = $db->getTopLikesFrom(null, 7);
+					$days = array();
+					$likes = array();
+					
+					foreach ($data as $day) {
+						$days[count($days)] = date('d-m-Y', strtotime($day->date));
+					}
+
+					var_dump($days);
+				?>
+
+				<script type="text/javascript">
+					var chart1;
+					jQuery(document).ready(function() {
+					      chart1 = new Highcharts.Chart({
+					         chart: {
+					            renderTo: 'container',
+					            type: 'column'
+					         },
+					         title: {
+					            text: 'Fruit Consumption'
+					         },
+					         xAxis: {
+					            categories: []
+					         },
+					         yAxis: {
+					            title: {
+					               text: 'Fruit eaten'
+					            }
+					         },
+					         series: [{
+					            name: 'Likes',
+					            data: [1,2,3,4]
+					         }]
+					      });
+					   });
+				</script>
+
+				<div id="container" style="width: 100%; height: 400px"></div>
 				
 				
 			</div>
