@@ -592,6 +592,7 @@ label.error{
 .kklike-list-box{
 	background: #FFFFFF;
 	border: 1px solid #EEEEEE;
+	margin-bottom: 20px;
 }
 
 .kklike-list-box-element{
@@ -698,4 +699,28 @@ label.error{
 
 #kklike-button-prev-box h4{
     margin-top: 0;
+}
+
+.one-half{
+	float: left;
+	width: 48%;
+	margin-right: 4%;
+}
+
+.one-half-last{
+	float: left;
+	width: 47.8%;
+}
+
+.kkadmin-small-chart{
+	width: 100%; 
+	height: 250px;
+	margin: 15px 0;
+}
+
+.kkadmin-chart-desc{
+	color: #888;
+	font-style: italic;
+	margin-top: 15px;
+	padding-left: 15px;
 }

@@ -15,6 +15,13 @@ global $kkplugin, $wersja_plugin, $wpdb;
 	<div class="kkadmin-content">
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
+				<h2>= 1.6 =</h2>
+				<ul>
+					<li>NEW: Two widgets in administration panel with statistics</li>
+					<li>NEW: Lang file (lang-kklike-xx_XX.po) for people who want to help with translation</li>
+					<li>CHANGE: Updated Polish translation</li>
+				</ul>
+
 				<h2>= 1.5 =</h2>
 				<ul>
 					<li>NEW: Button display generator</li>

@@ -2,11 +2,11 @@
 Contributors: Krzy-siek
 Donate link: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
 License: GNU GPL
-Version: 1.5
+Version: 1.6
 Tags: like, like it, social, rating, blog, post, page, premium, free
 Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 1.5
+Stable tag: 1.6
 
 Plugin gives users or guest an option to like an article or a page.
 
@@ -21,7 +21,7 @@ Plugin gives users or guest an option to like an article or a page.
 Features:
 
 * [Front] Option to like article/page
-[NEW] * [Front] Add gravatar of persons who liked the post
+* [Front] Add gravatar of persons who liked the post
 * [Settings] Choice of display position
 * [Settings] Theme selection (2 options: dark and light)
 * [Settings] Text „I like it!”
@@ -32,7 +32,7 @@ Features:
 * [Settings] Show numer of likes (always/after hovering cursore over the button/never show)
 * [Settings] Disable likes for single pages or posts
 * [Settings] Own rating position
-[NEW] * [Settings] Button display generator
+* [Settings] Button display generator
 * [Widget] Recently liked
 * [Widget] The most liked
 * [Widget] Your liked (only for registered users)
@@ -40,6 +40,8 @@ Features:
 * [Dashboard] Most liked
 * [Shortcode] Display rate button
 * [Shortcode] Display rating score
+
+* *[NEW]* [Admin] Two widgets in administration panel with statistics
 
 
 More information about the plugin can be found [HERE](http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/) – feel free to check it out!
@@ -59,6 +61,8 @@ More information about the plugin can be found [HERE](http://krzysztof-furtak.pl
 2. Settings
 3. Button
 4. Widgets
+5. Two widgets with statistics
+6. Who liked this post - gavatar
 
 == Frequently Asked Questions ==
 
@@ -87,6 +91,11 @@ or
 
 
 == Changelog ==
+= 1.6 =
+* NEW: Two widgets in administration panel with statistics
+* NEW: Lang file (lang-kklike-xx_XX.po) for people who want to help with translation
+* CHANGE: Updated Polish translation
+
 = 1.5 =
 * NEW: Button display generator
 * NEW: Add gravatar of persons who liked the post

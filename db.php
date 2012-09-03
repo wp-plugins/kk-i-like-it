@@ -288,4 +288,43 @@ class kkDataBase{
 
 		return $data;
 	}
+
+	public function getTopLikedPostFrom($from = null, $days = null){
+		if(empty($from)){
+			$from = time();
+		}else{
+			$from = strtotime($from);
+		}
+
+		if($days === 0){
+			$to_date = date('Y-m-d', $from);
+		}else if(empty($days)){
+			$days = 7;
+			$to_date = date('Y-m-d', $from - ($days * 24 * 3600));
+		}else{
+			$to_date = date('Y-m-d', $from - ($days * 24 * 3600));
+		}
+
+		$from = date('Y-m-d H:i:s', $from);
+
+		$query = "SELECT 
+				COUNT(". $this->tableLikeUser .".id) AS count,
+				". $this->tableLikeUser .".date,
+				". $this->tableLikeUser .".idwpuser,
+				". $this->tableLike .".idwp,
+				". $this->tableWPPosts .".post_title
+
+				FROM ". $this->tableLikeUser ." 
+				LEFT JOIN (". $this->tableLike .") 
+				ON (". $this->tableLikeUser .".idlike = ". $this->tableLike .".id)
+				LEFT JOIN (" . $this->tableWPPosts . ")
+				ON (". $this->tableLike .".idwp = ". $this->tableWPPosts .".ID)
+				WHERE ". $this->tableLikeUser .".date <= '". $from ."' 
+				AND ". $this->tableLikeUser .".date >= '". $to_date ."' 
+				GROUP BY ". $this->tableLike .".idwp";
+
+		$data = $this->wpdb->get_results($query);
+
+		return $data;
+	}
 }

@@ -47,7 +47,7 @@ function kklike_admin_content(){
 					?>
 						<div class="kklike-list-box-element">
 							<div class="kklike-list-text">
-								<?php echo __('I\'m sorry, at this moment there are no data to display','lang-kkilikeit'); ?>
+								<?php echo __('I\'m sorry, at this moment there is no data to display','lang-kkilikeit'); ?>
 							</div>
 							<div class="kkclear"></div>
 						</div>
@@ -56,48 +56,21 @@ function kklike_admin_content(){
 					?>
 				</div>
 
-				<?php
-					$data = $db->getTopLikesFrom(null, 7);
-					$days = array();
-					$likes = array();
-					
-					foreach ($data as $day) {
-						$days[count($days)] = date('d-m-Y', strtotime($day->date));
-					}
-
-					var_dump($days);
-				?>
-
-				<script type="text/javascript">
-					var chart1;
-					jQuery(document).ready(function() {
-					      chart1 = new Highcharts.Chart({
-					         chart: {
-					            renderTo: 'container',
-					            type: 'column'
-					         },
-					         title: {
-					            text: 'Fruit Consumption'
-					         },
-					         xAxis: {
-					            categories: []
-					         },
-					         yAxis: {
-					            title: {
-					               text: 'Fruit eaten'
-					            }
-					         },
-					         series: [{
-					            name: 'Likes',
-					            data: [1,2,3,4]
-					         }]
-					      });
-					   });
-				</script>
-
-				<div id="container" style="width: 100%; height: 400px"></div>
-				
-				
+				<div class="one-half">
+					<h2><?php echo __('Likes per day', 'lang-kkilikeit'); ?>:</h2>
+					<div class="kkadmin-chart-desc">
+						<?php echo __('The number of likes within last few days.', 'lang-kkilikeit'); ?>
+					</div>
+					<?php require_once('number-likes.php'); ?>
+				</div>
+				<div class="one-half-last">
+					<h2><?php echo __('Most liked', 'lang-kkilikeit'); ?>:</h2>
+					<div class="kkadmin-chart-desc">
+						<?php echo __('The most often liked aticles within last few days.', 'lang-kkilikeit'); ?>
+					</div>
+					<?php require_once('top-liked.php'); ?>
+				</div>
+				<div class="kkclear"></div>
 			</div>
 		</div>
 		<div class="kkadmin-sidebar">
