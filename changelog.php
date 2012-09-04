@@ -15,6 +15,11 @@ global $kkplugin, $wersja_plugin, $wpdb;
 	<div class="kkadmin-content">
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
+				<h2>= 1.6.1 Hotfix =</h2>
+				<ul>
+					<li>FIX: Show voters after post/page content</li>
+				</ul>
+
 				<h2>= 1.6 =</h2>
 				<ul>
 					<li>NEW: Two widgets in administration panel with statistics</li>
