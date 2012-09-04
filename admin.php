@@ -366,7 +366,7 @@ function addKKLikeVoters($content){
 	//var_dump($dane);
 	//echo '</pre>';
 
-	if(count($dane) > 0 && is_single()){
+	if(count($dane) > 0 && is_single() && $wp_options['show_voters'] == 'on'){
 		if($wp_options['voters_header'] != ''){
 			$users .= '<h3 class="kklike-voters-header">' . $wp_options['voters_header'] . '</h3>';
 		}
@@ -382,6 +382,8 @@ function addKKLikeVoters($content){
 						. '<span class="kklike-ava-nick">'. $nick .'</span>' 
 						. '</span>';
 		}
+	}else{
+		$users = '';
 	}
 
 	return $content . $users;
