@@ -6,4 +6,4 @@
 </div>
 
 
-<a href="http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/" target="_blank" class="kklike-sidebar-link" ><?php echo __('Plugin web site.', 'lang-kkilikeit'); ?></a>
+<a href="http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/" target="_blank" class="kklike-sidebar-link" ><?php echo __('Plugin web site.', 'lang-kklike'); ?></a>

@@ -45,11 +45,11 @@ class kklikeMostLiked extends WP_Widget {
         	</label>
         </div>
         <div>
-        	<div class="kkwidget-option-title"><?php echo __('How many items should be displayed','lang-kkilikeit'); ?>?</div>
-        	<input type="text" id="<?php  echo $this->get_field_id('items') ?>" name="<?php echo  $this->get_field_name('items'); ?>" value="<?php echo $items; ?>" /><label class="kkwidget-option-label" for="<?php  echo $this->get_field_id('items') ?>"><?php echo __(' items.','lang-kkilikeit'); ?></label>
+        	<div class="kkwidget-option-title"><?php echo __('How many items should be displayed','lang-kklike'); ?>?</div>
+        	<input type="text" id="<?php  echo $this->get_field_id('items') ?>" name="<?php echo  $this->get_field_name('items'); ?>" value="<?php echo $items; ?>" /><label class="kkwidget-option-label" for="<?php  echo $this->get_field_id('items') ?>"><?php echo __(' items.','lang-kklike'); ?></label>
         </div>
         <div>
-        	<div class="kkwidget-option-title"><?php echo __('What post type should be displayed','lang-kkilikeit'); ?>?</div>
+        	<div class="kkwidget-option-title"><?php echo __('What post type should be displayed','lang-kklike'); ?>?</div>
         	<?php
         		echo $selekt; 
         	?>
@@ -108,8 +108,8 @@ class kklikeMostLiked extends WP_Widget {
         		<span class="<?php echo $cls; ?>"></span>
         		<span class="kklike-wg-text">
         			<span class="kklike-wg-title"><a href="<?php echo get_permalink($post->ID); ?>"><?php echo $post->post_title; ?></a></span>
-        			<span class="kklike-wg-rating"><?php echo __('Liked:','lang-kkilikeit'); ?> <?php echo $post->rating; ?></span>
-        			<span class="kklike-wg-date"><?php echo __('Date:','lang-kkilikeit'); ?> <?php echo date('d-m-Y', strtotime($post->post_date)); ?></span>
+        			<span class="kklike-wg-rating"><?php echo __('Liked:','lang-kklike'); ?> <?php echo $post->rating; ?></span>
+        			<span class="kklike-wg-date"><?php echo __('Date:','lang-kklike'); ?> <?php echo date('d-m-Y', strtotime($post->post_date)); ?></span>
         		</span>
         		<span class="kkclear"></span>
         	</li>
@@ -164,11 +164,11 @@ class kklikeLastLiked extends WP_Widget {
         	</label>
         </div>
         <div>
-        	<div class="kkwidget-option-title"><?php echo __('How many items should be displayed','lang-kkilikeit'); ?>?</div>
-        	<input type="text" id="<?php  echo $this->get_field_id('items') ?>" name="<?php echo  $this->get_field_name('items'); ?>" value="<?php echo $items; ?>" /><label class="kkwidget-option-label" for="<?php  echo $this->get_field_id('items') ?>"><?php echo __(' items.','lang-kkilikeit'); ?></label>
+        	<div class="kkwidget-option-title"><?php echo __('How many items should be displayed','lang-kklike'); ?>?</div>
+        	<input type="text" id="<?php  echo $this->get_field_id('items') ?>" name="<?php echo  $this->get_field_name('items'); ?>" value="<?php echo $items; ?>" /><label class="kkwidget-option-label" for="<?php  echo $this->get_field_id('items') ?>"><?php echo __(' items.','lang-kklike'); ?></label>
         </div>
         <div>
-        	<div class="kkwidget-option-title"><?php echo __('What post type should be displayed','lang-kkilikeit'); ?>?</div>
+        	<div class="kkwidget-option-title"><?php echo __('What post type should be displayed','lang-kklike'); ?>?</div>
         	<?php
         		echo $selekt; 
         	?>
@@ -227,8 +227,8 @@ class kklikeLastLiked extends WP_Widget {
         		<span class="<?php echo $cls; ?>"></span>
         		<span class="kklike-wg-text">
         			<span class="kklike-wg-title"><a href="<?php echo get_permalink($post->ID); ?>"><?php echo $post->post_title; ?></a></span>
-        			<span class="kklike-wg-rating"><?php echo __('Liked:','lang-kkilikeit'); ?> <?php echo $post->rating; ?></span>
-        			<span class="kklike-wg-date"><?php echo __('Date:','lang-kkilikeit'); ?> <?php echo date('d-m-Y', strtotime($post->date)); ?></span>
+        			<span class="kklike-wg-rating"><?php echo __('Liked:','lang-kklike'); ?> <?php echo $post->rating; ?></span>
+        			<span class="kklike-wg-date"><?php echo __('Date:','lang-kklike'); ?> <?php echo date('d-m-Y', strtotime($post->date)); ?></span>
         		</span>
         		<span class="kkclear"></span>
         	</li>
@@ -266,8 +266,8 @@ class kklikeUserLiked extends WP_Widget {
         </div>
         <!--
         <div>
-        	<div class="kkwidget-option-title"><?php echo __('How many items should be displayed','lang-kkilikeit'); ?>?</div>
-        	<input type="text" id="<?php  echo $this->get_field_id('items') ?>" name="<?php echo  $this->get_field_name('items'); ?>" value="<?php echo $items; ?>" /><label class="kkwidget-option-label" for="<?php  echo $this->get_field_id('items') ?>"><?php echo __(' items.','lang-kkilikeit'); ?></label>
+        	<div class="kkwidget-option-title"><?php echo __('How many items should be displayed','lang-kklike'); ?>?</div>
+        	<input type="text" id="<?php  echo $this->get_field_id('items') ?>" name="<?php echo  $this->get_field_name('items'); ?>" value="<?php echo $items; ?>" /><label class="kkwidget-option-label" for="<?php  echo $this->get_field_id('items') ?>"><?php echo __(' items.','lang-kklike'); ?></label>
         </div>
         -->
 
@@ -322,8 +322,8 @@ class kklikeUserLiked extends WP_Widget {
 		        		<span class="<?php echo $cls; ?>"></span>
 		        		<span class="kklike-wg-text">
 		        			<span class="kklike-wg-title"><a href="<?php echo get_permalink($post['ID']); ?>"><?php echo $post['post_name']; ?></a></span>
-		        			<span class="kklike-wg-rating"><?php echo __('Liked:','lang-kkilikeit'); ?> <?php echo $post['liked']; ?></span>
-		        			<span class="kklike-wg-date"><?php echo __('Date:','lang-kkilikeit'); ?> <?php echo date('d-m-Y', strtotime($post['date'])); ?></span>
+		        			<span class="kklike-wg-rating"><?php echo __('Liked:','lang-kklike'); ?> <?php echo $post['liked']; ?></span>
+		        			<span class="kklike-wg-date"><?php echo __('Date:','lang-kklike'); ?> <?php echo date('d-m-Y', strtotime($post['date'])); ?></span>
 		        		</span>
 		        		<span class="kkclear"></span>
 		        	</li>
@@ -332,7 +332,7 @@ class kklikeUserLiked extends WP_Widget {
 		        }
 				echo '</ul>';
 			}else{
-				echo '<div class="kklike-empty-list">' . __('Do not have favorite items.','lang-kkilikeit') . '</div>';
+				echo '<div class="kklike-empty-list">' . __('Do not have favorite items.','lang-kklike') . '</div>';
 			}
 			
 	        echo $after_widget;

@@ -40,7 +40,7 @@ jQuery(document).ready(function(){
 						<?php
 						
 						?>
-						<input class="button-primary kk-button" style="float: right; margin: 15px 0;" type="submit" name="save" value="<?php _e('Save changes','lang-kkilikeit'); ?>" />
+						<input class="button-primary kk-button" style="float: right; margin: 15px 0;" type="submit" name="save" value="<?php _e('Save changes','lang-kklike'); ?>" />
 					</div>
 				</form>
 				

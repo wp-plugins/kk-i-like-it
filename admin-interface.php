@@ -9,6 +9,12 @@ function kklike_admin_content(){
 	global $wpdb, $options;
 ?>
 
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jquery.jqplot.min.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.barRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.categoryAxisRenderer.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jquery.jqplot.css" />
+
 <div class="kkadmin-box">
 	<div class="kkadmin-top">
 		<?php include 'head.php'; ?>
@@ -20,10 +26,10 @@ function kklike_admin_content(){
 				$wp_options = get_option('kklikesettings');
 				if(empty($wp_options['dashboard_top']) || $wp_options['dashboard_top'] == null){
 				?>	
-					<div class="kkpb-alert kkpb-alert-error"><?php echo __('<strong>Plugin is not configured. It may not work correctly.</strong> Go to settings, make your selection and save settings.','lang-kkilikeit'); ?></div>
+					<div class="kkpb-alert kkpb-alert-error"><?php echo __('<strong>Plugin is not configured. It may not work correctly.</strong> Go to settings, make your selection and save settings.','lang-kklike'); ?></div>
 				<?php } ?>
 				
-				<h2><?php echo __('The last ten activities', 'lang-kkilikeit'); ?>:</h2>
+				<h2><?php echo __('The last ten activities', 'lang-kklike'); ?>:</h2>
 				
 				<div class="kklike-list-box">
 					<?php
@@ -47,7 +53,7 @@ function kklike_admin_content(){
 					?>
 						<div class="kklike-list-box-element">
 							<div class="kklike-list-text">
-								<?php echo __('I\'m sorry, at this moment there is no data to display','lang-kkilikeit'); ?>
+								<?php echo __('I\'m sorry, at this moment there is no data to display','lang-kklike'); ?>
 							</div>
 							<div class="kkclear"></div>
 						</div>
@@ -57,16 +63,16 @@ function kklike_admin_content(){
 				</div>
 
 				<div class="one-half">
-					<h2><?php echo __('Likes per day', 'lang-kkilikeit'); ?>:</h2>
+					<h2><?php echo __('Likes per day', 'lang-kklike'); ?>:</h2>
 					<div class="kkadmin-chart-desc">
-						<?php echo __('The number of likes within last few days.', 'lang-kkilikeit'); ?>
+						<?php echo __('The number of likes within last few days.', 'lang-kklike'); ?>
 					</div>
 					<?php require_once('number-likes.php'); ?>
 				</div>
 				<div class="one-half-last">
-					<h2><?php echo __('Most liked', 'lang-kkilikeit'); ?>:</h2>
+					<h2><?php echo __('Most liked', 'lang-kklike'); ?>:</h2>
 					<div class="kkadmin-chart-desc">
-						<?php echo __('The most often liked aticles within last few days.', 'lang-kkilikeit'); ?>
+						<?php echo __('The most often liked aticles within last few days.', 'lang-kklike'); ?>
 					</div>
 					<?php require_once('top-liked.php'); ?>
 				</div>
@@ -96,97 +102,97 @@ function kklike_admin_settings(){
 	global $options;
 	
 	$position = array(
-		__('Top Left','lang-kkilikeit')		=>	'top-left',
-		__('Top Right','lang-kkilikeit')	=>	'top-right',
-		__('Bottom Left','lang-kkilikeit')	=>	'bottom-left',
-		__('Bottom Right','lang-kkilikeit')	=>	'bottom-right',
-		__('Own position','lang-kkilikeit')	=>	'none'
+		__('Top Left','lang-kklike')		=>	'top-left',
+		__('Top Right','lang-kklike')	=>	'top-right',
+		__('Bottom Left','lang-kklike')	=>	'bottom-left',
+		__('Bottom Right','lang-kklike')	=>	'bottom-right',
+		__('Own position','lang-kklike')	=>	'none'
 	);
 	
 	$buttonType = array(
-		__('Light','lang-kkilikeit')	=>	'kklike-button-light',
-		__('Dark','lang-kkilikeit')		=>	'kklike-button-dark',
-		__('Big Dark','lang-kkilikeit')		=>	'kklike-button-big-dark',
-		__('Big Light','lang-kkilikeit')		=>	'kklike-button-big-light'
+		__('Light','lang-kklike')	=>	'kklike-button-light',
+		__('Dark','lang-kklike')		=>	'kklike-button-dark',
+		__('Big Dark','lang-kklike')		=>	'kklike-button-big-dark',
+		__('Big Light','lang-kklike')		=>	'kklike-button-big-light'
 	);
 	
 	$buttonPlace = array(
-		__('Post','lang-kkilikeit')		=>	'post',
-		__('Page','lang-kkilikeit')		=>	'page',
-		__('Post&Page','lang-kkilikeit')		=>	'both'
+		__('Post','lang-kklike')		=>	'post',
+		__('Page','lang-kklike')		=>	'page',
+		__('Post&Page','lang-kklike')		=>	'both'
 	);
 	
 	$showRating = array(
-		__('Always','lang-kkilikeit')								=>	'always',
-		__('Never show','lang-kkilikeit')							=>	'never',
-		__('Hovering cursore over the button','lang-kkilikeit')		=>	'hover'
+		__('Always','lang-kklike')								=>	'always',
+		__('Never show','lang-kklike')							=>	'never',
+		__('Hovering cursore over the button','lang-kklike')		=>	'hover'
 	);
 
 	$heartImages = array(
-		__('Small Dark','lang-kkilikeit')		=>	'heart-1',
-		__('Small Light','lang-kkilikeit')		=>	'heart-2',
-		__('Big Light','lang-kkilikeit')		=>	'heart-3',
-		__('Big Dark','lang-kkilikeit')			=>	'heart-4'
+		__('Small Dark','lang-kklike')		=>	'heart-1',
+		__('Small Light','lang-kklike')		=>	'heart-2',
+		__('Big Light','lang-kklike')		=>	'heart-3',
+		__('Big Dark','lang-kklike')			=>	'heart-4'
 	);
 	
 	$options = array(
 	// ==== GENERAL SETTINGS ====
-	array(	'title'		=>	__('General Settings','lang-kkilikeit'),
+	array(	'title'		=>	__('General Settings','lang-kklike'),
 			'alias'		=>	'general-settings',
 			'icon'		=>	WP_PLUGIN_URL . '/images/global.png',
 		  	'content'	=>	array(
 		  					'title_hr_1'	=>	array('type' => 'title-hr',
-		  									'default'	=>	 __('Button settings:','lang-kkilikeit'),
+		  									'default'	=>	 __('Button settings:','lang-kklike'),
 		  									'class'		=>	'kkpb-settings-title-break'
 							),
 							'like_text'=>array('type'		=>	'text',
 										   		'default'	=>	'I Like It!',
-										   		'title'		=>	__('Like text:','lang-kkilikeit'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+										   		'title'		=>	__('Like text:','lang-kklike'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'class'		=>	''
 							),
 							'unlike_text'=>array('type'		=>	'text',
 										   		'default'	=>	'Unlike!',
-										   		'title'		=>	__('Unlike text:','lang-kkilikeit'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+										   		'title'		=>	__('Unlike text:','lang-kklike'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'class'		=>	''
 							),
 							'only_users'=>array('type'		=>	'checkbox',
 										   		'default'	=>	'off',
-										   		'title'		=>	__('Only users can vote?','lang-kkilikeit'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+										   		'title'		=>	__('Only users can vote?','lang-kklike'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'class'		=>	''
 							),
 							'show_guest'=>array('type'		=>	'checkbox',
 										   		'default'	=>	'off',
-										   		'title'		=>	__('Should a button be shown to guests?','lang-kkilikeit'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+										   		'title'		=>	__('Should a button be shown to guests?','lang-kklike'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'class'		=>	''
 							),
 							'button_position'=>array('type'	=>	'radio-class',
 										   		'default'	=>	'top-left',
 										   		'title'		=>	__('Button position:','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'values'	=> $position,
 												'class'		=>	''
 							),
 							'button_in_home'=>array('type'	=>	'checkbox',
 										   		'default'	=>	'off',
-										   		'title'		=>	__('Show button on post list?','lang-kkilikeit'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+										   		'title'		=>	__('Show button on post list?','lang-kklike'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'class'		=>	''
 							),
 							'button_place'=>array('type'	=>	'radio-ui',
 										   		'default'	=>	'both',
 										   		'title'		=>	__('Where display button?','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'values'	=> $buttonPlace,
 												'class'		=>	''
 							),
 							'show_rating'=>array('type'	=>	'radio-ui',
 										   		'default'	=>	'always',
 										   		'title'		=>	__('Show numer of likes','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'values'	=> $showRating,
 												'class'		=>	''
 							),
@@ -194,14 +200,14 @@ function kklike_admin_settings(){
 							'own_button_type'=>array('type'		=>	'checkbox',
 										   		'default'	=>	'',
 										   		'title'		=>	__('Own button style?','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 												'class'		=>	''
 							),
 							
 							'button_type'=>array('type'		=>	'radio-demo',
 										   		'default'	=>	'kklike-button-light',
 										   		'title'		=>	__('Button type','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'values'	=> $buttonType,
 												'class'		=>	'button-template'
 							),
@@ -209,77 +215,77 @@ function kklike_admin_settings(){
 							'button_color'=>array('type'		=>	'color-pick',
 										   		'default'	=>	'000000',
 										   		'title'		=>	__('Button Color','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 												'class'		=>	'button-own'
 							),
 							'button_text_color'=>array('type'		=>	'color-pick',
 										   		'default'	=>	'ffffff',
 										   		'title'		=>	__('Button Text Color','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 												'class'		=>	'button-own'
 							),
 							'button_border_size'=>array('type'		=>	'text',
 										   		'default'	=>	'1',
 										   		'title'		=>	__('Button Border Size','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 												'class'		=>	'button-own'
 							),
 							'button_border_color'=>array('type'		=>	'color-pick',
 										   		'default'	=>	'cccccc',
 										   		'title'		=>	__('Button Border Color','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 												'class'		=>	'button-own'
 							),
 							'button_font_size'=>array('type'		=>	'text',
 										   		'default'	=>	'10',
 										   		'title'		=>	__('Button Font Size','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 												'class'		=>	'button-own'
 							),
 							'button_round_corners'=>array('type'		=>	'text',
 										   		'default'	=>	'4',
 										   		'title'		=>	__('Button Round Corners','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 												'class'		=>	'button-own'
 							),
 							'button_heart_img'=>array('type'		=>	'hearts-img',
 										   		'default'	=>	'heart-1',
 										   		'title'		=>	__('Button type','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'values'	=> $heartImages,
 												'class'		=>	'button-own'
 							),
 							
 							'title_hr_2'	=>	array('type' => 'title-hr',
-		  									'default'	=>	 __('Dashboard:','lang-kkilikeit'),
+		  									'default'	=>	 __('Dashboard:','lang-kklike'),
 		  									'class'		=>	'kkpb-settings-title-break'
 							),
 							'dashboard_recent'=>array('type'	=>	'checkbox',
 										   		'default'	=>	'off',
-										   		'title'		=>	__('Show box Recent Liked on Dashboard?','lang-kkilikeit'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+										   		'title'		=>	__('Show box Recent Liked on Dashboard?','lang-kklike'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'class'		=>	''
 							),
 							'dashboard_top'=>array('type'	=>	'checkbox',
 										   		'default'	=>	'off',
-										   		'title'		=>	__('Show box Top Liked on Dashboard?','lang-kkilikeit'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+										   		'title'		=>	__('Show box Top Liked on Dashboard?','lang-kklike'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'class'		=>	''
 							),
 							
 							'title_hr_3'	=>	array('type' => 'title-hr',
-		  									'default'	=>	 __('Post/Page Settings:','lang-kkilikeit'),
+		  									'default'	=>	 __('Post/Page Settings:','lang-kklike'),
 		  									'class'		=>	'kkpb-settings-title-break'
 							),
 							'voters_header'=>array('type'	=>	'text',
 										   		'default'	=>	'',
 										   		'title'		=>	__('Voters Text Header:','lang-kkprogressbar'),
-									       		'tooltip'	=>	__('','lang-kkilikeit')
+									       		'tooltip'	=>	__('','lang-kklike')
 							),
 							'show_voters'=>array('type'	=>	'checkbox',
 										   		'default'	=>	'off',
-										   		'title'		=>	__('Show voters after post/page content?','lang-kkilikeit'),
-									       		'tooltip'	=>	__('','lang-kkilikeit'),
+										   		'title'		=>	__('Show voters after post/page content?','lang-kklike'),
+									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'class'		=>	''
 							),					
 	)

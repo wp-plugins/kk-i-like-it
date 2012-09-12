@@ -46,39 +46,25 @@ var dayLabel = [];
 
 ?>
 
-
 var chart1;
 jQuery(document).ready(function() {
-      chart1 = new Highcharts.Chart({
-         chart: {
-            renderTo: 'container',
-            type: 'column'
-         },
-         title: {
-            text: ''
-         },
-         xAxis: {
-         	labels : {
-         		align: 'right',
-         		rotation: -45
-         	},
-            categories: dayLabel
-         },
-         yAxis: {
-            title: {
-               text: 'Likes',
-               style: {
-            		color: '#3E3E3E'
-            	}
+      chart1 = jQuery.jqplot('container', [likes], {
+      	seriesColors : ["#3E3E3E"],
+      	seriesDefaults:{
+            renderer: jQuery.jqplot.BarRenderer,
+            rendererOptions: {fillToZero: true}
+        },
+        series:[
+            {label:'Likes'}
+        ],
+        axes: {
+            xaxis: {
+                renderer: jQuery.jqplot.CategoryAxisRenderer,
+                ticks: dayLabel
             }
-         },
-         series: [{
-         	name: 'likes',
-            data: likes,
-            color: '#3E3E3E'
-         }]
+        }
       });
-   });
+});
 </script>
 
 <div id="container" class="kkadmin-small-chart"></div>

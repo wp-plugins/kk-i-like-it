@@ -177,7 +177,7 @@ class kkDataBase{
 		foreach($dane as $row){
 			
 			if($row->idwpuser == '0'){
-				$user = __('Guest', 'lang-kkilikeit');
+				$user = __('Guest', 'lang-kklike');
 			}else{
 				$user = $this->wpdb->get_var("SELECT display_name FROM $this->tableWPUsers WHERE ID = $row->idwpuser");
 			}

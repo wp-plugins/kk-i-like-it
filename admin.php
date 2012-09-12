@@ -3,12 +3,12 @@
   Plugin Name: KK I Like It
   Plugin URI: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
   Description: Plugin gives users or guest an option to like an article or a page.
-  Version: 1.6.1
+  Version: 1.6.2
   Author: Krzysztof Furtak
   Author URI: http://krzysztof-furtak.pl
  */
 
-add_action('init', 'kklike_load_translation');
+add_action('plugins_loaded', 'kklike_load_translation');
 require_once ('db.php');
 
 require_once('prezentacja.php');
@@ -20,10 +20,10 @@ require_once ('meta.php');
 function kklike_load_translation() {
     $lang = get_locale();
     if (!empty($lang)) {
-        $moFile = dirname(plugin_basename(__FILE__)) . "/lang";
+        $moFile = dirname(plugin_basename( __FILE__ )) . "/lang";
         $moKat = dirname(plugin_basename(__FILE__));
 
-        load_plugin_textdomain("lang-kklike", false, $moFile);
+        load_plugin_textdomain('lang-kklike', false, $moFile);
     }
 }
 
@@ -76,9 +76,6 @@ function kklike_admin_enqueue_scripts(){
 	wp_register_script('kklike-tip', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery.qtip.min.js', array('jquery'), '1.6');
 	wp_enqueue_script('kklike-tip');
 
-	/* ============= HighCharts PLUGIN ============= */
-	wp_register_script('kklike-charts', WP_PLUGIN_URL .'/kk-i-like-it/js/highcharts.js', array('jquery'), '1.6');
-	wp_enqueue_script('kklike-charts');
 }
 
 function kklike_enqueue_scripts(){
@@ -477,7 +474,7 @@ if (is_admin ()) {
 				?>
 					<div class="kklike-list-box-element">
 						<div class="kklike-list-text">
-							<?php echo __('I\'m sorry, at this moment there are no data to display','lang-kkilikeit'); ?>
+							<?php echo __('I\'m sorry, at this moment there are no data to display','lang-kklike'); ?>
 						</div>
 						<div class="kkclear"></div>
 					</div>
@@ -505,7 +502,7 @@ if (is_admin ()) {
 						<div class="kklike-list-text" style="width: 100%;">
 							<strong><span class=""><?php echo $i; ?>.</span> <a href="<?php echo get_permalink($row->ID); ?>" target="_blank"><?php echo $row->post_title; ?></a></strong>.
 						</div>
-						<div class="kklike-likes"><?php echo $row->rating . ' ' . __('likes','lang-kkilikeit'); ?></div>
+						<div class="kklike-likes"><?php echo $row->rating . ' ' . __('likes','lang-kklike'); ?></div>
 						<div class="kklike-stat-bg" style="width: <?php echo $perc; ?>%;"></div>
 						<div class="kkclear"></div>
 					</div>
@@ -516,7 +513,7 @@ if (is_admin ()) {
 				?>
 					<div class="kklike-list-box-element">
 						<div class="kklike-list-text">
-							<?php echo __('I\'m sorry, at this moment there are no data to display','lang-kkilikeit'); ?>
+							<?php echo __('I\'m sorry, at this moment there are no data to display','lang-kklike'); ?>
 						</div>
 						<div class="kkclear"></div>
 					</div>
@@ -533,10 +530,10 @@ if (is_admin ()) {
 		global $wp_options;
 		
 		if($wp_options['dashboard_recent'] == 'on'){
-			wp_add_dashboard_widget('recently_liked_dashboard_widget', __('KKILikeIt - recently liked', 'lang-kkilikeit'), 'kklike_recently_liked_widget_function');
+			wp_add_dashboard_widget('recently_liked_dashboard_widget', __('KKILikeIt - recently liked', 'lang-kklike'), 'kklike_recently_liked_widget_function');
 		}	
 		if($wp_options['dashboard_top'] == 'on'){
-			wp_add_dashboard_widget('most_liked_dashboard_widget', __('KKILikeIt - most liked - TOP 5', 'lang-kkilikeit'), 'kklike_most_liked_widget_function');
+			wp_add_dashboard_widget('most_liked_dashboard_widget', __('KKILikeIt - most liked - TOP 5', 'lang-kklike'), 'kklike_most_liked_widget_function');
 		}
 	} 
 		

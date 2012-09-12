@@ -7,7 +7,7 @@
 		<li>
 			<a class="<?php echo ($page == 'kklike-menu')? 'active':''; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-menu">
 				<span class="kkadmin-arrow"></span>
-				<?php echo __('Stats','lang-kkilikeit'); ?>
+				<?php echo __('Stats','lang-kklike'); ?>
 			</a>
 		</li>
 	<?php endif; ?>
@@ -15,14 +15,14 @@
 		<li>
 			<a class="<?php echo ($page == 'kklike-settings')? 'active':''; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-settings" class="">
 				<span class="kkadmin-arrow"></span>
-				<?php echo __('Settings','lang-kkilikeit'); ?>
+				<?php echo __('Settings','lang-kklike'); ?>
 			</a>
 		</li>
 	<?php endif; ?>
 	<li>
 		<a class="<?php echo ($page == 'kklike-documentation')? 'active':''; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-documentation">
 			<span class="kkadmin-arrow"></span> 
-			<?php echo __('Documentation','lang-kkilikeit'); ?>
+			<?php echo __('Documentation','lang-kklike'); ?>
 		</a>
 	</li>
 	<li>

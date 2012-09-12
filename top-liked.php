@@ -1,6 +1,7 @@
 <script type="text/javascript">
 var likes_top = [];
 var posts_full = [];
+var posts = [];
 <?php
 	$from = null;
 	$daysCount = 7;
@@ -12,6 +13,7 @@ var posts_full = [];
 		?>
 		likes_top.push(parseInt('<?php echo $post->count; ?>'));
       posts_full.push('<?php echo $post->post_title; ?>');
+      posts.push('<?php echo substr($post->post_title, 0, 10) . "..."; ?>');
 		<?php
 	}
 
@@ -19,51 +21,25 @@ var posts_full = [];
 
 
 var chart1;
-jQuery(document).ready(function() {
-      chart1 = new Highcharts.Chart({
-         chart: {
-            renderTo: 'container-top',
-            type: 'bar'
-         },
-         title: {
-            text: ''
-         },
-         xAxis: {
-         	labels : {
-         		align: 'right',
-         		rotation: -60,
-               formatter: function(){
-                  if(this.value){
-                     if(this.value.length > 10){
-                        return this.value.substr(0, 9) + '...';
-                     }else{
-                        return this.value;
-                     }
-                  }
-               }
-         	},
-            categories: posts_full
-         },
-         yAxis: {
-            title: {
-               text: 'Likes',
-               style: {
-            		color: '#3E3E3E'
-            	}
+   jQuery(document).ready(function() {
+      chart1 = jQuery.jqplot('container-top', [likes_top], {
+         seriesColors : ["#3E3E3E"],
+         seriesDefaults:{
+            renderer: jQuery.jqplot.BarRenderer,
+            rendererOptions: {fillToZero: true},
+            rendererOptions: {
+                barDirection: 'horizontal'
             }
-         },
-         tooltip: {
-            formatter: function() {
-                return ''+
-                    this.x + ' - ' +
-                    this.series.name +': '+ this.y;
+        },
+        series:[
+            {label:'Likes'}
+        ],
+        axes: {
+            yaxis: {
+                renderer: jQuery.jqplot.CategoryAxisRenderer,
+                ticks: posts
             }
-         },
-         series: [{
-         	name: 'likes',
-            data: likes_top,
-            color: '#3E3E3E'
-         }]
+        }
       });
    });
 </script>
