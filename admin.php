@@ -27,15 +27,15 @@ function kklike_load_translation() {
     }
 }
 
-global $kklike_options;
-$kklike_options = get_option('kklikesettings');
+global $kkLikeSettings;
+$kkLikeSettings = get_option('kklikesettings');
 
 function frontend_ajaxurl() {
-global $kklike_options;
+global $kkLikeSettings;
 ?>
 <script type="text/javascript">
-	var likeText = '<?php echo $kklike_options['like_text']; ?>';
-	var unlikeText = '<?php echo $kklike_options['unlike_text']; ?>';
+	var likeText = '<?php echo $kkLikeSettings['like_text']; ?>';
+	var unlikeText = '<?php echo $kkLikeSettings['unlike_text']; ?>';
 </script>
 <?php
 }
@@ -113,19 +113,19 @@ function kkLikeRating($ret = false){
 
 function kkLikeButton($ret = false) {
 	global $post;
-	global $kklike_options;
+	global $kkLikeSettings;
 	clean_post_cache( $post->ID );
 	
-	if($kklike_options['button_place'] == 'page'){
+	if($kkLikeSettings['button_place'] == 'page'){
 		$warunek = is_page();
-	}elseif($kklike_options['button_place'] == 'post'){
+	}elseif($kkLikeSettings['button_place'] == 'post'){
 		$warunek = is_single();
 	}else{
 		$warunek = TRUE;
 	}
 	
 	if(is_home()){
-		if($kklike_options['button_in_home'] == 'on' && ($kklike_options['button_place'] == 'post' || $kklike_options['button_place'] == 'both')){
+		if($kkLikeSettings['button_in_home'] == 'on' && ($kkLikeSettings['button_place'] == 'post' || $kkLikeSettings['button_place'] == 'both')){
 			$warunek = TRUE;
 		}else{
 			$warunek = FALSE;
@@ -138,18 +138,18 @@ function kkLikeButton($ret = false) {
 		return $content;
 	}
 	
-	if(!is_user_logged_in() && $kklike_options['show_guest'] != 'on'){
+	if(!is_user_logged_in() && $kkLikeSettings['show_guest'] != 'on'){
 		return FALSE;
 	}
 	
 	
 	$db = new kkDataBase;
 	
-	if(empty($kklike_options['show_rating']) || $kklike_options['show_rating'] == 'always'){
+	if(empty($kkLikeSettings['show_rating']) || $kkLikeSettings['show_rating'] == 'always'){
 		$rating = $db->getPostRating($post->ID, 'post');
 		$classRating = '';
 		$boxRating = '';
-	}else if($kklike_options['show_rating'] == 'hover'){
+	}else if($kkLikeSettings['show_rating'] == 'hover'){
 		$rating = $db->getPostRating($post->ID, 'post');
 		$classRating = 'kklike-rating-none';
 		$boxRating = 'kklike-rating-hover';		
@@ -165,24 +165,24 @@ function kkLikeButton($ret = false) {
 	
 	if($userRate == '0'){
 		$act = 'like';
-		$text = $kklike_options['like_text'];
+		$text = $kkLikeSettings['like_text'];
 	}else{
 		$act = 'unlike';
-		$text = $kklike_options['unlike_text'];
+		$text = $kkLikeSettings['unlike_text'];
 	}
 	
 	$class = 'kk-left';
 	
-	if($kklike_options['only_users'] == 'on'){
+	if($kkLikeSettings['only_users'] == 'on'){
 		$onlyUser = '1';
 	}else{
 		$onlyUser = '0';
 	}
 
-	if($kklike_options['own_button_type'] != 'on'){
+	if($kkLikeSettings['own_button_type'] != 'on'){
 		
 	  	$kklike = '
-			<div class="kklike-content '.$kklike_options['button_type'].'">
+			<div class="kklike-content '.$kkLikeSettings['button_type'].'">
 		  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" rel="kklike-'. $post->ID .'">
 		  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
 		  			<input type="hidden" class="kklike-type" value="post" />
@@ -201,15 +201,15 @@ function kkLikeButton($ret = false) {
  		$kklike = '
 		<div class="kklike-content">
 			<span style="display: none;">|||||</span>
-		  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" style="border-radius: '.$kklike_options['button_round_corners'].'px; font-size: '.$kklike_options['button_font_size'].'px;color: #'.$kklike_options['button_text_color'].'; background: #'.$kklike_options['button_color'].'; border: '.$kklike_options['button_border_size'].'px solid #'.$kklike_options['button_border_color'].';" rel="kklike-'. $post->ID .'">
+		  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" style="border-radius: '.$kkLikeSettings['button_round_corners'].'px; font-size: '.$kkLikeSettings['button_font_size'].'px;color: #'.$kkLikeSettings['button_text_color'].'; background: #'.$kkLikeSettings['button_color'].'; border: '.$kkLikeSettings['button_border_size'].'px solid #'.$kkLikeSettings['button_border_color'].';" rel="kklike-'. $post->ID .'">
 		  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
 		  			<input type="hidden" class="kklike-type" value="post" />
 		  			<input type="hidden" class="kklike-action" value="' . $act . '" />
 		  			<input type="hidden" class="kklike-ou" value="'. $onlyUser .'" />
 					<span class="kklike-ico" style="background: transparent; width: auto; height: auto;">
-						<img src="' . WP_PLUGIN_URL . '/kk-i-like-it/images/' . $kklike_options['button_heart_img'] . '.png" alt="Like It" />
+						<img src="' . WP_PLUGIN_URL . '/kk-i-like-it/images/' . $kkLikeSettings['button_heart_img'] . '.png" alt="Like It" />
 					</span> 
-					<span class="kklike-value '. $classRating .'" style="border-right: '.$kklike_options['button_border_size'].'px solid #'.$kklike_options['button_border_color'].'; border-left: '.$kklike_options['button_border_size'].'px solid #'.$kklike_options['button_border_color'].';">' . $rating . '</span>
+					<span class="kklike-value '. $classRating .'" style="border-right: '.$kkLikeSettings['button_border_size'].'px solid #'.$kkLikeSettings['button_border_color'].'; border-left: '.$kkLikeSettings['button_border_size'].'px solid #'.$kkLikeSettings['button_border_color'].';">' . $rating . '</span>
 					<span class="kklike-text">' . $text . '</span>
 				</a>
 			<span style="display: none;">|||||</span>
@@ -229,18 +229,19 @@ function kkLikeButton($ret = false) {
 
 function addKKLikeButton($content) {
 	global $post;
-	global $kklike_options;
+	global $kkLikeSettings;
+	clean_post_cache( $post->ID );
 	
-	if($kklike_options['button_place'] == 'page'){
+	if($kkLikeSettings['button_place'] == 'page'){
 		$warunek = is_page();
-	}elseif($kklike_options['button_place'] == 'post'){
+	}elseif($kkLikeSettings['button_place'] == 'post'){
 		$warunek = is_single();
 	}else{
 		$warunek = TRUE;
 	}
 	
 	if(is_home()){
-		if($kklike_options['button_in_home'] == 'on' && ($kklike_options['button_place'] == 'post' || $kklike_options['button_place'] == 'both')){
+		if($kkLikeSettings['button_in_home'] == 'on' && ($kkLikeSettings['button_place'] == 'post' || $kkLikeSettings['button_place'] == 'both')){
 			$warunek = TRUE;
 		}else{
 			$warunek = FALSE;
@@ -249,22 +250,22 @@ function addKKLikeButton($content) {
 
 	$disableButton = get_post_meta($post->ID, 'post_display_likes_button_value', true);
 	
-	if(!$warunek || $disableButton == 'on' || $kklike_options['button_position'] == 'none'){
+	if(!$warunek || $disableButton == 'on' || $kkLikeSettings['button_position'] == 'none'){
 		return $content;
 	}
 	
-	if(!is_user_logged_in() && $kklike_options['show_guest'] != 'on'){
+	if(!is_user_logged_in() && $kkLikeSettings['show_guest'] != 'on'){
 		return $content;
 	}
 	
 	
 	$db = new kkDataBase;
 	
-	if(empty($kklike_options['show_rating']) || $kklike_options['show_rating'] == 'always'){
+	if(empty($kkLikeSettings['show_rating']) || $kkLikeSettings['show_rating'] == 'always'){
 		$rating = $db->getPostRating($post->ID, 'post');
 		$classRating = '';
 		$boxRating = '';
-	}else if($kklike_options['show_rating'] == 'hover'){
+	}else if($kkLikeSettings['show_rating'] == 'hover'){
 		$rating = $db->getPostRating($post->ID, 'post');
 		$classRating = 'kklike-rating-none';
 		$boxRating = 'kklike-rating-hover';		
@@ -280,28 +281,28 @@ function addKKLikeButton($content) {
 	
 	if($userRate == '0'){
 		$act = 'like';
-		$text = $kklike_options['like_text'];
+		$text = $kkLikeSettings['like_text'];
 	}else{
 		$act = 'unlike';
-		$text = $kklike_options['unlike_text'];
+		$text = $kkLikeSettings['unlike_text'];
 	}
 	
-	if($kklike_options['button_position'] == 'top-left' || $kklike_options['button_position'] == 'bottom-left'){
+	if($kkLikeSettings['button_position'] == 'top-left' || $kkLikeSettings['button_position'] == 'bottom-left'){
 		$class = 'kk-left';
 	}else{
 		$class = 'kk-right';
 	}
 	
-	if($kklike_options['only_users'] == 'on'){
+	if($kkLikeSettings['only_users'] == 'on'){
 		$onlyUser = '1';
 	}else{
 		$onlyUser = '0';
 	}
 
-	if($kklike_options['own_button_type'] != 'on'){
+	if($kkLikeSettings['own_button_type'] != 'on'){
 			
 	  	$kklike = '
-		<div class="kklike-content '.$kklike_options['button_type'].'">
+		<div class="kklike-content '.$kkLikeSettings['button_type'].'">
 			<span style="display: none;">|||||</span>
 		  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" rel="kklike-'. $post->ID .'">
 		  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
@@ -322,15 +323,15 @@ function addKKLikeButton($content) {
  		$kklike = '
 		<div class="kklike-content">
 			<span style="display: none;">|||||</span>
-		  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" style="border-radius: '.$kklike_options['button_round_corners'].'px; font-size: '.$kklike_options['button_font_size'].'px;color: #'.$kklike_options['button_text_color'].'; background: #'.$kklike_options['button_color'].'; border: '.$kklike_options['button_border_size'].'px solid #'.$kklike_options['button_border_color'].';" rel="kklike-'. $post->ID .'">
+		  		<a href="#" class="kklike-box '.$class.' '.$boxRating.'" style="border-radius: '.$kkLikeSettings['button_round_corners'].'px; font-size: '.$kkLikeSettings['button_font_size'].'px;color: #'.$kkLikeSettings['button_text_color'].'; background: #'.$kkLikeSettings['button_color'].'; border: '.$kkLikeSettings['button_border_size'].'px solid #'.$kkLikeSettings['button_border_color'].';" rel="kklike-'. $post->ID .'">
 		  			<input type="hidden" class="kklike-id" value="'.$post->ID.'" />
 		  			<input type="hidden" class="kklike-type" value="post" />
 		  			<input type="hidden" class="kklike-action" value="' . $act . '" />
 		  			<input type="hidden" class="kklike-ou" value="'. $onlyUser .'" />
 					<span class="kklike-ico" style="background: transparent; width: auto; height: auto;">
-						<img src="' . WP_PLUGIN_URL . '/kk-i-like-it/images/' . $kklike_options['button_heart_img'] . '.png" alt="Like It" />
+						<img src="' . WP_PLUGIN_URL . '/kk-i-like-it/images/' . $kkLikeSettings['button_heart_img'] . '.png" alt="Like It" />
 					</span> 
-					<span class="kklike-value '. $classRating .'" style="border-right: '.$kklike_options['button_border_size'].'px solid #'.$kklike_options['button_border_color'].'; border-left: '.$kklike_options['button_border_size'].'px solid #'.$kklike_options['button_border_color'].';">' . $rating . '</span>
+					<span class="kklike-value '. $classRating .'" style="border-right: '.$kkLikeSettings['button_border_size'].'px solid #'.$kkLikeSettings['button_border_color'].'; border-left: '.$kkLikeSettings['button_border_size'].'px solid #'.$kkLikeSettings['button_border_color'].';">' . $rating . '</span>
 					<span class="kklike-text">' . $text . '</span>
 				</a>
 			<span style="display: none;">|||||</span>
@@ -342,19 +343,17 @@ function addKKLikeButton($content) {
 
 	$content = preg_replace("/\|\|\|\|\|(.*?)\|\|\|\|\|/i", "", $content);
 
-  	if($kklike_options['button_position'] == 'top-left' || $kklike_options['button_position'] == 'top-right'){
-  		$content = $kklike . $content;
-  		return $content;
-	}else if($kklike_options['button_position'] == 'bottom-left' || $kklike_options['button_position'] == 'bottom-right'){
-		$content = $content . $kklike;
-		return $content;
+  	if($kkLikeSettings['button_position'] == 'top-left' || $kkLikeSettings['button_position'] == 'top-right'){
+  		return $kklike . $content;
+	}else if($kkLikeSettings['button_position'] == 'bottom-left' || $kkLikeSettings['button_position'] == 'bottom-right'){
+		return $content . $kklike;
 	}else{
 		return $content;
 	}
 }
 
 function addKKLikeVoters($content){
-	global $post, $kklike_options;
+	global $post, $kkLikeSettings;
 	$db = new kkDataBase;
 
 	$dane = $db->getPostVoters($post->ID);
@@ -364,9 +363,9 @@ function addKKLikeVoters($content){
 	//var_dump($dane);
 	//echo '</pre>';
 
-	if(count($dane) > 0 && is_single() && $kklike_options['show_voters'] == 'on'){
-		if($kklike_options['voters_header'] != ''){
-			$users .= '<h3 class="kklike-voters-header">' . $kklike_options['voters_header'] . '</h3>';
+	if(count($dane) > 0 && is_single() && $kkLikeSettings['show_voters'] == 'on'){
+		if($kkLikeSettings['voters_header'] != ''){
+			$users .= '<h3 class="kklike-voters-header">' . $kkLikeSettings['voters_header'] . '</h3>';
 		}
 		
 		foreach($dane as $user){
@@ -388,6 +387,7 @@ function addKKLikeVoters($content){
 }
 
 function content_init(){
+
 	add_action( 'the_excerpt', 'addKKLikeButton');
 	add_action( 'the_content', 'addKKLikeButton');
 	add_action( 'the_content', 'addKKLikeVoters');
@@ -527,12 +527,12 @@ if (is_admin ()) {
 	// Create the function use in the action hook
 	
 	function kklike_widgets() {
-		global $kklike_options;
+		global $kkLikeSettings;
 		
-		if($kklike_options['dashboard_recent'] == 'on'){
+		if($kkLikeSettings['dashboard_recent'] == 'on'){
 			wp_add_dashboard_widget('recently_liked_dashboard_widget', __('KKILikeIt - recently liked', 'lang-kklike'), 'kklike_recently_liked_widget_function');
 		}	
-		if($kklike_options['dashboard_top'] == 'on'){
+		if($kkLikeSettings['dashboard_top'] == 'on'){
 			wp_add_dashboard_widget('most_liked_dashboard_widget', __('KKILikeIt - most liked - TOP 5', 'lang-kklike'), 'kklike_most_liked_widget_function');
 		}
 	} 

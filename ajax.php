@@ -3,11 +3,11 @@ global $like;
 $like = new kkDataBase;
 
 function addLike() {
-	global $like, $wp_options;
+	global $like, $kkLikeSettings;
 	
 	$user = get_current_user_id();
 	
-	if($wp_options['only_users'] == 'on' && $user == '0'){
+	if($kkLikeSettings['only_users'] == 'on' && $user == '0'){
 		$odp = array('hasError' => TRUE, 'rating' => '', 'msg' => 'Only registered users can vote.');
 		echo json_encode($odp);
 		die();

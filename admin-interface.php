@@ -6,7 +6,7 @@
 require_once 'db.php';
 
 function kklike_admin_content(){
-	global $wpdb, $kklike_options;
+	global $wpdb, $kkLikeOptions;
 ?>
 
 <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/excanvas.js"></script><![endif]-->
@@ -23,8 +23,8 @@ function kklike_admin_content(){
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
 				<?php 
-				$kklike_options = get_option('kklikesettings');
-				if(empty($kklike_options['dashboard_top']) || $kklike_options['dashboard_top'] == null){
+				$kkLikeSettings = get_option('kklikesettings');
+				if(empty($kkLikeSettings['like_text']) || $kkLikeSettings['like_text'] == null){
 				?>	
 					<div class="kkpb-alert kkpb-alert-error"><?php echo __('<strong>Plugin is not configured. It may not work correctly.</strong> Go to settings, make your selection and save settings.','lang-kklike'); ?></div>
 				<?php } ?>
@@ -99,7 +99,7 @@ function kklike_admin_content(){
 
 function kklike_admin_settings(){
 
-	global $kklike_options;
+	global $kkLikeOptions;
 	
 	$position = array(
 		__('Top Left','lang-kklike')		=>	'top-left',
@@ -135,7 +135,7 @@ function kklike_admin_settings(){
 		__('Big Dark','lang-kklike')			=>	'heart-4'
 	);
 	
-	$kklike_options = array(
+	$kkLikeOptions = array(
 	// ==== GENERAL SETTINGS ====
 	array(	'title'		=>	__('General Settings','lang-kklike'),
 			'alias'		=>	'general-settings',
@@ -294,7 +294,7 @@ function kklike_admin_settings(){
 
 function kklike_settings(){
 	
-	global $kklike_options;
+	global $kkLikeOptions;
 	
 	kklike_admin_settings();
 	
@@ -305,7 +305,7 @@ function kklike_settings(){
 			$options_array = array();
 			if ( isset($_POST['action']) && $_POST['action'] == 'save' ) {
 				
-				foreach ($options as $value) {
+				foreach ($kkLikeOptions as $value) {
 					foreach( $value['content'] as $key => $val ) {
 						if( $key != 'custom_sidebar' && $key != 'title_hr_1' && $key != 'title_hr_2' && $key != 'title_hr_3' ) {
 							if($_REQUEST[$key] == ''){
@@ -333,22 +333,22 @@ function kklike_documentation(){
 
 function kklike_menu() {
 	
-	$kklike_options = get_option('kklikesettings');
+	$kkLikeSettings = get_option('kklikesettings');
 	
-	if(!empty($kklike_options['plugin_rank'])){
-		$plugin_rank = $kklike_options['plugin_rank'];
+	if(!empty($kkLikeSettings['plugin_rank'])){
+		$plugin_rank = $kkLikeSettings['plugin_rank'];
 	}else{
 		$plugin_rank = 'administrator';
 	}
 	
-	if(!empty($kklike_options['edit_rank'])){
-		$edit_rank = $kklike_options['edit_rank'];
+	if(!empty($kkLikeSettings['edit_rank'])){
+		$edit_rank = $kkLikeSettings['edit_rank'];
 	}else{
 		$edit_rank = 'administrator';
 	}
 	
-	if(!empty($kklike_options['settings_rank'])){
-		$settings_rank = $kklike_options['settings_rank'];
+	if(!empty($kkLikeSettings['settings_rank'])){
+		$settings_rank = $kkLikeSettings['settings_rank'];
 	}else{
 		$settings_rank = 'administrator';
 	}

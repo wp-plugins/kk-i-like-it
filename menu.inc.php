@@ -1,9 +1,9 @@
 <?php
-	$kklike_options = get_option('kklikesettings');
+	$kkLikeSettings = get_option('kklikesettings');
 	$page = $_GET['page'];
 ?>
 <ul class="kkadmin-menu-ul">
-	<?php if(empty($kklike_options['plugin_rank']) || current_user_can($kklike_options['plugin_rank'])): ?>
+	<?php if(empty($kkLikeSettings['plugin_rank']) || current_user_can($kkLikeSettings['plugin_rank'])): ?>
 		<li>
 			<a class="<?php echo ($page == 'kklike-menu')? 'active':''; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-menu">
 				<span class="kkadmin-arrow"></span>
@@ -11,7 +11,7 @@
 			</a>
 		</li>
 	<?php endif; ?>
-	<?php if(empty($kklike_options['settings_rank']) || current_user_can($kklike_options['settings_rank'])): ?>
+	<?php if(empty($kkLikeSettings['settings_rank']) || current_user_can($kkLikeSettings['settings_rank'])): ?>
 		<li>
 			<a class="<?php echo ($page == 'kklike-settings')? 'active':''; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-settings" class="">
 				<span class="kkadmin-arrow"></span>

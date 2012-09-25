@@ -1,6 +1,6 @@
 <?php
-global $kklike_options;
-$kklike_options = get_option('kklikesettings');
+global $kkLikeSettings;
+$kkLikeSettings = get_option('kklikesettings');
 
 /* ================================ */
 /* ========   WIDGETY   =========== */
@@ -70,7 +70,7 @@ class kklikeMostLiked extends WP_Widget {
 
     function widget($args, $instance) {
         // outputs the content of the widget
-    	global $kklike_options;
+    	global $kkLikeSettings;
 
         $i = 1;
         extract($args);
@@ -189,7 +189,7 @@ class kklikeLastLiked extends WP_Widget {
 
     function widget($args, $instance) {
         // outputs the content of the widget
-    	global $kklike_options;
+    	global $kkLikeSettings;
 
         $i = 1;
         extract($args);
@@ -287,7 +287,7 @@ class kklikeUserLiked extends WP_Widget {
         // outputs the content of the widget
         if ( is_user_logged_in() ) {
         	
-	    	global $kklike_options;
+	    	global $kkLikeSettings;
 			
 			$current_user = wp_get_current_user();
 	
