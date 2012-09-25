@@ -2,7 +2,7 @@
 
 global $wpdb;
 
-$wp_options = get_option('kklikesettings');
+$kkl_options = get_option('kklikesettings');
 
 ?>
 
@@ -29,10 +29,11 @@ jQuery(document).ready(function(){
 					<div id="kkadmin-tresc-" class="kkadmin-tresc">
 						<table class="kkadmin-option-content">
 						<?php 
-						foreach($options as $option) { ?>
+						
+						foreach($kklike_options as $option) { ?>
 							<?php
 								foreach($option['content'] as $key => $value) { 
-									kklike_admin_generate_option($wp_options, $value['type'], $key, $value);
+									kklike_admin_generate_option($kklike_options, $value['type'], $key, $value);
 								} 
 							?>
 						<?php }?>
@@ -66,7 +67,7 @@ jQuery(document).ready(function(){
 </div>
 
 <?php 
-function kklike_admin_generate_option($wp_options, $type, $key, $value){
+function kklike_admin_generate_option($kklike_options, $type, $key, $value){
 	
 	switch($type) {
 
@@ -82,7 +83,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 		<label for="<?php echo $key; ?>"><?php echo $value['title']; ?></label>
 		<div class="kk-admin-editor">
 			<?php 
-			$content = (isset($wp_options[$key]) ? stripslashes($wp_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
+			$content = (isset($kklike_options[$key]) ? stripslashes($kklike_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
 			if(floatval(get_bloginfo('version')) >= 3.3){
 				wp_editor( $content, $key, $settings = array() ); 
 			}else{
@@ -110,7 +111,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 		<div class="kkadmin-selectbox">
 			<select name="<?php echo $key; ?>" id="<?php echo $key; ?>">
 				<?php 
-					$default = (isset($wp_options[$key]) ? stripslashes($wp_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
+					$default = (isset($kklike_options[$key]) ? stripslashes($kklike_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
 					if($default == 0){
 						$selected = 'selected="selected"';
 					}else{
@@ -148,7 +149,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 	</td>
 	<td class="kk-admin-settings-val">
 		<div class="kk-admin-input-text">
-			<input type="text" style="width: 60px !important;" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo (isset($wp_options[$key]) ? stripslashes($wp_options[$key]) : (isset($value['default']) ? $value['default'] : '')); ?>" />
+			<input type="text" style="width: 60px !important;" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo (isset($kklike_options[$key]) ? stripslashes($kklike_options[$key]) : (isset($value['default']) ? $value['default'] : '')); ?>" />
 		</div>
 	</td>
 </tr>
@@ -169,7 +170,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 				</td>
 				<td class="kk-admin-settings-val">
 					<div class="kk-admin-input-text">
-						#<input type="text" class="kkpb-color-pick" style="width: 60px !important;" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo (isset($wp_options[$key]) ? stripslashes($wp_options[$key]) : (isset($value['default']) ? $value['default'] : '')); ?>" />
+						#<input type="text" class="kkpb-color-pick" style="width: 60px !important;" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo (isset($kklike_options[$key]) ? stripslashes($kklike_options[$key]) : (isset($value['default']) ? $value['default'] : '')); ?>" />
 					</div>
 				</td>
 			</tr>
@@ -189,7 +190,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 	</td>
 	<td class="kk-admin-settings-val">
 		<div class="kk-admin-input">
-			<input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo (isset($wp_options[$key]) ? stripslashes($wp_options[$key]) : (isset($value['default']) ? $value['default'] : '')); ?>" />
+			<input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo (isset($kklike_options[$key]) ? stripslashes($kklike_options[$key]) : (isset($value['default']) ? $value['default'] : '')); ?>" />
 		</div>
 	</td>
 </tr>
@@ -200,8 +201,8 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 
 <?php 
 
-	if(!empty($wp_options[$key]) || $wp_options[$key] != null){ 
-		$checkbox = $wp_options[$key];
+	if(!empty($kklike_options[$key]) || $kklike_options[$key] != null){ 
+		$checkbox = $kklike_options[$key];
 	}else if(isset($value['default'])){
 		$checkbox = $value['default'];
 	}else{ 
@@ -249,7 +250,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 					<div class="kkadmin-selectbox">
 						
 							<?php 
-								$default = (isset($wp_options[$key]) ? stripslashes($wp_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
+								$default = (isset($kklike_options[$key]) ? stripslashes($kklike_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
 								if($default == 0){
 									$selected = 'checked="checked"';
 								}else{
@@ -288,7 +289,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 					<div class="kkadmin-selectbox kkadmin-radio-prev-class">
 						
 							<?php 
-								$default = (isset($wp_options[$key]) ? stripslashes($wp_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
+								$default = (isset($kklike_options[$key]) ? stripslashes($kklike_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
 								if($default == 0){
 									$selected = 'checked="checked"';
 								}else{
@@ -327,7 +328,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 					<div class="kkadmin-selectbox kkadmin-radio-ui">
 						
 							<?php 
-								$default = (isset($wp_options[$key]) ? stripslashes($wp_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
+								$default = (isset($kklike_options[$key]) ? stripslashes($kklike_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
 								if($default == 0){
 									$selected = 'checked="checked"';
 								}else{
@@ -374,7 +375,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 				<div class="kkadmin-selectbox">
 					<select name="<?php echo $key; ?>" id="<?php echo $key; ?>">
 						<?php 
-							$default = (isset($wp_options[$key]) ? stripslashes($wp_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
+							$default = (isset($kklike_options[$key]) ? stripslashes($kklike_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
 							if($default == 0){
 								$selected = 'selected="selected"';
 							}else{
@@ -414,7 +415,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 					<div class="kkadmin-selectbox">
 						
 							<?php 
-								$default = (isset($wp_options[$key]) ? stripslashes($wp_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
+								$default = (isset($kklike_options[$key]) ? stripslashes($kklike_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
 								if($default == 0){
 									$selected = 'checked="checked"';
 								}else{
@@ -463,7 +464,7 @@ function kklike_admin_generate_option($wp_options, $type, $key, $value){
 					<div class="kkadmin-selectbox">
 						
 							<?php 
-								$default = (isset($wp_options[$key]) ? stripslashes($wp_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
+								$default = (isset($kklike_options[$key]) ? stripslashes($kklike_options[$key]) : (isset($value['default']) ? $value['default'] : ''));
 								if($default == 0){
 									$selected = 'checked="checked"';
 								}else{
