@@ -388,9 +388,9 @@ function addKKLikeVoters($content){
 
 function content_init(){
 
-	add_action( 'the_excerpt', 'addKKLikeButton');
-	add_action( 'the_content', 'addKKLikeButton');
-	add_action( 'the_content', 'addKKLikeVoters');
+	add_action( 'the_excerpt', 'addKKLikeButton', 15);
+	add_action( 'the_content', 'addKKLikeButton', 15);
+	add_action( 'the_content', 'addKKLikeVoters', 15);
 
 }
 

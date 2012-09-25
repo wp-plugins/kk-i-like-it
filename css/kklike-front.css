@@ -113,9 +113,9 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#595959', endColorstr='#383838',GradientType=0 );
     
     text-shadow: 1px 1px #000;
-    border: 1px solid #000;
+    border: 1px solid #000 !important;
     box-shadow: 0 0 2px #000;
-    color: #CCCCCC;
+    color: #CCCCCC !important;
 }
 
 .kklike-button-dark .kklike-box:hover .kklike-value{
@@ -127,8 +127,8 @@
 }
 
 .kklike-button-dark .kklike-value{
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;
+    border-left: 1px solid #000 !important;
+    border-right: 1px solid #000 !important;
 }
 
 .kklike-button-dark .kklike-ico{
