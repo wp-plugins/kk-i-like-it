@@ -13,6 +13,7 @@ function kklike_admin_content(){
 <script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jquery.jqplot.min.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.barRenderer.min.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.categoryAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.canvasAxisTickRenderer.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jquery.jqplot.css" />
 
 <div class="kkadmin-box">

@@ -52,16 +52,31 @@ jQuery(document).ready(function() {
       	seriesColors : ["#3E3E3E"],
       	seriesDefaults:{
             renderer: jQuery.jqplot.BarRenderer,
-            rendererOptions: {fillToZero: true}
+            rendererOptions: {fillToZero: true},
+            shadow: false
         },
         series:[
             {label:'Likes'}
         ],
+        axesDefaults: {
+	        tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+	        tickOptions: {
+	          angle: -30,
+	          fontSize: '10pt'
+        },
         axes: {
             xaxis: {
                 renderer: jQuery.jqplot.CategoryAxisRenderer,
                 ticks: dayLabel
-            }
+            },
+            yaxis: {
+	            
+	        },
+        },
+        grid: {
+        	background: '#ffffff',
+        	shadow: false,
+        	borderWidth: 1.0
         }
       });
 });
