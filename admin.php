@@ -374,8 +374,11 @@ function addKKLikeVoters($content){
 			}else{
 				$nick = __('Guest');
 			}
+
+			$nick = (!empty($kkLikeSettings['ava_dsc']) && $kkLikeSettings['ava_dsc'] == 'on')? $nick : '';
+
 			$users .= '<span class="kklike-ava-box">' 
-						. get_avatar( $user->ID, $size = '50' )
+						. get_avatar( $user->ID, $size = (!empty($kkLikeSettings['ava_size']))?$kkLikeSettings['ava_size']:'50' )
 						. '<span class="kklike-ava-nick">'. $nick .'</span>' 
 						. '</span>';
 		}

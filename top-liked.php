@@ -29,7 +29,8 @@ var chart1;
             rendererOptions: {fillToZero: true},
             rendererOptions: {
                 barDirection: 'horizontal'
-            }
+            },
+            shadow: false
         },
         series:[
             {label:'Likes'}
@@ -39,6 +40,11 @@ var chart1;
                 renderer: jQuery.jqplot.CategoryAxisRenderer,
                 ticks: posts
             }
+        },
+        grid: {
+        	background: '#ffffff',
+        	shadow: false,
+        	borderWidth: 1.0
         }
       });
    });

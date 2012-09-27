@@ -13,6 +13,7 @@ function kklike_admin_content(){
 <script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jquery.jqplot.min.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.barRenderer.min.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.categoryAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.canvasTextRenderer.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.canvasAxisTickRenderer.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jquery.jqplot.css" />
 
@@ -288,7 +289,19 @@ function kklike_admin_settings(){
 										   		'title'		=>	__('Show voters after post/page content?','lang-kklike'),
 									       		'tooltip'	=>	__('','lang-kklike'),
 									       		'class'		=>	''
-							),					
+							),	
+							'ava_size'=>array('type'	=>	'text',
+										   		'default'	=>	'50',
+										   		'title'		=>	__('Avatar size (in pixels)','lang-kklike'),
+									       		'tooltip'	=>	__('','lang-kklike'),
+									       		'class'		=>	''
+							),
+							'ava_dsc'=>array('type'	=>	'checkbox',
+										   		'default'	=>	'off',
+										   		'title'		=>	__('Show voters name?','lang-kklike'),
+									       		'tooltip'	=>	__('','lang-kklike'),
+									       		'class'		=>	''
+							),				
 	)
 	));
 }

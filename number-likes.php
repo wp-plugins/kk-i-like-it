@@ -59,10 +59,11 @@ jQuery(document).ready(function() {
             {label:'Likes'}
         ],
         axesDefaults: {
-	        tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+	        tickRenderer: jQuery.jqplot.CanvasAxisTickRenderer ,
 	        tickOptions: {
 	          angle: -30,
-	          fontSize: '10pt'
+	          fontSize: '7pt'
+	        }
         },
         axes: {
             xaxis: {
