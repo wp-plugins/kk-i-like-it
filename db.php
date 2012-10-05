@@ -13,24 +13,25 @@ class kkDataBase{
 		$this->tableLikeUser = $wpdb->prefix . 'kklikeuser';
 		$this->tableWPUsers = $wpdb->prefix . 'users';
 		$this->tableWPPosts = $wpdb->prefix . 'posts';
+		$this->metaLikes = 'kklike_value';
 	}
 	
 	public function addLike($idPost, $idUser, $type){
 		$ip = $_SERVER['REMOTE_ADDR'];
 		$data = date('Y-m-d H:i:s');
 		$isLike = $this->checkIsLike($idPost,$type);
-		
-		if($isLike != '0'){
-			$userRate = $this->checkUserRating($isLike, $idUser, $ip);
+		if($isLike){
+			$userRate = $this->checkUserRating($idPost, $idUser, $ip);
 			
-			if($userRate == '0'){
+			if(!$userRate){
 			
 				$rating = $this->getPostRating($idPost);
 				$rating++;
-				$result = $this->wpdb->update( $this->tableLike, array( 'rating' => $rating ), array('idwp' => $idPost));
 				
-				if($result == '1'){
-					$result = $this->wpdb->insert( $this->tableLikeUser, array( 'idwpuser' => $idUser, 'idlike' => $isLike, 'ip' => $ip, 'date' => $data ));
+				$result = update_post_meta($idPost, $this->metaLikes, $rating);
+				
+				if($result !== FALSE){
+					$result = $this->wpdb->insert( $this->tableLikeUser, array( 'idwpuser' => $idUser, 'idlike' => $idPost, 'ip' => $ip, 'date' => $data ));
 						
 					$odp = array('hasError' => FALSE, 'rating' => $rating);
 				}else{
@@ -38,7 +39,7 @@ class kkDataBase{
 				}
 			
 			}else{
-				$odp = array('hasError' => TRUE, 'rating' => '');
+				$odp = array('hasError' => TRUE, 'rating' => '', 'dbg' => '1');
 			}
 			
 			return json_encode($odp);
@@ -46,14 +47,14 @@ class kkDataBase{
 			$ip = $_SERVER['REMOTE_ADDR'];
 			$data = date('Y-m-d H:i:s');
 			
-			$result = $this->wpdb->insert( $this->tableLike, array( 'idwp' => $idPost, 'rating' => '1', 'type' => $type ));
+			$result = add_post_meta($idPost, $this->metaLikes, '1', true);
 		
-			if($result == 1){
+			if(!empty($result)){
 				$id_last = mysql_insert_id();
-				$result = $this->wpdb->insert( $this->tableLikeUser, array( 'idwpuser' => $idUser, 'idlike' => $id_last, 'ip' => $ip, 'date' => $data ));
+				$result = $this->wpdb->insert( $this->tableLikeUser, array( 'idwpuser' => $idUser, 'idlike' => $idPost, 'ip' => $ip, 'date' => $data ));
 				$odp = array('hasError' => FALSE, 'rating' => '1');
 			}else{
-				$odp = array('hasError' => TRUE, 'rating' => '');
+				$odp = array('hasError' => TRUE, 'rating' => '', 'dbg' => '2');
 			}
 			
 			return json_encode($odp);
@@ -66,7 +67,7 @@ class kkDataBase{
 		$isLike = $this->checkIsLike($idPost,$type);
 		
 		if($isLike != '0'){
-			$userRate = $this->checkUserRating($isLike, $idUser, $ip);
+			$userRate = $this->checkUserRating($idPost, $idUser, $ip);
 			if($userRate != '0'){
 				
 				if($idUser != $userRate->idwpuser){
@@ -78,9 +79,10 @@ class kkDataBase{
 					if($result == 1){
 						$rating = $this->getPostRating($idPost);
 						$rating--;
-						$result = $this->wpdb->update( $this->tableLike, array( 'rating' => $rating ), array('idwp' => $idPost));
 						
-						if($result == '1'){
+						$result = update_post_meta($idPost, $this->metaLikes, $val->rating);
+						
+						if(!empty($result) || $result == 0){
 							$odp = array('hasError' => FALSE, 'rating' => $rating);
 						}else{
 							$odp = array('hasError' => TRUE, 'rating' => $rating);
@@ -98,11 +100,13 @@ class kkDataBase{
 		return json_encode($odp);
 	}
 	
-	public function checkIsLike($id, $type){
-		$val = $this->wpdb->get_var("SELECT id FROM $this->tableLike WHERE idwp = $id AND type='".$type."'");
+	public function checkIsLike($id){
+		$val = get_post_meta($id, $this->metaLikes, true);
 		
-		if($val === NULL){
-			$val = 0;
+		if(count($val) == 0){
+			$val = false;
+		}else{
+			$val = true;
 		}
 		
 		return $val;
@@ -115,16 +119,16 @@ class kkDataBase{
 			$val = $this->wpdb->get_row("SELECT id, idwpuser FROM $this->tableLikeUser WHERE idlike = $idLike AND ip = '". $ip ."'");			
 		}
 		
-		if($val === NULL){
-			$val = 0;
+		if(count($val) == 0){
+			$val = false;
 		}
 		
 		return $val;
 	}
 	
 	public function getPostRating($id){
-		$val = $this->wpdb->get_var("SELECT rating FROM $this->tableLike WHERE idwp = $id");
-		
+		$val = get_post_meta($id, $this->metaLikes, true);
+				
 		if($val === NULL){
 			$val = 0;
 		}
@@ -135,11 +139,9 @@ class kkDataBase{
 	public function getPostVoters($id){
 
 		$sql = "SELECT * FROM ". $this->tableLikeUser ." 
-				LEFT JOIN (". $this->tableLike .") 
-				ON (". $this->tableLikeUser .".idlike = ". $this->tableLike .".id)
 				LEFT JOIN (". $this->tableWPUsers .") 
 				ON (". $this->tableWPUsers .".ID = ". $this->tableLikeUser .".idwpuser) 
-				WHERE ". $this->tableLike .".idwp = ". $id ." 
+				WHERE ". $this->tableLikeUser .".idlike = ". $id ." 
 				ORDER BY ". $this->tableLikeUser .".date DESC";
 
 		$dane = $this->wpdb->get_results($sql);

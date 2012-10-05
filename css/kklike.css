@@ -724,3 +724,10 @@ label.error{
 	margin-top: 15px;
 	padding-left: 15px;
 }
+
+
+#kkpb-db-update {
+    padding: 30px 0;
+    text-align: center;
+    width: 794px;
+}

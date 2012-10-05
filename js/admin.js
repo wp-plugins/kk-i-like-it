@@ -1,3 +1,20 @@
+function kkLikeUpdateDB(){
+    jQuery.post(ajaxurl,{
+        action : 'kklike_db_update',
+        beforeSend	:	function(){
+        	jQuery('#kkpb-db-update-start').hide();
+        	jQuery('#kkpb-db-update-loader').show();
+        }
+    },function(dane){
+		
+         var dane = jQuery.parseJSON(dane);
+         if(!dane.hasError){
+         	jQuery('#kkpb-db-update-text').html(dane.msg);
+         	setTimeout(function(){window.location.reload();},5000);
+         }
+    });
+}
+
 jQuery(document).ready(function(){
 	
 	jQuery('.kknewcheckbox').iphoneStyle();
@@ -53,6 +70,11 @@ jQuery(document).ready(function(){
 	    style: {
 	        classes		: 	'ui-tooltip-shadow ui-tooltip-dark'
 	     }
+	});
+	
+	jQuery('#kkpb-db-update-start').click(function(){
+		kkLikeUpdateDB();
+		return false;
 	});
 	
 });

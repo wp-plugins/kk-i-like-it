@@ -159,8 +159,8 @@ function kkLikeButton($ret = false) {
 		$boxRating = '';		
 	}
 	
-	$isLike = $db->checkIsLike($post->ID, 'post');
-	$userRate = $db->checkUserRating($isLike, get_current_user_id(), $_SERVER['REMOTE_ADDR']);
+	$isLike = $db->checkIsLike($post->ID);
+	$userRate = $db->checkUserRating($post->ID, get_current_user_id(), $_SERVER['REMOTE_ADDR']);
 	$act = '';
 	
 	if($userRate == '0'){
@@ -248,6 +248,10 @@ function addKKLikeButton($content) {
 		}
 	}
 
+	//delete_post_meta($post->ID, 'kklike_value', '');
+
+	var_dump(get_post_meta($post->ID));
+
 	$disableButton = get_post_meta($post->ID, 'post_display_likes_button_value', true);
 	
 	if(!$warunek || $disableButton == 'on' || $kkLikeSettings['button_position'] == 'none'){
@@ -276,10 +280,10 @@ function addKKLikeButton($content) {
 	}
 	
 	$isLike = $db->checkIsLike($post->ID, 'post');
-	$userRate = $db->checkUserRating($isLike, get_current_user_id(), $_SERVER['REMOTE_ADDR']);
+	$userRate = $db->checkUserRating($post->ID, get_current_user_id(), $_SERVER['REMOTE_ADDR']);
 	$act = '';
-	
-	if($userRate == '0'){
+		
+	if(!$userRate){
 		$act = 'like';
 		$text = $kkLikeSettings['like_text'];
 	}else{
@@ -298,7 +302,8 @@ function addKKLikeButton($content) {
 	}else{
 		$onlyUser = '0';
 	}
-
+	
+	
 	if($kkLikeSettings['own_button_type'] != 'on'){
 			
 	  	$kklike = '

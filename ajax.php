@@ -33,3 +33,49 @@ function removeLike() {
 }
 add_action('wp_ajax_remove_like', 'removeLike');
 add_action('wp_ajax_nopriv_remove_like', 'removeLike');
+
+
+
+
+
+
+
+
+add_action('wp_ajax_kklike_db_update', 'updateLikeDB');
+
+function updateLikeDB() {
+    
+    global $wpdb;
+    $table_name = $wpdb->prefix . "kklike";
+	$mataName = 'kklike_value';
+	$msg = '';
+	
+	$vals = $wpdb->get_results("SELECT * FROM $table_name");
+	
+	foreach($vals as $val){
+		
+		if(get_post_meta($val->idwp, $mataName) == ""){
+			
+			add_post_meta($val->idwp, $mataName, $val->rating, true);
+			
+		}elseif($val->rating != get_post_meta($val->idwp, $mataName, true)){
+						
+			update_post_meta($val->idwp, $mataName, $val->rating);
+			
+		}
+		
+	}
+	
+	$msg .= __('Dane o polubieniach wpisów zostały przeniesione prawidłowo.<br />','lang-kklike');
+	
+	$sql = "DROP TABLE $table_name";
+    $results = $wpdb->query($sql);
+	
+	$msg .= __('Baza danych została wyczyszczona.<br />','lang-kklike');
+	
+	$odp = array('hasError' => FALSE, 'msg' => $msg);
+	$odp = json_encode($odp);
+	
+	echo $odp;
+	die();
+}

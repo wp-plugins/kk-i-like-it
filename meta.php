@@ -9,6 +9,13 @@ array(
 		"std" 			=> 	"",
 		"title"			=> 	"Disable likes button?",
 		"description" 	=> 	""
+	),
+	"kklike" 	=> array(
+		"type" 			=> 	"likes",
+		"name" 			=> 	"kklike",
+		"std" 			=> 	"0",
+		"title"			=> 	"Number of likes",
+		"description" 	=> 	""
 	)
 );
 
@@ -79,6 +86,16 @@ function new_meta_boxes() {
 				</div>
 <?php 
 			
+				break;
+				case 'likes':
+				?>
+				<div class="kkrow">
+					<input type="hidden" name="<?php echo $meta_box['name']; ?>_noncename" id="<?php echo $meta_box['name']; ?>_noncename" value="<?php echo wp_create_nonce( plugin_basename(__FILE__) ); ?>" />
+					<div class="kkadmin-opt-head-inline"><?php echo $meta_box['title'];?>: </div>
+					<span class="kkadmin-selectbox"><input type="text" name="<?php echo $meta_box['name']; ?>_value" value="<?php echo $meta_box_value; ?>" size="10" readonly="readonly" /></span><br />
+					<p><label for="<?php echo $meta_box['name']; ?>_value"><?php echo $meta_box['description']; ?></label></p>
+				</div>
+				<?php
 				break;
 		}
 		

@@ -28,7 +28,7 @@
  *     "This code is unrestricted: you are free to use it however you like."
  * 
  */
-(function(jQuery) {
+(function($) {
     /**
     *  Class: $.jqplot.CanvasAxisTickRenderer
     * Renderer to draw axis ticks with a canvas element to support advanced

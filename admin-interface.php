@@ -22,6 +22,25 @@ function kklike_admin_content(){
 		<?php include 'head.php'; ?>
 	</div>
 	<div class="kkadmin-content">
+		
+		<?php
+			
+			$table_name_new_a = $wpdb->prefix . "kklike";
+			if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_new_a'") == $table_name_new_a):
+		?>
+		<div id="kkpb-db-update">
+	    	<p>
+	    		<?php echo __('Your database is out of date. Please upgrade the database, to do this, press the button below.','lang-kklike'); ?>
+	    	</p>
+	    	<div id="kkpb-db-update-text">
+	    		<a href="#" id="kkpb-db-update-start" class="button-primary"><?php echo __('Update','lang-kklike'); ?></a>
+	    		<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/loader.gif" style="vertical-align: middle; display: none;" id="kkpb-db-update-loader" alt="Wait..." />
+	    	</div>
+	    </div>
+		<?php
+			else:
+		?>
+		
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
 				<?php 
@@ -85,6 +104,11 @@ function kklike_admin_content(){
 			<?php include 'menu.inc.php'; ?>
 			<?php include 'sidebar.php'; ?>
 		</div>
+		
+		<?php
+			endif;
+		?>
+		
 		<div class="kkclear"></div>
 		<div class="kklike-msg">
 			Hi, If you are interested in developing my plugin, you can help by providing me with a feedback on how it works for you. Suggestions or errors can be reported <a href="http://wordpress.org/support/plugin/kk-i-like-it" target="_blank">HERE</a>.
