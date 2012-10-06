@@ -15,6 +15,16 @@ global $kkplugin, $wersja_plugin, $wpdb;
 	<div class="kkadmin-content">
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
+
+				<h2>= 1.7 =</h2>
+				<ul>
+					<li>NEW: [Settings] Gavatar - avatar's size adjustment option.</li>
+					<li>NEW: [Settings] Gavatar - nick switch off ooption.</li>
+					<li>CHANGE: Likes saving has been changed.</li>
+					<li>CHANGE: Charts display corrected.</li>
+					<li>FIX: Button display for certain layouts has been corrected.</li>
+				</ul>
+
 				<h2>= 1.6.2 =</h2>
 				<ul>
 					<li>CHANGE: Charts library</li>

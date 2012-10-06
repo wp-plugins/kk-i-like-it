@@ -14,6 +14,7 @@ class kkDataBase{
 		$this->tableWPUsers = $wpdb->prefix . 'users';
 		$this->tableWPPosts = $wpdb->prefix . 'posts';
 		$this->metaLikes = 'kklike_value';
+		$this->tablePostMeta = $wpdb->prefix . 'postmeta';
 	}
 	
 	public function addLike($idPost, $idUser, $type){
@@ -129,7 +130,7 @@ class kkDataBase{
 	public function getPostRating($id){
 		$val = get_post_meta($id, $this->metaLikes, true);
 				
-		if($val === NULL){
+		if(count($val) == 0){
 			$val = 0;
 		}
 		
@@ -169,8 +170,8 @@ class kkDataBase{
 		}
 		
 		$sql = "SELECT * FROM ". $this->tableLikeUser ." 
-				LEFT JOIN (". $this->tableLike .") 
-				ON (". $this->tableLikeUser .".idlike = ". $this->tableLike .".id) 
+				LEFT JOIN (". $this->tableWPPosts .") 
+				ON (". $this->tableLikeUser .".idlike = ". $this->tableWPPosts .".ID) 
 				".$userWhere."
 				ORDER BY ". $this->tableLikeUser .".date DESC ".$limit;
 		$dane = $this->wpdb->get_results($sql);
@@ -184,14 +185,13 @@ class kkDataBase{
 				$user = $this->wpdb->get_var("SELECT display_name FROM $this->tableWPUsers WHERE ID = $row->idwpuser");
 			}
 		
-			
 			$result[$i] = array(
 				'ID'		=>	$row->idwp,
 				'ip' 		=> 	$row->ip,
 				'date'		=>	$row->date,
 				'user'		=>	$user,
-				'liked'		=>	$row->rating,
-				'post_name'	=>	$this->wpdb->get_var("SELECT post_title FROM $this->tableWPPosts WHERE ID = $row->idwp")
+				'liked'		=>	get_post_meta($row->ID, $this->metaLikes, true),
+				'post_name'	=>	$row->post_title
 			);
 			$i++;
 		}
@@ -205,17 +205,17 @@ class kkDataBase{
 			$limit = "";
 		}
 		
-		if($type){
-			$typ = ' WHERE '. $this->tableWPPosts .'.post_type = "'. $type .'" ';
-		}else{
-			$typ = '';
-		}
+		//if($type){
+			$typ = ' WHERE '. $this->tablePostMeta .'.meta_value >= "0" ';
+		//}else{
+		//	$typ = '';
+		//}
 		
-		$sql = "SELECT * FROM " . $this->tableLike . "
-				LEFT JOIN (" . $this->tableWPPosts . ")
-				ON (". $this->tableLike .".idwp = ". $this->tableWPPosts .".ID)
+		$sql = "SELECT * FROM " . $this->tableWPPosts . "
+				LEFT JOIN (" . $this->tablePostMeta . ")
+				ON (". $this->tableWPPosts .".ID = ". $this->tablePostMeta .".post_id AND ". $this->tablePostMeta .".meta_key = '". $this->metaLikes ."')
 				". $typ ."
-				ORDER BY ". $this->tableLike .".rating DESC ".$limit;
+				ORDER BY CONVERT(". $this->tablePostMeta .".meta_value, UNSIGNED INTEGER) DESC ".$limit;
 		$dane = $this->wpdb->get_results($sql);
 		
 		return $dane;
@@ -228,17 +228,18 @@ class kkDataBase{
 			$limit = "";
 		}
 		
-		if($type){
-			$typ = ' WHERE '. $this->tableWPPosts .'.post_type = "'. $type .'" ';
-		}else{
-			$typ = '';
-		}
+		//if($type){
+			$typ = ' WHERE '. $this->tablePostMeta .'.meta_value >= "0" ';
+		//}else{
+		//	$typ = '';
+		//}
 		
-		$sql = "SELECT * FROM " . $this->tableLikeUser . "
-				LEFT JOIN (" . $this->tableLike . ")
-				ON (". $this->tableLikeUser .".idlike = ". $this->tableLike .".id)
-				LEFT JOIN (" . $this->tableWPPosts . ")
-				ON (". $this->tableLike .".idwp = ". $this->tableWPPosts .".ID)
+		
+		$sql = "SELECT * FROM " . $this->tableWPPosts . "
+				LEFT JOIN (". $this->tableLikeUser .") 
+				ON (". $this->tableLikeUser .".idLike = ". $this->tableWPPosts .".ID) 
+				LEFT JOIN (" . $this->tablePostMeta . ")
+				ON (". $this->tableWPPosts .".ID = ". $this->tablePostMeta .".post_id AND ". $this->tablePostMeta .".meta_key = '". $this->metaLikes ."')
 				". $typ ."
 				ORDER BY ". $this->tableLikeUser .".date DESC ".$limit;
 		$dane = $this->wpdb->get_results($sql);
@@ -274,14 +275,12 @@ class kkDataBase{
 				COUNT(". $this->tableLikeUser .".id) AS count,
 				". $this->tableLikeUser .".date,
 				". $this->tableLikeUser .".idwpuser,
-				". $this->tableLike .".idwp,
+				". $this->tableWPPosts .".ID,
 				". $this->tableWPPosts .".post_title
 
 				FROM ". $this->tableLikeUser ." 
-				LEFT JOIN (". $this->tableLike .") 
-				ON (". $this->tableLikeUser .".idlike = ". $this->tableLike .".id)
 				LEFT JOIN (" . $this->tableWPPosts . ")
-				ON (". $this->tableLike .".idwp = ". $this->tableWPPosts .".ID)
+				ON (". $this->tableLikeUser .".idlike = ". $this->tableWPPosts .".ID)
 				WHERE ". $this->tableLikeUser .".date <= '". $from ."' 
 				AND ". $this->tableLikeUser .".date >= '". $to_date ."' 
 				GROUP BY DAY(". $this->tableLikeUser .".date)";
@@ -313,17 +312,15 @@ class kkDataBase{
 				COUNT(". $this->tableLikeUser .".id) AS count,
 				". $this->tableLikeUser .".date,
 				". $this->tableLikeUser .".idwpuser,
-				". $this->tableLike .".idwp,
+				". $this->tableWPPosts .".ID,
 				". $this->tableWPPosts .".post_title
 
 				FROM ". $this->tableLikeUser ." 
-				LEFT JOIN (". $this->tableLike .") 
-				ON (". $this->tableLikeUser .".idlike = ". $this->tableLike .".id)
 				LEFT JOIN (" . $this->tableWPPosts . ")
-				ON (". $this->tableLike .".idwp = ". $this->tableWPPosts .".ID)
+				ON (". $this->tableLikeUser .".idlike = ". $this->tableWPPosts .".ID)
 				WHERE ". $this->tableLikeUser .".date <= '". $from ."' 
 				AND ". $this->tableLikeUser .".date >= '". $to_date ."' 
-				GROUP BY ". $this->tableLike .".idwp";
+				GROUP BY ". $this->tableWPPosts .".ID";
 
 		$data = $this->wpdb->get_results($query);
 

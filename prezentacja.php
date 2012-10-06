@@ -90,7 +90,7 @@ class kklikeMostLiked extends WP_Widget {
         echo $before_title;
         echo $title;
         echo $after_title;
-		
+
 		echo '<ul class="kklike-widget kklike-most-liked">';
         foreach($posts as $post){
         	
@@ -108,7 +108,7 @@ class kklikeMostLiked extends WP_Widget {
         		<span class="<?php echo $cls; ?>"></span>
         		<span class="kklike-wg-text">
         			<span class="kklike-wg-title"><a href="<?php echo get_permalink($post->ID); ?>"><?php echo $post->post_title; ?></a></span>
-        			<span class="kklike-wg-rating"><?php echo __('Liked:','lang-kklike'); ?> <?php echo $post->rating; ?></span>
+        			<span class="kklike-wg-rating"><?php echo __('Liked:','lang-kklike'); ?> <?php echo $post->meta_value; ?></span>
         			<span class="kklike-wg-date"><?php echo __('Date:','lang-kklike'); ?> <?php echo date('d-m-Y', strtotime($post->post_date)); ?></span>
         		</span>
         		<span class="kkclear"></span>
@@ -227,7 +227,7 @@ class kklikeLastLiked extends WP_Widget {
         		<span class="<?php echo $cls; ?>"></span>
         		<span class="kklike-wg-text">
         			<span class="kklike-wg-title"><a href="<?php echo get_permalink($post->ID); ?>"><?php echo $post->post_title; ?></a></span>
-        			<span class="kklike-wg-rating"><?php echo __('Liked:','lang-kklike'); ?> <?php echo $post->rating; ?></span>
+        			<span class="kklike-wg-rating"><?php echo __('Liked:','lang-kklike'); ?> <?php echo $post->meta_value; ?></span>
         			<span class="kklike-wg-date"><?php echo __('Date:','lang-kklike'); ?> <?php echo date('d-m-Y', strtotime($post->date)); ?></span>
         		</span>
         		<span class="kkclear"></span>

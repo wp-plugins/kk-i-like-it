@@ -66,12 +66,12 @@ function updateLikeDB() {
 		
 	}
 	
-	$msg .= __('Dane o polubieniach wpisów zostały przeniesione prawidłowo.<br />','lang-kklike');
+	$msg .= __('Data regarding number of likes has been moved successfully.<br />','lang-kklike');
 	
 	$sql = "DROP TABLE $table_name";
     $results = $wpdb->query($sql);
 	
-	$msg .= __('Baza danych została wyczyszczona.<br />','lang-kklike');
+	$msg .= __('Data base has been cleared.<br />','lang-kklike');
 	
 	$odp = array('hasError' => FALSE, 'msg' => $msg);
 	$odp = json_encode($odp);

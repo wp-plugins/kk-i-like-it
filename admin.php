@@ -3,7 +3,7 @@
   Plugin Name: KK I Like It
   Plugin URI: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
   Description: Plugin gives users or guest an option to like an article or a page.
-  Version: 1.6.2
+  Version: 1.7
   Author: Krzysztof Furtak
   Author URI: http://krzysztof-furtak.pl
  */
@@ -179,6 +179,11 @@ function kkLikeButton($ret = false) {
 		$onlyUser = '0';
 	}
 
+	
+	if(empty($rating)){
+		$rating = 0;
+	}
+
 	if($kkLikeSettings['own_button_type'] != 'on'){
 		
 	  	$kklike = '
@@ -248,10 +253,6 @@ function addKKLikeButton($content) {
 		}
 	}
 
-	//delete_post_meta($post->ID, 'kklike_value', '');
-
-	var_dump(get_post_meta($post->ID));
-
 	$disableButton = get_post_meta($post->ID, 'post_display_likes_button_value', true);
 	
 	if(!$warunek || $disableButton == 'on' || $kkLikeSettings['button_position'] == 'none'){
@@ -302,7 +303,10 @@ function addKKLikeButton($content) {
 	}else{
 		$onlyUser = '0';
 	}
-	
+
+	if(empty($rating)){
+		$rating = 0;
+	}
 	
 	if($kkLikeSettings['own_button_type'] != 'on'){
 			
@@ -504,13 +508,13 @@ if (is_admin ()) {
 					if(!empty($dane) && $numberLikes > 0){
 						$i = 1;
 					foreach($dane as $row):
-						$perc = floor(($row->rating / $numberLikes) * 100);
+						$perc = floor(($row->meta_value / $numberLikes) * 100);
 				?>
 					<div class="kklike-list-box-element kklike-stat">
 						<div class="kklike-list-text" style="width: 100%;">
 							<strong><span class=""><?php echo $i; ?>.</span> <a href="<?php echo get_permalink($row->ID); ?>" target="_blank"><?php echo $row->post_title; ?></a></strong>.
 						</div>
-						<div class="kklike-likes"><?php echo $row->rating . ' ' . __('likes','lang-kklike'); ?></div>
+						<div class="kklike-likes"><?php echo $row->meta_value . ' ' . __('likes','lang-kklike'); ?></div>
 						<div class="kklike-stat-bg" style="width: <?php echo $perc; ?>%;"></div>
 						<div class="kkclear"></div>
 					</div>
