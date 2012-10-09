@@ -19,7 +19,7 @@ array(
 	)
 );
 
-function new_meta_boxes() {
+function kk_new_meta_boxes() {
 	global $post, $new_meta_boxes;
 	 
 	foreach($new_meta_boxes as $meta_box) {
@@ -102,15 +102,15 @@ function new_meta_boxes() {
 	}
 }
  
-function create_meta_box() {
+function kk_create_meta_box() {
 	global $theme_name;
 		if ( function_exists('add_meta_box') ) {
-		add_meta_box( 'kklike-button-display', 'Like Button', 'new_meta_boxes', 'post', 'side', 'default' );
-		add_meta_box( 'kklike-button-display', 'Like Button', 'new_meta_boxes', 'page', 'side', 'default' );
+		add_meta_box( 'kklike-button-display', 'Like Button', 'kk_new_meta_boxes', 'post', 'side', 'default' );
+		add_meta_box( 'kklike-button-display', 'Like Button', 'kk_new_meta_boxes', 'page', 'side', 'default' );
 	}
 }
  
-function save_postdata( $post_id ) {
+function kk_save_postdata( $post_id ) {
 	global $post, $new_meta_boxes;
 	 
 	foreach($new_meta_boxes as $meta_box) {
@@ -138,5 +138,5 @@ function save_postdata( $post_id ) {
 	}
 }
 
-add_action('admin_menu', 'create_meta_box');
-add_action('save_post', 'save_postdata');
+add_action('admin_menu', 'kk_create_meta_box');
+add_action('save_post', 'kk_save_postdata');
