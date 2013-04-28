@@ -16,6 +16,13 @@ global $kkplugin, $wersja_plugin, $wpdb;
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
 
+				<h2>= 1.7.1 =</h2>
+				<ul>
+					<li>FIX: Fatal error after activation plugin</li>
+					<li>FIX: Compatibility with other plugins</li>
+					<li>FIX: Bugfixes for WP 3.5.x</li>
+				</ul>
+
 				<h2>= 1.7 =</h2>
 				<ul>
 					<li>NEW: [Settings] Gavatar - avatar's size adjustment option.</li>

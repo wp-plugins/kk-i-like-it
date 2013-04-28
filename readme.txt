@@ -2,11 +2,11 @@
 Contributors: Krzy-siek
 Donate link: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
 License: GNU GPL
-Version: 1.7
+Version: 1.7.1
 Tags: like, like it, social, rating, blog, post, page, premium, free
 Requires at least: 3.0
-Tested up to: 3.2
-Stable tag: 1.7
+Tested up to: 3.5
+Stable tag: 1.7.1
 
 Plugin gives users or guest an option to like an article or a page.
 
@@ -40,8 +40,7 @@ Features:
 * [Dashboard] Most liked
 * [Shortcode] Display rate button
 * [Shortcode] Display rating score
-
-* *[NEW]* [Admin] Two widgets in administration panel with statistics
+* [Admin] Two widgets in administration panel with statistics
 
 
 More information about the plugin can be found [HERE](http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/) – feel free to check it out!
@@ -91,6 +90,11 @@ or
 
 
 == Changelog ==
+= 1.7.1 =
+* FIX: Fatal error after activation plugin
+* FIX: Compatibility with other plugins
+* FIX: Bugfixes for WP 3.5.x
+
 = 1.7 = 
 * NEW: [Settings] Gavatar - avatar's size adjustment option.
 * NEW: [Settings] Gavatar - nick switch off ooption.

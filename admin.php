@@ -3,13 +3,16 @@
   Plugin Name: KK I Like It
   Plugin URI: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
   Description: Plugin gives users or guest an option to like an article or a page.
-  Version: 1.7
+  Version: 1.7.1
   Author: Krzysztof Furtak
   Author URI: http://krzysztof-furtak.pl
  */
 
 add_action('plugins_loaded', 'kklike_load_translation');
-require_once ('db.php');
+require_once ('kkDataBase.class.php');
+
+global $like;
+$like = new kkDataBase;
 
 require_once('prezentacja.php');
 require_once('config.inc.php');
@@ -46,8 +49,7 @@ function kklike_admin_enqueue_scripts(){
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui-core');
   	
-  	wp_register_script('kklike-ui-widget-js', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery-ui.custom.js', array('jquery-ui-core'), '1.6');
-	wp_enqueue_script('kklike-ui-widget-js');
+	wp_enqueue_script('jquery-ui-button');
 	
 	wp_enqueue_style('kklike-css', WP_PLUGIN_URL .'/kk-i-like-it/css/kklike.css?v=1.6');
 	wp_enqueue_style('kklike-afront-css', WP_PLUGIN_URL .'/kk-i-like-it/css/kklike-front.css?v=1.6');

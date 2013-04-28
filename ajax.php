@@ -1,6 +1,5 @@
 <?php
 global $like;
-$like = new kkDataBase;
 
 function addLike() {
 	global $like, $kkLikeSettings;
