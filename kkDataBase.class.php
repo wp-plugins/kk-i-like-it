@@ -81,7 +81,7 @@ class kkDataBase{
 						$rating = $this->getPostRating($idPost);
 						$rating--;
 						
-						$result = update_post_meta($idPost, $this->metaLikes, $val->rating);
+						$result = update_post_meta($idPost, $this->metaLikes, $rating);
 						
 						if(!empty($result) || $result == 0){
 							$odp = array('hasError' => FALSE, 'rating' => $rating);

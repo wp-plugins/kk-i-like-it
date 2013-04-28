@@ -47,14 +47,6 @@ function kk_new_meta_boxes() {
 				
 			case 'checkbox':
 				?>
-				<script type="text/javascript">
-					jQuery(document).ready(function(){
-						jQuery('.kknewcheckbox:visible').iphoneStyle({
-							 checkedLabel: 'Tak',
-							 uncheckedLabel: 'Nie'
-						});
-					});
-				</script>
 				<div class="kkrow">
 					<table>
 					<tr><td>

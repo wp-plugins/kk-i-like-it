@@ -2,7 +2,7 @@
 Contributors: Krzy-siek
 Donate link: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
 License: GNU GPL
-Version: 1.7.1
+Version: 1.7.2
 Tags: like, like it, social, rating, blog, post, page, premium, free
 Requires at least: 3.0
 Tested up to: 3.5
@@ -90,6 +90,9 @@ or
 
 
 == Changelog ==
+= 1.7.2 =
+* HOTFIX: Fatal error after activation plugin
+
 = 1.7.1 =
 * FIX: Fatal error after activation plugin
 * FIX: Compatibility with other plugins

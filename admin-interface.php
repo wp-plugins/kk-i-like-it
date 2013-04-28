@@ -3,7 +3,7 @@
 /**
  * Ogólne ustawienia:
  */
-require_once 'db.php';
+require_once ('kkDataBase.class.php');
 
 function kklike_admin_content(){
 	global $wpdb, $kkLikeOptions;
