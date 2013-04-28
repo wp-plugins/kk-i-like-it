@@ -6,7 +6,7 @@ Version: 1.7.2
 Tags: like, like it, social, rating, blog, post, page, premium, free
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 
 Plugin gives users or guest an option to like an article or a page.
 
