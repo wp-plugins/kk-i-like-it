@@ -44,34 +44,6 @@ jQuery(document).ready(function(){
     	jQuery(this).ColorPickerSetColor(this.value);
     });
     
-	jQuery('.kk-tooltip').qtip({
-		content: {
-			title		:	'Info:',
-	      	attr		: 	'title'
-	   	},
-	   	position: {
-	   		my			:	'left center',
-	   		at			:	'right center'
-	    },
-	    style: {
-	        classes		: 	'ui-tooltip-shadow ui-tooltip-dark'
-	     }
-	});
-	
-	jQuery('.kkpb-progressbar-content').qtip({
-		content: {
-			title		:	'Progress:',
-	      	attr		: 	'title'
-	   	},
-	   	position: {
-	   		my			:	'bottom center',
-	   		at			:	'top center'
-	    },
-	    style: {
-	        classes		: 	'ui-tooltip-shadow ui-tooltip-dark'
-	     }
-	});
-	
 	jQuery('#kkpb-db-update-start').click(function(){
 		kkLikeUpdateDB();
 		return false;

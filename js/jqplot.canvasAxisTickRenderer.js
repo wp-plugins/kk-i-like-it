@@ -2,10 +2,10 @@
  * jqPlot
  * Pure JavaScript plotting plugin using jQuery
  *
- * Version: 1.0.4
- * Revision: 1120
+ * Version: 1.0.8
+ * Revision: 1250
  *
- * Copyright (c) 2009-2012 Chris Leonello
+ * Copyright (c) 2009-2013 Chris Leonello
  * jqPlot is currently available for use in all personal or commercial projects 
  * under both the MIT (http://www.opensource.org/licenses/mit-license.php) and GPL 
  * version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html) licenses. This means that you can 
@@ -42,17 +42,17 @@
     * using the Hershey font metrics.  Even if the "enableFontSupport" option is true
     * non-supporting browsers will still render with the Hershey font.
     */
-    jQuery.jqplot.CanvasAxisTickRenderer = function(options) {
+    $.jqplot.CanvasAxisTickRenderer = function(options) {
         // Group: Properties
         
         // prop: mark
         // tick mark on the axis.  One of 'inside', 'outside', 'cross', '' or null.
         this.mark = 'outside';
         // prop: showMark
-        // wether or not to show the mark on the axis.
+        // whether or not to show the mark on the axis.
         this.showMark = true;
         // prop: showGridline
-        // wether or not to draw the gridline on the grid at this tick.
+        // whether or not to draw the gridline on the grid at this tick.
         this.showGridline = true;
         // prop: isMinorTick
         // if this is a minor tick.
@@ -65,10 +65,10 @@
         // will be stoked above and below axis, so total length will be twice this.
         this.markSize = 4;
         // prop: show
-        // wether or not to show the tick (mark and label).
+        // whether or not to show the tick (mark and label).
         this.show = true;
         // prop: showLabel
-        // wether or not to show the label.
+        // whether or not to show the label.
         this.showLabel = true;
         // prop: labelPosition
         // 'auto', 'start', 'middle' or 'end'.
@@ -80,8 +80,8 @@
         this._styles = {};
         // prop: formatter
         // A class of a formatter for the tick text.
-        // The default jQuery.jqplot.DefaultTickFormatter uses sprintf.
-        this.formatter = jQuery.jqplot.DefaultTickFormatter;
+        // The default $.jqplot.DefaultTickFormatter uses sprintf.
+        this.formatter = $.jqplot.DefaultTickFormatter;
         // prop: formatString
         // string passed to the formatter.
         this.formatString = '';
@@ -125,7 +125,7 @@
         this._plotHeight;
         this._plotDimensions = {height:null, width:null};
         
-        jQuery.extend(true, this, options);
+        $.extend(true, this, options);
         
         var ropts = {fontSize:this.fontSize, fontWeight:this.fontWeight, fontStretch:this.fontStretch, fillStyle:this.textColor, angle:this.getAngleRad(), fontFamily:this.fontFamily};
         if (this.pt2px) {
@@ -133,28 +133,28 @@
         }
         
         if (this.enableFontSupport) {
-            if (jQuery.jqplot.support_canvas_text()) {
-                this._textRenderer = new jQuery.jqplot.CanvasFontRenderer(ropts);
+            if ($.jqplot.support_canvas_text()) {
+                this._textRenderer = new $.jqplot.CanvasFontRenderer(ropts);
             }
             
             else {
-                this._textRenderer = new jQuery.jqplot.CanvasTextRenderer(ropts); 
+                this._textRenderer = new $.jqplot.CanvasTextRenderer(ropts); 
             }
         }
         else {
-            this._textRenderer = new jQuery.jqplot.CanvasTextRenderer(ropts); 
+            this._textRenderer = new $.jqplot.CanvasTextRenderer(ropts); 
         }
     };
     
-    jQuery.jqplot.CanvasAxisTickRenderer.prototype.init = function(options) {
-        jQuery.extend(true, this, options);
+    $.jqplot.CanvasAxisTickRenderer.prototype.init = function(options) {
+        $.extend(true, this, options);
         this._textRenderer.init({fontSize:this.fontSize, fontWeight:this.fontWeight, fontStretch:this.fontStretch, fillStyle:this.textColor, angle:this.getAngleRad(), fontFamily:this.fontFamily});
     };
     
     // return width along the x axis
     // will check first to see if an element exists.
     // if not, will return the computed text box width.
-    jQuery.jqplot.CanvasAxisTickRenderer.prototype.getWidth = function(ctx) {
+    $.jqplot.CanvasAxisTickRenderer.prototype.getWidth = function(ctx) {
         if (this._elem) {
          return this._elem.outerWidth(true);
         }
@@ -168,7 +168,7 @@
     };
     
     // return height along the y axis.
-    jQuery.jqplot.CanvasAxisTickRenderer.prototype.getHeight = function(ctx) {
+    $.jqplot.CanvasAxisTickRenderer.prototype.getHeight = function(ctx) {
         if (this._elem) {
          return this._elem.outerHeight(true);
         }
@@ -180,14 +180,24 @@
             return w;
         }
     };
+
+    // return top.
+    $.jqplot.CanvasAxisTickRenderer.prototype.getTop = function(ctx) {
+        if (this._elem) {
+         return this._elem.position().top;
+        }
+        else {
+            return null;
+        }
+    };
     
-    jQuery.jqplot.CanvasAxisTickRenderer.prototype.getAngleRad = function() {
+    $.jqplot.CanvasAxisTickRenderer.prototype.getAngleRad = function() {
         var a = this.angle * Math.PI/180;
         return a;
     };
     
     
-    jQuery.jqplot.CanvasAxisTickRenderer.prototype.setTick = function(value, axisName, isMinor) {
+    $.jqplot.CanvasAxisTickRenderer.prototype.setTick = function(value, axisName, isMinor) {
         this.value = value;
         if (isMinor) {
             this.isMinorTick = true;
@@ -195,14 +205,14 @@
         return this;
     };
     
-    jQuery.jqplot.CanvasAxisTickRenderer.prototype.draw = function(ctx, plot) {
+    $.jqplot.CanvasAxisTickRenderer.prototype.draw = function(ctx, plot) {
         if (!this.label) {
             this.label = this.prefix + this.formatter(this.formatString, this.value);
         }
         
         // Memory Leaks patch
         if (this._elem) {
-            if (jQuery.jqplot.use_excanvas && window.G_vmlCanvasManager.uninitElement !== undefined) {
+            if ($.jqplot.use_excanvas && window.G_vmlCanvasManager.uninitElement !== undefined) {
                 window.G_vmlCanvasManager.uninitElement(this._elem.get(0));
             }
             
@@ -225,18 +235,18 @@
         elem.style.height = h;
         elem.style.textAlign = 'left';
         elem.style.position = 'absolute';
-		
-		elem = plot.canvasManager.initCanvas(elem);
-		
-        this._elem = jQuery(elem);
+
+        elem = plot.canvasManager.initCanvas(elem);
+
+        this._elem = $(elem);
         this._elem.css(this._styles);
         this._elem.addClass('jqplot-'+this.axis+'-tick');
-		
+
         elem = null;
         return this._elem;
     };
     
-    jQuery.jqplot.CanvasAxisTickRenderer.prototype.pack = function() {
+    $.jqplot.CanvasAxisTickRenderer.prototype.pack = function() {
         this._textRenderer.draw(this._elem.get(0).getContext("2d"), this.label);
     };
     

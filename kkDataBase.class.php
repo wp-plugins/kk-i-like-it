@@ -184,9 +184,8 @@ class kkDataBase{
 			}else{
 				$user = $this->wpdb->get_var("SELECT display_name FROM $this->tableWPUsers WHERE ID = $row->idwpuser");
 			}
-		
+
 			$result[$i] = array(
-				'ID'		=>	$row->idwp,
 				'ip' 		=> 	$row->ip,
 				'date'		=>	$row->date,
 				'user'		=>	$user,

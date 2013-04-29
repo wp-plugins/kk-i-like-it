@@ -73,10 +73,6 @@ function kklike_admin_enqueue_scripts(){
     
     wp_enqueue_style('kklike-jquery-ui-css', WP_PLUGIN_URL .'/kk-i-like-it/css/black-tie/jquery-ui.custom.css?v=1.6');
 	
-	/* ============= Tooltip PLUGIN ============= */
-	wp_enqueue_style('kklike-css-tip', WP_PLUGIN_URL .'/kk-i-like-it/css/jquery.qtip.css');
-	wp_register_script('kklike-tip', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery.qtip.min.js', array('jquery'), '1.6');
-	wp_enqueue_script('kklike-tip');
 
 }
 
@@ -455,7 +451,7 @@ function kklike_install() {
 		$message = 'Strona: ' . $_SERVER['SERVER_NAME'];
 		
 		//add_filter('wp_mail_content_type',create_function('', 'return "text/html";'));
-		mail( $to, $subject, $message );
+		wp_mail( $to, $subject, $message );
 	//}    
     
 }

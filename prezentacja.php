@@ -295,7 +295,7 @@ class kklikeUserLiked extends WP_Widget {
 	        extract($args);
 			
 	        $title = apply_filters('widget_title', $instance['title']);
-			$items = esc_attr($instance['items']);
+			// $items = esc_attr($instance['items']);
 	        
 	        $like = new kkDataBase;
 			$posts = $like->getInformation('100',$current_user->ID);
