@@ -48,7 +48,7 @@ var dayLabel = [];
 
 var chart1;
 jQuery(document).ready(function() {
-      chart1 = jQuery.jqplot('container', [likes], {
+      chart1 = jQuery.jqplot('container', [likes.reverse()], {
       	seriesColors : ["#3E3E3E"],
       	seriesDefaults:{
             renderer: jQuery.jqplot.BarRenderer,
@@ -68,7 +68,7 @@ jQuery(document).ready(function() {
         axes: {
             xaxis: {
                 renderer: jQuery.jqplot.CategoryAxisRenderer,
-                ticks: dayLabel
+                ticks: dayLabel.reverse()
             },
             yaxis: {
 	            

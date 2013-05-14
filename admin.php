@@ -417,31 +417,28 @@ function kklike_install() {
 	$table_name_new = $wpdb->prefix . "kklikeuser";
     $table_name_new_a = $wpdb->prefix . "kklike";
     
-    if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_new'") != $table_name_new) {
-    	$sql = "CREATE TABLE " . $table_name_new . " (
-				`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-				`idwpuser` INT NULL DEFAULT '0',
-				`idlike` INT NOT NULL ,
-				`ip` VARCHAR( 255 ) NOT NULL DEFAULT '0',
-				`date` DATETIME NOT NULL
-				) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;";
+	$sql = "CREATE TABLE " . $table_name_new . " (
+			`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+			`idwpuser` INT NULL DEFAULT '0',
+			`idlike` INT NOT NULL ,
+			`ip` VARCHAR( 255 ) NOT NULL DEFAULT '0',
+			`date` DATETIME NOT NULL
+			) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;";
 
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql);
-        
-    }
-	if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_new_a'") != $table_name_new_a) {
-    	$sql = "CREATE TABLE " . $table_name_new_a . " (
-				`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-				`idwp` INT NOT NULL ,
-				`rating` INT NOT NULL DEFAULT '0',
-				`type` VARCHAR( 255 ) NOT NULL
-				) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;";
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
+    
 
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql);
-        
-    }
+	$sql = "CREATE TABLE " . $table_name_new_a . " (
+			`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+			`idwp` INT NOT NULL ,
+			`rating` INT NOT NULL DEFAULT '0',
+			`type` VARCHAR( 255 ) NOT NULL
+			) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;";
+
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
+      
 	
 	//$actived = $_GET['activate'];
 	//if($actived){

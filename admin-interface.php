@@ -26,7 +26,7 @@ function kklike_admin_content(){
 		<?php
 			
 			$table_name_new_a = $wpdb->prefix . "kklike";
-			if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_new_a'") == $table_name_new_a):
+			if ($wpdb->get_var("SHOW TABLES LIKE $table_name_new_a") == $table_name_new_a):
 		?>
 		<div id="kkpb-db-update">
 	    	<p>
