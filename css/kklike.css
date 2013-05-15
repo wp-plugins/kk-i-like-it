@@ -1,5 +1,7 @@
 /* ============== KKAdmin ============== */
 
+
+
 #kkadmin-slug{
 	position: absolute;
 	top: 20px;
@@ -89,10 +91,19 @@
 	max-width: 300px;
 }
 
-.kk-admin-input-text input{
-	font-size: 14px !important;
-	padding: 5px !important;
-	height: auto !important;
+.kkadmin-box .kk-admin-input-text,
+.kkadmin-box input[type="text"]{
+	font-size: 14px;
+	padding: 7px 10px;
+	line-height: 1;
+	margin: 0;
+	width: 95%;
+	height: auto;
+}
+
+.kk-admin-input label,
+.kkadmin-radio-ui label{
+	margin: 0;
 }
 
 .kkadmin-info span{
@@ -499,6 +510,9 @@ label.error{
 	color: #FFFFFF;
 	font-weight: normal;
 	font-style: italic;
+	font-size: 20px;
+	line-height: 1;
+	/*margin-bottom: 10px;*/
 }
 
 .kkadmin-sidebar{
@@ -521,6 +535,7 @@ label.error{
 	color: #3E3E3E;
 }
 
+.kkadmin-menu-ul,
 .kkadmin-menu-ul li{
 	margin: 0;
 	position: relative;

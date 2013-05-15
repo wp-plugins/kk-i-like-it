@@ -31,6 +31,12 @@
 			Changelog
 		</a>
 	</li>
+	<li>
+		<a class="" href="http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/" target="_blank">
+			<span class="kkadmin-arrow"></span>
+			<?php echo __('Plugin web site', 'lang-kklike'); ?>
+		</a>
+	</li>
 	<?php if(false && current_user_can('administrator')): ?>
 	<?php endif; ?>
 </ul>

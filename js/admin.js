@@ -17,9 +17,13 @@ function kkLikeUpdateDB(){
 
 jQuery(document).ready(function(){
 	
-	jQuery('.kknewcheckbox').iphoneStyle();
+	// jQuery('.kknewcheckbox').iphoneStyle();
 	
-	jQuery('.kkadmin-radio-ui').buttonset();
+    // jQuery('.kkadmin-radio-ui').buttonset();
+	// jQuery('.kkadmin-radio-ui').find('.btn').selectable({
+ //        radio: true,
+ //        class: 'btn-inverse'
+ //    });
 	
     jQuery('.kkadmin-radio-prev-box input[type="radio"]:checked').parents('.kkadmin-radio-prev-box').addClass('kkadmin-active');
     

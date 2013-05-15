@@ -6,6 +6,7 @@ $kkLikeSettings = get_option('kklikesettings');
 
 ?>
 
+<link rel="stylesheet" type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/css/bootstrap.css" />
 <script type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/button-preview.js"></script>
 
 <script type="text/javascript">
@@ -189,7 +190,7 @@ function kklike_admin_generate_option($kkLikeSettings, $type, $key, $value){
 	</td>
 	<td class="kk-admin-settings-val">
 		<div class="kk-admin-input">
-			<input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo (isset($kkLikeSettings[$key]) ? stripslashes($kkLikeSettings[$key]) : (isset($value['default']) ? $value['default'] : '')); ?>" />
+			<input type="text" class="kk-admin-input-text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo (isset($kkLikeSettings[$key]) ? stripslashes($kkLikeSettings[$key]) : (isset($value['default']) ? $value['default'] : '')); ?>" />
 		</div>
 	</td>
 </tr>
@@ -210,8 +211,10 @@ function kklike_admin_generate_option($kkLikeSettings, $type, $key, $value){
 	
 	if($checkbox == 'on' || $checkbox == 'enabled'){
 		$val_yes = 'checked="checked"';
+		$val_no = '';
 	}else{
 		$val_yes = '';
+		$val_no = 'checked="checked"';
 	}
 	
 ?>
@@ -225,9 +228,27 @@ function kklike_admin_generate_option($kkLikeSettings, $type, $key, $value){
 		<label for="<?php echo $key; ?>"><?php echo $value['title']; ?></label>
 	</td>
 	<td class="kk-admin-settings-val">
-		<div class="kk-admin-input">
-			<input type="checkbox" name="<?php echo $key; ?>" id="<?php echo $key; ?>" class="kknewcheckbox" <?php echo $val_yes; ?> />
+		<div class="kk-admin-input kkselectable-<?php echo $key; ?>">
+			<div class="btn-group">
+				<span class="btn">
+					<input type="radio" name="<?php echo $key; ?>" id="<?php echo $key; ?>-off" value="off" class="kknewcheckbox hide" <?php echo $val_no; ?> /><label>NO</label>
+				</span>
+				<span class="btn">
+					<input type="radio" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="on" class="kknewcheckbox hide" <?php echo $val_yes; ?> /><label>YES</label>
+				</span>
+			</div>
 		</div>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('.kkselectable-<?php echo $key; ?>').find('.btn').selectable({
+					radio : true,
+			        class: 'btn-inverse',
+			        'onSelected': function(e) {
+			        	button.kkLikeButtonPrev.updateForm();
+			        }
+			    });
+			});
+		</script>
 	</td>
 </tr>
 
@@ -324,8 +345,8 @@ function kklike_admin_generate_option($kkLikeSettings, $type, $key, $value){
 					<label for="<?php echo $key; ?>"><?php echo $value['title']; ?></label>
 				</td>
 				<td class="kk-admin-settings-val">
-					<div class="kkadmin-selectbox kkadmin-radio-ui">
-						
+					<div class="kkadmin-selectbox kkadmin-radio-ui kkselectable-<?php echo $key; ?>">
+						<div class="btn-group">
 							<?php 
 								$default = (isset($kkLikeSettings[$key]) ? stripslashes($kkLikeSettings[$key]) : (isset($value['default']) ? $value['default'] : ''));
 								if($default == 0){
@@ -341,10 +362,21 @@ function kklike_admin_generate_option($kkLikeSettings, $type, $key, $value){
 									$selected = '';
 								}
 							?>
-								<input type="radio" name="<?php echo $key; ?>" id="<?php echo $class; ?>" value="<?php echo $class; ?>" <?php echo $selected; ?>> <label for="<?php echo $class; ?>"><?php echo $nazwa; ?></label>
+								<span class="btn">
+									<input type="radio" class="hide" name="<?php echo $key; ?>" id="<?php echo $class; ?>" value="<?php echo $class; ?>" <?php echo $selected; ?>> <label for="<?php echo $class; ?>"><?php echo $nazwa; ?></label>
+								</span>
 							<?php endforeach; ?>
-						
+						</div>
 					</div>
+
+					<script type="text/javascript">
+						jQuery(document).ready(function(){
+							jQuery('.kkselectable-<?php echo $key; ?>').find('.btn').selectable({
+						        radio: true,
+						        class: 'btn-inverse'
+						    });
+						});
+					</script>
 				</td>
 			</tr>
 			

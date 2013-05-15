@@ -255,7 +255,7 @@ class kklikeUserLiked extends WP_Widget {
 		// outputs the options form on admin
 
 		$title = esc_attr($instance['title']);
-		//$items = esc_attr($instance['items']);
+		$items = esc_attr($instance['items']);
 		
 		?>
         <div>
@@ -264,12 +264,12 @@ class kklikeUserLiked extends WP_Widget {
         		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
         	</label>
         </div>
-        <!--
+        
         <div>
         	<div class="kkwidget-option-title"><?php echo __('How many items should be displayed','lang-kklike'); ?>?</div>
         	<input type="text" id="<?php  echo $this->get_field_id('items') ?>" name="<?php echo  $this->get_field_name('items'); ?>" value="<?php echo $items; ?>" /><label class="kkwidget-option-label" for="<?php  echo $this->get_field_id('items') ?>"><?php echo __(' items.','lang-kklike'); ?></label>
         </div>
-        -->
+        
 
 <?php
     }
@@ -278,7 +278,7 @@ class kklikeUserLiked extends WP_Widget {
         // processes widget options to be saved
         $instance = $old_instance;
 		$instance['title'] = strip_tags( $new_instance['title'] );
-		//$instance['items'] = $new_instance['items'];
+		$instance['items'] = $new_instance['items'];
 
 		return $instance;
     }
@@ -295,10 +295,10 @@ class kklikeUserLiked extends WP_Widget {
 	        extract($args);
 			
 	        $title = apply_filters('widget_title', $instance['title']);
-			// $items = esc_attr($instance['items']);
+			$items = esc_attr($instance['items']);
 	        
 	        $like = new kkDataBase;
-			$posts = $like->getInformation('100',$current_user->ID);
+			$posts = $like->getInformation($items,$current_user->ID);
 	        
 	        echo $before_widget;
 	        echo $before_title;
