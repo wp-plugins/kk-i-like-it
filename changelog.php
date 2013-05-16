@@ -16,6 +16,13 @@ global $kkplugin, $wersja_plugin, $wpdb;
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
 
+				<h2>= 1.7.3 =</h2>
+				<ul>
+					<li>NEW: [Widget User Liked] Added possibility to set the number of displayed items</li>
+					<li>CHANGE: Changed sorting charts on statistics</li>
+					<li>CHANGE: Some changes in the interface plugin panel</li>
+				</ul>
+
 				<h2>= 1.7.2 =</h2>
 				<ul>
 					<li>HOTFIX: Fatal error after activation plugin</li>

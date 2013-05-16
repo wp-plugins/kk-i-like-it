@@ -112,7 +112,7 @@ function kklike_admin_content(){
 		<div class="kkclear"></div>
 		<div class="kklike-msg">
 			Hi, If you are interested in developing my plugin, you can help by providing me with a feedback on how it works for you. Suggestions or errors can be reported <a href="http://wordpress.org/support/plugin/kk-i-like-it" target="_blank">HERE</a>.
-			I will be really grateful for any information.<br />
+			I will be really grateful for any information. 
 			
 			Best regards
 		</div>
