@@ -746,3 +746,20 @@ label.error{
     text-align: center;
     width: 794px;
 }
+
+.buy-coffe{
+	font-size: 14px;
+	font-style: italic;
+	color: #583515 !important;
+	display: block;
+	border-bottom: 1px dashed #ccc;
+	padding-bottom: 10px;
+}
+
+.buy-coffe:hover{
+	color: #333 !important;
+}
+
+#donate-button{
+	display: none;
+}
