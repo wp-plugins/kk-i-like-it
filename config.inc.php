@@ -1,6 +1,6 @@
 <?php
 
 define('PLUGIN_NAME', 'KKILikeIt');
-define('PLUGIN_VERSION', '1.7.3 BETA');
+define('PLUGIN_VERSION', '1.7.4 FREE');
 
 ?>

@@ -16,6 +16,11 @@ global $kkplugin, $wersja_plugin, $wpdb;
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
 
+				<h2>= 1.7.4 =</h2>
+				<ul>
+					<li>CHANGE: Some admin design changes</li>
+				</ul>
+
 				<h2>= 1.7.3 =</h2>
 				<ul>
 					<li>NEW: [Widget User Liked] Added possibility to set the number of displayed items</li>
