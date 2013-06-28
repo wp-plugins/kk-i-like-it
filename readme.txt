@@ -2,11 +2,11 @@
 Contributors: Krzy-siek
 Donate link: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
 License: GNU GPL
-Version: 1.7.4
+Version: 1.7.5
 Tags: like, like it, social, rating, blog, post, page, premium, free
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 1.7.4
+Stable tag: 1.7.5
 
 Plugin gives users or guest an option to like an article or a page.
 
@@ -42,6 +42,15 @@ Features:
 * [Shortcode] Display rating score
 * [Admin] Two widgets in administration panel with statistics
 * ... and many more ...
+
+If you are willing to support my work or you are looking for more options, feel free to purchase professional version of the plugin.
+
+PREMIUM VERSION: [only $15 - PRO Version](http://codecanyon.net/item/kk-progressbar-2/916225?ref=KrzysztofF)
+
+Author Site: [Krzysztof Furtak](http://krzysztof-furtak.pl)
+
+Thank you for choosing my product! Do not hesitate to contact me in case of any further questions or concerns.
+
 
 More information about the plugin can be found [HERE](http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/) – feel free to check it out!
 

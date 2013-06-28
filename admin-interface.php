@@ -9,37 +9,11 @@ function kklike_admin_content(){
 	global $wpdb, $kkLikeOptions;
 ?>
 
-<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/excanvas.js"></script><![endif]-->
-<script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jquery.jqplot.min.js"></script>
-<script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.barRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.categoryAxisRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.canvasTextRenderer.js"></script>
-<script language="javascript" type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jqplot.canvasAxisTickRenderer.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/js/jquery.jqplot.css" />
-
 <div class="kkadmin-box">
 	<div class="kkadmin-top">
 		<?php include 'head.php'; ?>
 	</div>
 	<div class="kkadmin-content">
-		
-		<?php
-			
-			$table_name_new_a = $wpdb->prefix . "kklike";
-			if ($wpdb->get_var("SHOW TABLES LIKE $table_name_new_a") == $table_name_new_a):
-		?>
-		<div id="kkpb-db-update">
-	    	<p>
-	    		<?php echo __('Your database is out of date. Please upgrade the database, to do this, press the button below.','lang-kklike'); ?>
-	    	</p>
-	    	<div id="kkpb-db-update-text">
-	    		<a href="#" id="kkpb-db-update-start" class="button-primary"><?php echo __('Update','lang-kklike'); ?></a>
-	    		<img src="<?php echo WP_PLUGIN_URL; ?>/kk-i-like-it/images/loader.gif" style="vertical-align: middle; display: none;" id="kkpb-db-update-loader" alt="Wait..." />
-	    	</div>
-	    </div>
-		<?php
-			else:
-		?>
 		
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
@@ -104,10 +78,6 @@ function kklike_admin_content(){
 			<?php include 'menu.inc.php'; ?>
 			<?php include 'sidebar.php'; ?>
 		</div>
-		
-		<?php
-			endif;
-		?>
 		
 		<div class="kkclear"></div>
 		<div class="kklike-msg">

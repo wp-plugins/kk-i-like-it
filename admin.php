@@ -3,7 +3,7 @@
   Plugin Name: KK I Like It
   Plugin URI: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
   Description: Plugin gives users or guest an option to like an article or a page.
-  Version: 1.7.4
+  Version: 1.7.5
   Author: Krzysztof Furtak
   Author URI: http://krzysztof-furtak.pl
  */
@@ -49,33 +49,61 @@ function kklike_admin_enqueue_scripts(){
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui-core');
   	
-	wp_register_script('kklike-js', WP_PLUGIN_URL .'/kk-i-like-it/js/admin.js', array('jquery'), '1.7.3');
+	wp_register_script('kklike-js', WP_PLUGIN_URL .'/kk-i-like-it/js/admin.js', array('jquery'), '1.7.4');
 	wp_enqueue_script('kklike-js');
-	    
-    /* ============= CHECKBOX PLUGIN ============= */
-    wp_register_script('kklike-checkbox', WP_PLUGIN_URL .'/kk-i-like-it/js/iphone-style-checkboxes.js', array('jquery'), '1.7.3');
-    wp_enqueue_script('kklike-checkbox');
-    wp_enqueue_style('kklike-checkbox-css', WP_PLUGIN_URL .'/kk-i-like-it/css/iphone-style-checkboxes-css.css');
-    
+
     /* ============= ColorPicker PLUGIN ============= */
     wp_enqueue_style('kklike-admin-css-color', WP_PLUGIN_URL .'/kk-i-like-it/css/colorpicker.css');
-    wp_register_script('kklike-admin-color', WP_PLUGIN_URL .'/kk-i-like-it/js/colorpicker.js', array('jquery'), '1.7.3');
+    wp_register_script('kklike-admin-color', WP_PLUGIN_URL .'/kk-i-like-it/js/colorpicker.js', array('jquery'), '1.7.4');
     wp_enqueue_script('kklike-admin-color');
-    
+
 	/* ============= JS COOKIE PLUGIN ============= */
-	wp_register_script('kklike-admin-cookie', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery.cookie.js', array('jquery'), '1.7.3');
+	wp_register_script('kklike-admin-cookie', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery.cookie.js', array('jquery'), '1.7.4');
     wp_enqueue_script('kklike-admin-cookie');
     
-    wp_enqueue_style('kklike-jquery-ui-css', WP_PLUGIN_URL .'/kk-i-like-it/css/black-tie/jquery-ui.custom.css?v=1.7.3');
-
 
     /* ============= Selectable PLUGIN ============= */
-    wp_register_script('kklike-admin-selectable', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery.selectable.min.js', array('jquery'), '1.7.3');
+    wp_register_script('kklike-admin-selectable', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery.selectable.min.js', array('jquery'), '1.7.4');
     wp_enqueue_script('kklike-admin-selectable');
-	
 
-	wp_enqueue_style('kklike-css', WP_PLUGIN_URL .'/kk-i-like-it/css/kklike.css?v=1.7.3');
-	wp_enqueue_style('kklike-afront-css', WP_PLUGIN_URL .'/kk-i-like-it/css/kklike-front.css?v=1.7.3');
+    if(!empty($_GET['page']) && ($_GET['page'] == 'kklike-menu' || $_GET['page'] == 'kklike-stats')){
+	    /* ============= jqPlot PLUGIN ============= */
+	    wp_register_script('kklike-jqplot', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery.jqplot.min.js', array('jquery'), '1.7.4');
+	    wp_enqueue_script('kklike-jqplot');
+
+	    wp_register_script('kklike-canvasTextRenderer', WP_PLUGIN_URL .'/kk-i-like-it/js/jqplot.canvasTextRenderer.min.js', array('jquery'), '1.7.4');
+	    wp_enqueue_script('kklike-canvasTextRenderer');
+
+	    wp_register_script('kklike-categoryAxisRenderer', WP_PLUGIN_URL .'/kk-i-like-it/js/jqplot.categoryAxisRenderer.min.js', array('jquery'), '1.7.4');
+	    wp_enqueue_script('kklike-categoryAxisRenderer');
+
+	    wp_register_script('kklike-canvasAxisTickRenderer', WP_PLUGIN_URL .'/kk-i-like-it/js/jqplot.canvasAxisTickRenderer.min.js', array('jquery'), '1.7.4');
+	    wp_enqueue_script('kklike-canvasAxisTickRenderer');
+
+	    wp_register_script('kklike-pointLabels', WP_PLUGIN_URL .'/kk-i-like-it/js/jqplot.pointLabels.min.js', array('jquery'), '1.7.4');
+	    wp_enqueue_script('kklike-pointLabels');
+
+	    wp_register_script('kklike-pieRenderer', WP_PLUGIN_URL .'/kk-i-like-it/js/jqplot.barRenderer.min.js', array('jquery'), '1.7.4');
+	    wp_enqueue_script('kklike-pieRenderer');
+
+	    wp_register_script('kklike-barRenderer', WP_PLUGIN_URL .'/kk-i-like-it/js/jqplot.pieRenderer.min.js', array('jquery'), '1.7.4');
+	    wp_enqueue_script('kklike-barRenderer');
+
+	    wp_register_script('kklike-stats', WP_PLUGIN_URL .'/kk-i-like-it/js/stats.js', array('jquery'), '1.7.4');
+	    wp_enqueue_script('kklike-stats');
+
+	    wp_enqueue_style('kklike-jqplot-css', WP_PLUGIN_URL .'/kk-i-like-it/js/jquery.jqplot.css?v=1.7.4');
+	}
+
+	if(!empty($_GET['page']) && $_GET['page'] == 'kklike-settings'){
+	    /* ============= SETTINGS ============= */
+	    wp_register_script('kklike-button-preview', WP_PLUGIN_URL .'/kk-i-like-it/js/button-preview.js', array('jquery'), '1.7.4');
+	    wp_enqueue_script('kklike-button-preview');
+	    wp_enqueue_style('kklike-bootstrap-css', WP_PLUGIN_URL .'/kk-i-like-it/css/bootstrap.css');
+	}
+
+	wp_enqueue_style('kklike-css', WP_PLUGIN_URL .'/kk-i-like-it/css/kklike.css?v=1.7.4');
+	wp_enqueue_style('kklike-afront-css', WP_PLUGIN_URL .'/kk-i-like-it/css/kklike-front.css?v=1.7.4');
 
 }
 

@@ -16,6 +16,13 @@ global $kkplugin, $wersja_plugin, $wpdb;
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
 
+				<h2>= 1.7.5 =</h2>
+				<ul>
+					<li>NEW: Information about PRO version of plugin</li>
+					<li>CHANGE: Change of how to add libraries</li>
+					<li>FIX: A few glitches have been fixed</li>
+				</ul>
+
 				<h2>= 1.7.4 =</h2>
 				<ul>
 					<li>CHANGE: Some admin design changes</li>

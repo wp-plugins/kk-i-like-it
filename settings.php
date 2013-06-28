@@ -69,6 +69,10 @@ jQuery(document).ready(function(){
 <?php 
 function kklike_admin_generate_option($kkLikeSettings, $type, $key, $value){
 	
+	if (empty($value['class'])) {
+		$value['class'] = '';
+	}
+	
 	switch($type) {
 
 		case 'editor':
