@@ -339,6 +339,10 @@ function kklike_documentation(){
 	include 'documentation.php';
 }
 
+function kklike_stats(){
+	include 'stats.php';
+}
+
 function kklike_menu() {
 	
 	$kkLikeSettings = get_option('kklikesettings');
@@ -362,6 +366,7 @@ function kklike_menu() {
 	}
 	
 	add_menu_page(PLUGIN_NAME, PLUGIN_NAME, $plugin_rank, 'kklike-menu', 'kklike_admin_content', WP_PLUGIN_URL.'/kk-i-like-it/images/kkpb-ico.jpg');
+	add_submenu_page('kklike-menu', PLUGIN_NAME, 'Stats', $settings_rank, 'kklike-stats', 'kklike_stats');
 	add_submenu_page('kklike-menu', PLUGIN_NAME, 'Settings', $settings_rank, 'kklike-settings', 'kklike_settings');
 	add_submenu_page('kklike-menu', PLUGIN_NAME, 'Documentation', $settings_rank, 'kklike-documentation', 'kklike_documentation');
 	add_submenu_page('kklike-menu', PLUGIN_NAME, 'Changelog', $settings_rank, 'kklike-changelog', 'kklike_changelog');

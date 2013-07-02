@@ -11,6 +11,14 @@
 			</a>
 		</li>
 	<?php endif; ?>
+	<?php if(empty($kkLikeSettings['plugin_rank']) || current_user_can($kkLikeSettings['plugin_rank'])): ?>
+		<li>
+			<a class="<?php echo ($page == 'kklike-stats')? 'active':''; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-stats&charts=click">
+				<span class="kkadmin-arrow"></span>
+				<?php echo __('Stats','lang-kklike'); ?>
+			</a>
+		</li>
+	<?php endif; ?>
 	<?php if(empty($kkLikeSettings['settings_rank']) || current_user_can($kkLikeSettings['settings_rank'])): ?>
 		<li>
 			<a class="<?php echo ($page == 'kklike-settings')? 'active':''; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-settings" class="">

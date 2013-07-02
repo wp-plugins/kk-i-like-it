@@ -205,7 +205,7 @@ function kklike_admin_generate_option($kkLikeSettings, $type, $key, $value){
 
 <?php 
 
-	if(!empty($kkLikeSettings[$key]) || $kkLikeSettings[$key] != null){ 
+	if(!empty($kkLikeSettings[$key])){ 
 		$checkbox = $kkLikeSettings[$key];
 	}else if(isset($value['default'])){
 		$checkbox = $value['default'];

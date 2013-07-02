@@ -763,3 +763,91 @@ label.error{
 #donate-button{
 	display: none;
 }
+
+.kkmenu-bar{
+	background: #3E3E3E;
+	overflow: hidden;
+}
+
+.kkmenu-bar li{
+	float: left;
+	margin: 0;
+}
+
+.kkmenu-bar a{
+	display: block;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.kkmenu-bar a.active{
+	background: #000;
+}
+
+.kkdisplay-none{
+	display: none;
+}
+
+.loading{
+	background: url('../images/loader.gif') no-repeat center center transparent;
+	height: 200px;
+}
+
+.kktable-gray{
+	width: 100%;
+	border-collapse: collapse;
+	margin: 25px 0;
+}
+
+.kktable-gray th,
+.kktable-gray td{
+	text-align: left;
+	font-size: 1em;
+	padding: 10px;
+}
+
+.kktable-gray th{
+	background: #3E3E3E;
+	color: #F1F1F1;
+}
+
+.kktable-gray td{
+	border-bottom: 1px solid #ccc;
+}
+
+.kktable-gray tr:nth-child(odd) td{
+	background: #F1F1F1;
+}
+
+.version-old{
+	background: #ff3019;
+	background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404));
+	background: -webkit-linear-gradient(top,  #ff3019 0%,#cf0404 100%);
+	background: -o-linear-gradient(top,  #ff3019 0%,#cf0404 100%);
+	background: -ms-linear-gradient(top,  #ff3019 0%,#cf0404 100%);
+	background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 );
+
+    color: #FFFFFF;
+    font-size: 1.1em;
+    line-height: 1.4;
+    padding: 5px 10px;
+}
+
+.version-old a{
+	color: #fff;
+}
+
+.version-ok{
+	background: #ddd;
+
+	color: #555;
+    font-size: 1.1em;
+    line-height: 1.4;
+    padding: 5px 10px;
+}
