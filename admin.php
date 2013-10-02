@@ -3,7 +3,7 @@
   Plugin Name: KK I Like It
   Plugin URI: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
   Description: Plugin gives users or guest an option to like an article or a page.
-  Version: 1.7.5.1
+  Version: 1.7.5.2
   Author: Krzysztof Furtak
   Author URI: http://krzysztof-furtak.pl
  */
@@ -531,22 +531,23 @@ if (is_admin ()) {
 					$dane = $db->getTopPosts('5');
 					$numberLikes = $db->getLikesNumber();
 
+
 					if(!empty($dane) && $numberLikes > 0){
 						$i = 1;
-					foreach($dane as $row):
-						$perc = floor(($row->meta_value / $numberLikes) * 100);
-				?>
-					<div class="kklike-list-box-element kklike-stat">
-						<div class="kklike-list-text" style="width: 100%;">
-							<strong><span class=""><?php echo $i; ?>.</span> <a href="<?php echo get_permalink($row->ID); ?>" target="_blank"><?php echo $row->post_title; ?></a></strong>.
+						foreach($dane as $row):
+							$perc = floor(($row->meta_value / $numberLikes) * 100);
+						?>
+						<div class="kklike-list-box-element kklike-stat">
+							<div class="kklike-list-text" style="width: 100%;">
+								<strong><span class=""><?php echo $i; ?>.</span> <a href="<?php echo get_permalink($row->ID); ?>" target="_blank"><?php echo $row->post_title; ?></a></strong>.
+							</div>
+							<div class="kklike-likes"><?php echo $row->meta_value . ' ' . __('likes','lang-kklike'); ?></div>
+							<div class="kklike-stat-bg" style="width: <?php echo $perc; ?>%;"></div>
+							<div class="kkclear"></div>
 						</div>
-						<div class="kklike-likes"><?php echo $row->meta_value . ' ' . __('likes','lang-kklike'); ?></div>
-						<div class="kklike-stat-bg" style="width: <?php echo $perc; ?>%;"></div>
-						<div class="kkclear"></div>
-					</div>
-				<?php
-						$i++;
-					endforeach;
+						<?php
+							$i++;
+						endforeach;
 					}else{
 				?>
 					<div class="kklike-list-box-element">

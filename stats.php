@@ -11,6 +11,12 @@ global $kkplugin, $wersja_plugin, $wpdb;
 
 $click = false;
 $liked = false;
+$range = null;
+
+if (!empty($_GET['range'])) {
+	$range = $_GET['range'];
+}
+
 
 if($_GET['charts'] == 'click' || empty($_GET['charts'])){
 	$click = true;
@@ -39,6 +45,56 @@ if($_GET['charts'] == 'click' || empty($_GET['charts'])){
 							<?php echo __('Most liked','lang-kklike'); ?>
 						</a>
 					</li>
+
+					<?php if($_GET['charts'] == 'click' || empty($_GET['charts'])){ ?>
+					<ul class="submenu">
+						<li>
+							<a class="<?php if($range == 1): ?>active<?php endif; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-stats&charts=click&range=1">
+								<?php echo __('Today','lang-kklike'); ?>
+							</a>
+						</li>
+						<li>
+							<a class="<?php if($range == 7): ?>active<?php endif; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-stats&charts=click&range=7">
+								<?php echo __('7 days','lang-kklike'); ?>
+							</a>
+						</li>
+						<li>
+							<a class="<?php if($range == 14): ?>active<?php endif; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-stats&charts=click&range=14">
+								<?php echo __('14 days','lang-kklike'); ?>
+							</a>
+						</li>
+						<li>
+							<a class="<?php if($range == 30): ?>active<?php endif; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-stats&charts=click&range=30">
+								<?php echo __('30 days','lang-kklike'); ?>
+							</a>
+						</li>
+					</ul>
+
+					<?php }else if($_GET['charts'] == 'liked'){ ?>
+
+					<ul class="submenu">
+						<li>
+							<a class="<?php if($range == 1): ?>active<?php endif; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-stats&charts=liked&range=1">
+								<?php echo __('Today','lang-kklike'); ?>
+							</a>
+						</li>
+						<li>
+							<a class="<?php if($range == 7): ?>active<?php endif; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-stats&charts=liked&range=7">
+								<?php echo __('7 days','lang-kklike'); ?>
+							</a>
+						</li>
+						<li>
+							<a class="<?php if($range == 14): ?>active<?php endif; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-stats&charts=liked&range=14">
+								<?php echo __('14 days','lang-kklike'); ?>
+							</a>
+						</li>
+						<li>
+							<a class="<?php if($range == 30): ?>active<?php endif; ?>" href="<?php echo home_url(); ?>/wp-admin/admin.php?page=kklike-stats&charts=liked&range=30">
+								<?php echo __('30 days','lang-kklike'); ?>
+							</a>
+						</li>
+					</ul>	
+					<?php } ?>
 				</ul>
 
 				<div id="charts-box"></div>

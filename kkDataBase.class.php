@@ -130,7 +130,7 @@ class kkDataBase{
 	public function getPostRating($id){
 		$val = get_post_meta($id, $this->metaLikes, true);
 				
-		if(count($val) == 0){
+		if(empty($val)){
 			$val = 0;
 		}
 		
@@ -247,8 +247,8 @@ class kkDataBase{
 	}
 	
 	public function getLikesNumber(){
-		$query = "SELECT COUNT(id) ilosc FROM ". $this->tableLikeUser ." ";
-		$dane = $this->wpdb->get_var($query);
+		$query = "SELECT COUNT(id) AS ilosc FROM ". $this->tableLikeUser;
+		$dane = $this->wpdb->get_var($query);		
 		
 		return $dane; 
 	}

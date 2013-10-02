@@ -16,6 +16,19 @@ global $kkplugin, $wersja_plugin, $wpdb;
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
 
+				<h2>= 1.7.5.2 =</h2>
+				<ul>
+					<li>FIX: Improved display button in the news archive</li>
+					<li>FIX: Function kkLikeRating() - The plugin does not display the number 0. where can I set it to display the number zero</li>
+				</ul>
+
+				<h2>= 2.1 (PRO) =</h2>
+				<ul>
+					<li>NEW: More detailed statistics</li>
+					<li>FIX: Improved display button in the news archive</li>
+					<li>FIX: Function kkLikeRating() - The plugin does not display the number 0. where can I set it to display the number zero</li>
+				</ul>
+
 				<h2>= 1.7.5.1 =</h2>
 				<ul>
 					<li>FIX: Some warnings in settings</li>

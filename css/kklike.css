@@ -769,6 +769,10 @@ label.error{
 	overflow: hidden;
 }
 
+.kkmenu-bar .submenu{
+	float: right;
+}
+
 .kkmenu-bar li{
 	float: left;
 	margin: 0;
