@@ -2,17 +2,19 @@
 Contributors: Krzy-siek
 Donate link: http://krzysztof-furtak.pl/kk-i-like-it-wordpress-plugin/
 License: GNU GPL
-Version: 1.7.5.2
+Version: 1.7.5.3
 Tags: like, like it, social, rating, blog, post, page, premium, free
 Requires at least: 3.0
-Tested up to: 3.6.1
-Stable tag: 1.7.5.2
+Tested up to: 4.1
+Stable tag: 1.7.5.3
 
 Plugin gives users or guest an option to like an article or a page.
 
 == Description ==
 
 **KK I Like It - FREE VERSION!!!**
+
+**We are preparing for the plugin core rewriting!**
 
 **Please report all problems [HERE](http://wordpress.org/support/plugin/kk-i-like-it)**
 
@@ -99,6 +101,11 @@ or
 
 
 == Changelog ==
+= 1.7.5.3 =
+* Preparing for the plugin core rewriting
+* Some test in new Wordpress version
+* FIX: Couple of CSS bugs
+
 = 1.7.5.2 =
 * FIX: Improved display button in the news archive
 * FIX: Function kkLikeRating() - The plugin does not display the number 0. where can I set it to display the number zero

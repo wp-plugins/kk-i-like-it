@@ -16,6 +16,13 @@ global $kkplugin, $wersja_plugin, $wpdb;
 		<div class="kkadmin-text">
 			<div class="kkadmin-text-wew">
 
+				<h2>= 1.7.5.3 =</h2>
+				<ul>
+					<li>Preparing for the plugin core rewriting</li>
+					<li>Some test in new Wordpress version</li>
+					<li>FIX: Couple of CSS bugs</li>
+				</ul>
+
 				<h2>= 1.7.5.2 =</h2>
 				<ul>
 					<li>FIX: Improved display button in the news archive</li>
