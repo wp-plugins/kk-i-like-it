@@ -47,7 +47,7 @@ Features:
 
 If you are willing to support my work or you are looking for more options, feel free to purchase professional version of the plugin.
 
-PREMIUM VERSION: [only $15 - PRO Version](http://codecanyon.net/item/kk-progressbar-2/916225?ref=KrzysztofF)
+PREMIUM VERSION: [only $17 - PRO Version](http://codecanyon.net/item/kk-i-like-it/5053736?ref=KrzysztofF)
 
 Author Site: [Krzysztof Furtak](http://krzysztof-furtak.pl)
 
